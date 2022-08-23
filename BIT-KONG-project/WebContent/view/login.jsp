@@ -21,18 +21,18 @@
             </div>
             <div class="main-right">
                 <div class="login-menu">
-                        <div class="login">
+                        <form class="login" action="./login_ok.jsp" method="post" name="fom" onsubmit="return loginbts();">
                             <div class="logo">
                                 <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="input-group">
-                                <input type="email" placeholder="이메일 주소" class="input-email">
+                                <input type="email" placeholder="이메일 주소" class="input-email" name="m_id">
                                 <i class="bi bi-envelope-fill"></i>
-                                <input type="password" placeholder="비밀번호">
+                                <input type="password" placeholder="비밀번호" name="m_password">
                                 <i class="bi bi-key"></i>
                             </div>
                             <div class="form-btn">
-                                <a href="./buying.jsp"id="login-btn">로그인</a>
+                                <button type="submit" id="login-btn">로그인</button>
                                 <div class="line"></div>
                             </div>
                             <div class="find-btn">
@@ -42,10 +42,25 @@
                                     <li><a href="./register.jsp">회원가입</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </form>
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+    function loginbts() {
+		if(!document.fom.m_id.value.trim()){
+			alert("이메일을 입력하세요.");
+			document.fom.m_id.focus();
+			return false;
+		}
+		if(!document.fom.m_password.value.trim()){
+			alert("비밀번호를 입력하세요.");
+			document.fom.m_password.focus();
+			return false;
+		}
+		return true;
+	}
+    </script>
 </body>
 </html>

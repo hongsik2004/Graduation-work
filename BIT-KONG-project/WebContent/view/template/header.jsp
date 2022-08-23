@@ -1,5 +1,11 @@
+<%@page import="dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	MemberDAO dao = new MemberDAO();
+	String m_id = (String)session.getAttribute("m_id");
+	String m_name = (String)session.getAttribute("m_name");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +20,7 @@
             <a href="./buying.jsp"><img src="<%=request.getContextPath() %>/resoures/image/white_logo.png" alt="로고"></a>
         </div>
         <div class="name-tag">
-            <h5>박홍식님</h5>
+            <h5><%=m_id%></h5>
         </div>
         <nav>
             <ul>
@@ -27,7 +33,7 @@
             </ul>
         </nav>
         <footer>
-            <a href="./login.jsp">로그아웃</a>
+            <a href="./logout.jsp">로그아웃</a>
             <h4>COPYRIGHT&copy;콩콩식식 <br>ALL RIGHTS RESERVED</h4>
         </footer>
     </header>

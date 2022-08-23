@@ -145,6 +145,7 @@ table{
     color: white;
     font-weight: 700;
     font-size: 0.9vw;
+    cursor: pointer;
 }
 .find-btn{
     position: relative;

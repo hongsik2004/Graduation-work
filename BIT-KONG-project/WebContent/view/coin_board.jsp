@@ -18,6 +18,9 @@
         </div>
         <div class="box2">
             <div class="board-main">
+            	<div class="board-write">
+            		<a href="#">글쓰기</a>
+            	</div>
                 <div class="board-title">
                     <h2>콩트코인 게시판에 오신걸 환영합니다.</h2>
                     <span>코인 관련된 분석 및 정보글을 적는 게시판입니다.</span>

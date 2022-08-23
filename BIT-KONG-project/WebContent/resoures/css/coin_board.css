@@ -62,6 +62,7 @@
     width: 90%;
     height: 20%;
     margin: 0 auto;
+    position: relative;
 }
 .board-main h2{
     font-family: 'Bold';
@@ -149,4 +150,11 @@ table td > p > a{
     border-radius: 50px;
     background-color: #5D6DFC;
     color: white;
+}
+.board-write{
+	position: absolute;
+    font-size: 20px;
+    font-family: 'Regular';
+    right: 50px;
+    top: 60px;
 }

@@ -259,3 +259,11 @@ table{
     font-size: 16px;
     cursor: pointer;
 }
+.checkps{
+	position: absolute;
+	bottom: -10px;
+	left: 40px;
+}
+.checkpwd{
+	position: absolute;
+}
