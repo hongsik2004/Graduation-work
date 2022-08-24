@@ -24,6 +24,7 @@
         </div>
         <nav>
             <ul>
+            <%=request.getContextPath() %>/resoures/css/header.css
                 <li><a href="./buying.jsp">거래소</a></li>
                 <li><a href="./coin_wallet.jsp">보유코인</a></li>
                 <li><a href="./coin_board.jsp">코인별 게시판</a></li>

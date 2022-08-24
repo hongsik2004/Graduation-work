@@ -1,6 +1,9 @@
 package controller;
 
+import java.io.Console;
 import java.io.IOException;
+import java.util.HashMap;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,30 +14,37 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet("/")
+@WebServlet(urlPatterns={"/index","/coin/*"})
+
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private HashMap<String, Controller> controllerMap = new HashMap<>(); 
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public FrontController() {
-        super();
-        // TODO Auto-generated constructor stub
+    	super();
     }
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+		// index
+		controllerMap.put("/index", new MainController());
+		controllerMap.put("/coin/coin_wallet", new CoinWalletController());
 	}
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		String uri = request.getRequestURI();
+		String contextPath = request.getContextPath();
+		String path = uri.substring(contextPath.length());
+		Controller controller = controllerMap.get(path);
+		System.out.println(path);
+		if(controller == null) {
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			return;
+		}
+		MyView view = controller.process(request, response);
+		view.render(request, response);
 	}
 
 }
