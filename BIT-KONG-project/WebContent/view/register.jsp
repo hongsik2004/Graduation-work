@@ -46,7 +46,8 @@
                                 <i class="bi bi-person-fill"></i>
                             </div>
                             <div class="call-input">
-                                <input type="text" name="m_phone_number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="전화번호">
+                            	
+                                <input type="text" maxlength="11" name="m_phone_number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="전화번호">
                                 <i class="bi bi-telephone-fill"></i>
                             </div>
                             <div class="form-btn">
