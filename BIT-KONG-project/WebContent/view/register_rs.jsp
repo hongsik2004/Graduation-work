@@ -9,10 +9,6 @@
 	String m_name = request.getParameter("m_name");
 	String m_phone = request.getParameter("m_phone_number");
 	String m_password = request.getParameter("m_password");
-	System.out.println(m_id);
-	System.out.println(m_name);
-	System.out.println(m_phone);
-	System.out.println(m_password);
 	RegisterVO vo = new RegisterVO(m_id,m_name,m_phone,m_password,0);
 	int n = dao.insertregist(vo);
 	
