@@ -19,7 +19,7 @@
         <div class="box2">
             <div class="board-main">
             	<div class="board-write">
-            		<a href="#">글쓰기</a>
+            		<a href="./coin_write.jsp">글쓰기</a>
             	</div>
                 <div class="board-title">
                     <h2>콩트코인 게시판에 오신걸 환영합니다.</h2>
@@ -28,37 +28,51 @@
             </div>
             <table>
                 <tr>
+                	<th>번호</th>
                     <th>제목</th>
+                    <th>작성자</th>
                     <th>등록일</th>
                     <th>조회수</th>
                 </tr>
                 <tr>
+                	<td>6</td>
                     <td><p><a href="#">콩트코인 제가 볼땐 떡상합니다.</p></a></td>
+                    <td>박홍식</td>
                     <td>2022-05-21</td>
                     <td>1</td>
                 </tr>
                 <tr>
+                	<td>5</td>
                     <td><p><a href="#">콩트코인 제가 볼땐 떡상합니다.</p></a></td>
+                    <td>박호식</td>
                     <td>2022-05-21</td>
                     <td>1</td>
                 </tr>
                 <tr>
+                	<td>4</td>
                     <td><p><a href="#">콩트코인 제가 볼땐 떡상합니다.</p></a></td>
+                    <td>박혼식</td>
                     <td>2022-05-21</td>
                     <td>1</td>
                 </tr>
                 <tr>
+                	<td>3</td>
                     <td><p><a href="#">콩트코인 제가 볼땐 떡상합니다.</p></a></td>
+                    <td>박헐식</td>
                     <td>2022-05-21</td>
                     <td>1</td>
                 </tr>
                 <tr>
+                	<td>2</td>
                     <td><p><a href="#">콩트코인 제가 볼땐 떡상합니다.</p></a></td>
+                    <td>박홀식</td>
                     <td>2022-05-21</td>
                     <td>1</td>
                 </tr>
                 <tr>
+                	<td>1</td>
                     <td><p><a href="#">콩트코인 제가 볼땐 떡상합니다.</p></a></td>
+                    <td>박호석</td>
                     <td>2022-05-21</td>
                     <td>1</td>
                 </tr>

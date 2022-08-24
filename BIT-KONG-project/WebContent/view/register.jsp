@@ -21,7 +21,7 @@
             </div>
             <div class="main-right">
                 <div class="login-menu">
-                        <form class="login" action="./register_rs.jsp" name="frm" onsubmit="return check();" method="post">
+                        <form class="login" action="<%=request.getContextPath() %>/user/register" name="frm" onsubmit="return check();" method="post">
                             <div class="logo">
                                 <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>

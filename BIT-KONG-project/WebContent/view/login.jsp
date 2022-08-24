@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap-icons-1.8.3/fonts/bootstrap-icons.woff">
 </head>
 <body>
+	<script>   
+    <%
+      if(session.getAttribute("alert") != null) {
+           String data = (String)session.getAttribute("alert");
+        %>
+           alert('<%= data %>');
+      <%
+         session.removeAttribute("alert");
+      }
+   	%>
+    </script>
     <div class="main">
         <div class="main-menu">
             <div class="main-left">
@@ -21,7 +32,7 @@
             </div>
             <div class="main-right">
                 <div class="login-menu">
-                        <form class="login" action="./login_ok.jsp" method="post" name="fom" onsubmit="return loginbts();">
+                        <form class="login" action="<%=request.getContextPath() %>/user/login" method="post" name="fom" onsubmit="return loginbts();">
                             <div class="logo">
                                 <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
@@ -39,7 +50,7 @@
                                 <ul>
                                     <li><a href="#">아이디 찾기</a></li>
                                     <li><a href="#">비밀번호 찾기</a></li>
-                                    <li><a href="./register.jsp">회원가입</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/view/register.jsp">회원가입</a></li>
                                 </ul>
                             </div>
                         </form>

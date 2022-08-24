@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns={"/index","/coin/*"})
+@WebServlet(urlPatterns={"/index","/coin/*","/user/*"})
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +27,15 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// index
 		controllerMap.put("/index", new MainController());
+		// coin
 		controllerMap.put("/coin/coin_wallet", new CoinWalletController());
+		controllerMap.put("/coin/coin_board", new CoinBoardController());
+		controllerMap.put("/coin/coin_receipt", new CoinReceiptController());
+		controllerMap.put("/coin/coin_notice", new CoinNoticeController());
+		// user
+		controllerMap.put("/user/login", new UserLoginController());
+		controllerMap.put("/user/register", new UserRegisterController());
+		controllerMap.put("/user/logout", new UserLogoutController());
 	}
 
 

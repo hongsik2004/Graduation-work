@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/header.css">
 </head>
 <body>
+	<script>   
+    <%
+      if(session.getAttribute("alert") != null) {
+           String data = (String)session.getAttribute("alert");
+        %>
+           alert('<%= data %>');
+      <%
+         session.removeAttribute("alert");
+      }
+   	%>
+    </script>
     <header>
         <div class="logo">
             <a href="./buying.jsp"><img src="<%=request.getContextPath() %>/resoures/image/white_logo.png" alt="로고"></a>
@@ -24,17 +35,16 @@
         </div>
         <nav>
             <ul>
-            <%=request.getContextPath() %>/resoures/css/header.css
-                <li><a href="./buying.jsp">거래소</a></li>
-                <li><a href="./coin_wallet.jsp">보유코인</a></li>
-                <li><a href="./coin_board.jsp">코인별 게시판</a></li>
-                <li><a href="./coin_receipt.jsp">거래내역</a></li>
+                <li><a href="/index">거래소</a></li>
+                <li><a href="/coin/coin_wallet">보유코인</a></li>
+                <li><a href="/coin/coin_board">코인별 게시판</a></li>
+                <li><a href="/coin/coin_receipt">거래내역</a></li>
                 <li><a href="#">충전</a></li>
-                <li><a href="./coin_notice.jsp">고객센터</a></li>
+                <li><a href="/coin/coin_notice">고객센터</a></li>
             </ul>
         </nav>
         <footer>
-            <a href="./logout.jsp">로그아웃</a>
+            <a href="/user/logout">로그아웃</a>
             <h4>COPYRIGHT&copy;콩콩식식 <br>ALL RIGHTS RESERVED</h4>
         </footer>
     </header>
