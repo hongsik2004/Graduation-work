@@ -38,7 +38,7 @@
                   .then(response => response.json())
                   .then(response => draw(dataClear(response)))
                   .catch(err => console.error(err));
-        
+         
                 function dataClear(data) {
                     let nextData = new Array(100);
                     for (let i = 0; i < 100; i++) {
