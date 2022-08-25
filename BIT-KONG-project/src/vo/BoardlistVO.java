@@ -1,14 +1,21 @@
 package vo;
 
-public class CoinboardVO {
+public class BoardlistVO {
 	private int b_id;
 	private String b_title;
 	private String b_name;
 	private String b_date;
 	private String b_context;
 	private int b_view;
-	private int b_available;
-	
+	public BoardlistVO(int b_id, String b_title, String b_name, String b_date, String b_context, int b_view) {
+		super();
+		this.b_id = b_id;
+		this.b_title = b_title;
+		this.b_name = b_name;
+		this.b_date = b_date;
+		this.b_context = b_context;
+		this.b_view = b_view;
+	}
 	public int getB_id() {
 		return b_id;
 	}
@@ -44,12 +51,6 @@ public class CoinboardVO {
 	}
 	public void setB_view(int b_view) {
 		this.b_view = b_view;
-	}
-	public int getB_available() {
-		return b_available;
-	}
-	public void setB_available(int b_available) {
-		this.b_available = b_available;
 	}
 	
 }
