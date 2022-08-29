@@ -7,7 +7,6 @@ public class CoinboardVO {
 	private String b_date;
 	private String b_context;
 	private int b_view;
-	private int b_available;
 	
 	public int getB_id() {
 		return b_id;
@@ -45,11 +44,4 @@ public class CoinboardVO {
 	public void setB_view(int b_view) {
 		this.b_view = b_view;
 	}
-	public int getB_available() {
-		return b_available;
-	}
-	public void setB_available(int b_available) {
-		this.b_available = b_available;
-	}
-	
 }

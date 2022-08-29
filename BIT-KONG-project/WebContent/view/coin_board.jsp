@@ -6,7 +6,13 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/coin_board.css">
     <%
     	BoardDAO dao = new BoardDAO();
-    	ArrayList<BoardlistVO> list = dao.getBoardlist();
+    	int c_tag = 0;
+    	
+    	if(request.getParameter("c_tag") != null){
+    		c_tag = Integer.parseInt(request.getParameter("c_tag"));
+    	}
+    	ArrayList<BoardlistVO> list = dao.getBoardlist(c_tag);
+    	String[] coin_list = {"콩트","비트콩트","이더리움","어쩌구"};
     %>
 	<jsp:include page="../view/template/header.jsp"></jsp:include>
     <div class="con">
@@ -16,10 +22,9 @@
             </div>
             <div class="coins">
                 <ul class="bitcoin">
-                    <li><a href="#" class="on">콩트코인</a></li>
-                    <li><a href="#">비트콩트코인</a></li>
-                    <li><a href="#">이더리움코인</a></li>
-                    <li><a href="#">어쩌구코인</a></li>
+                	<%for(int i = 0; i < coin_list.length; i++){ %>
+                    <li><a href="<%=request.getContextPath() %>/coin/coin_board?c_tag=<%=i %>" class="<%= c_tag == i ? "on" :"" %>"><%= coin_list[i] %>코인</a></li>
+                    <%} %>
                 </ul>
             </div>
         </div>
@@ -29,10 +34,11 @@
             		<a href="/view/coin_write.jsp">글쓰기</a>
             	</div>
                 <div class="board-title">
-                    <h2>콩트코인 게시판에 오신걸 환영합니다.</h2>
+                    <h2><%= coin_list[c_tag] %>코인 게시판에 오신걸 환영합니다.</h2>
                     <span>코인 관련된 분석 및 정보글을 적는 게시판입니다.</span>
                 </div>
             </div>
+            <div class="table-div">
             <table>
                 <tr>
                 	<th>번호</th>
@@ -44,13 +50,14 @@
                 <%for(BoardlistVO vo : list ){%>
                 <tr>
                 	<td><%=vo.getB_id() %></td>
-                    <td><p><a href="#"><%=vo.getB_title() %></p></a></td>
+                    <td><p><a href="<%=request.getContextPath()%>/view/board_context.jsp?b_id=<%=vo.getB_id()%>"><%=vo.getB_title() %></p></a></td>
                     <td><%=vo.getB_name() %></td>
                     <td><%=vo.getB_date()%></td>
                     <td><%=vo.getB_view() %></td>
                 </tr>
                 <%} %>
             </table>
+            </div>
             <div class="paglist">
                 <ul class="pagination">
                     <li class="page-item"><a href="#">&lt;</a></li>

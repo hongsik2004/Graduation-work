@@ -25,14 +25,18 @@
 }
 .coin-board{
     width: 100%;
-    height: 50%;
+    height: 100%;
     background-color: #145082;
     border-radius: 10px 10px 0px 0px;
     font-size: 20px;
     padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .coin-board h3{
     color: white;
+    font-size: 40px;
 }
 .coins{
     width: 100%;
@@ -71,6 +75,13 @@
 .board-title{
     padding-top: 60px;
 }
+form{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
 table{
     border-collapse: collapse;
     width: 90%;
@@ -81,9 +92,8 @@ table tr:first-child{
     width: 90%;
     height: 50px;
     background-color: #F9FAFC;
-    border-bottom: 1px solid #E1E2E6;
-    border-radius: 10px 10px 0px 0px;
-    opacity: 0.6;
+    border: 1px solid #000;
+    text-align: center;
 }
 table tr{
     width: 90%;
@@ -159,8 +169,64 @@ table td > p > a{
     right: 50px;
     top: 60px;
 }
-.table-div{
-	height: 550px;
-    width: 90%;
-    margin: 0 auto;
+.b-pass {
+	width: 100%;
+	height: 50px;
+	font-size: 40px;
+	border: none;
+	border-left: 1px solid #000;
+}
+.btn-delete{
+	width: 80px;
+    height: 40px;
+    line-height:40px;
+    border: 1px solid red;
+    border-radius: 10px;
+    color: red;
+    position: absolute;
+    right: 260px;
+    top: 55%;
+    background-color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+.btn-reset{
+	width: 80px;
+    height: 40px;
+    line-height:40px;
+    border: 1px solid orange;
+    border-radius: 10px;
+    color: orange;
+    position: absolute;
+    right: 170px;
+    top: 55%;
+    background-color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+.btn-back{
+	width: 80px;
+    height: 40px;
+    line-height:40px;
+    border: 1px solid dodgerblue;
+    border-radius: 10px;
+    color: dodgerblue;
+    position: absolute;
+    right: 80px;
+    top:55%;
+    background-color: white;
+    font-size: 15px;
+    text-align: center;
+}
+.btn-back:hover {
+	background-color: #1e90ff2b;
+    transition: 0.6s;
+}
+.btn-reset:hover{
+	background-color: #ffa50030;
+    transition: 0.6s;
+}
+.btn-delete:hover{
+	background-color: #ff000047;
+    transition: 0.6s;
 }

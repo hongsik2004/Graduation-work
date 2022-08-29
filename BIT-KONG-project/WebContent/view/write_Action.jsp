@@ -18,15 +18,17 @@
 		String b_title = request.getParameter("b_title");
 		String b_name = request.getParameter("b_name");
 		//String b_date = request.getParameter("b_date");
+		String b_pass = request.getParameter("b_pass");
+		int c_tag = Integer.parseInt(request.getParameter("c_tag"));
 		String b_context = request.getParameter("b_context");
 		//int b_view = Integer.parseInt(request.getParameter("b_view"));
 		
-		int n = dao.write(b_title, b_name, b_context);
+		int n = dao.write(b_title, b_name, b_pass,c_tag,b_context);
 		if( n > 0){
 	%>
 		<script>
 			alert("성공적으로 글을 작성하였습니다.");
-			location.href="./coin_board";
+			location.href="/coin/coin_board";
 		</script>
 	<%
 		}else{

@@ -1,10 +1,13 @@
+<%@page import="dao.BoardDAO"%>
 <%@page import="dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	MemberDAO dao = new MemberDAO();
+	BoardDAO daos = new BoardDAO();
 	String m_id = (String)session.getAttribute("m_id");
 	String m_name = (String)session.getAttribute("m_name");
+	String b_pass = (String)session.getAttribute("b_pass");
 %>
 <!DOCTYPE html>
 <html>
@@ -15,6 +18,16 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/header.css">
 </head>
 <body>
+<%
+	if(m_id == null){
+%>
+<script type="text/javascript">
+alert("로그인을 하세요.");
+location.href = "<%=request.getContextPath()%>/view/login.jsp";
+</script>
+<%
+}
+%>
 	<script>   
     <%
       if(session.getAttribute("alert") != null) {
