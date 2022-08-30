@@ -12,7 +12,7 @@ select m_id,m_password from MEMBER_TABLE;
 
 select * from member_table;
 
---ÄÚÀÎ °Ô½ÃÆÇ Àü¿ë DB ±¸Ãà
+--ì½”ì¸ ê²Œì‹œíŒ ì „ìš© DB êµ¬ì¶•
 desc coin_board;
 select * from coin_board
 create table coin_board(
@@ -26,13 +26,13 @@ create table coin_board(
 	b_view number(5)
 );
 select DISTINCT c_tag from coin_board order by c_tag asc;
-update coin_board set b_title = '¹Ý°©´Ù', b_name = '°«³ÉÀÌ',m_id='admin',b_context='¿ö·Îµå´Ù.' where b_id = '2';
---ÀüÃ¼ ÆäÀÌÁö ¼ö =(ÀüÃ¼ °Ô½Ã¹° ¼ö / ÇÑ ÆäÀÌÁöÀÇ Ãâ·ÂÇÒ ¼ö ) + 1 (³ª¸ÓÁö°¡ ÀÖÀ» °æ¿ì)
+update coin_board set b_title = 'ë°˜ê°‘ë‹¤', b_name = 'ê°“ëƒ¥ì´',m_id='admin',b_context='ì›Œë¡œë“œë‹¤.' where b_id = '2';
+--ì „ì²´ íŽ˜ì´ì§€ ìˆ˜ =(ì „ì²´ ê²Œì‹œë¬¼ ìˆ˜ / í•œ íŽ˜ì´ì§€ì˜ ì¶œë ¥í•  ìˆ˜ ) + 1 (ë‚˜ë¨¸ì§€ê°€ ìžˆì„ ê²½ìš°)
 select b_id,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD where c_tag = 0 order by b_id desc;
 select b_id,c_tag,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD where c_tag = 0 order by b_id desc;
-select count(b_id) as b_id from coin_board; --ÀüÃ¼ ÆäÀÌÁö °¹¼ö ±¸ÇÏ±â
---°¡Áö°í ÀÕ´Â ±Û ¼ö,ÇÑ ÆäÀÌÁö´ç º¸¿©ÁÖ´Â ±Û ¼ö,ÇöÀç ÆäÀÌÁö ¹øÈ£ 
-select * from coin_board where ROWNUM >= 1 and ROWNUM <= 9 order by b_id; --ÇöÀç 1 ~ 9 °³ÀÇ ±ÛÀ» º¸¿©ÁØ´Ù.
+select count(b_id) as b_id from coin_board; --ì „ì²´ íŽ˜ì´ì§€ ê°¯ìˆ˜ êµ¬í•˜ê¸°
+--ê°€ì§€ê³  ìž‡ëŠ” ê¸€ ìˆ˜,í•œ íŽ˜ì´ì§€ë‹¹ ë³´ì—¬ì£¼ëŠ” ê¸€ ìˆ˜,í˜„ìž¬ íŽ˜ì´ì§€ ë²ˆí˜¸ 
+select * from coin_board where ROWNUM >= 1 and ROWNUM <= 9 order by b_id; --í˜„ìž¬ 1 ~ 9 ê°œì˜ ê¸€ì„ ë³´ì—¬ì¤€ë‹¤.
 select B.m_name from coin_board A, member_table B;
 drop table coin_board;
 delete from coin_board;
@@ -41,7 +41,7 @@ delete from coin_board where b_id = 1;
 select * from coin_board where b_id = ?;
 SELECT b_id from coin_board order by b_id desc;
 
-insert into coin_board values(1,0,'¹Ý°©½À´Ï´Ù.','¹ÚÈ«½Ä','2022-08-25','admin','¾È³çÇÏ¼¼¿ä.',0);
+insert into coin_board values(1,0,'ë°˜ê°‘ìŠµë‹ˆë‹¤.','ë°•í™ì‹','2022-08-25','admin','ì•ˆë…•í•˜ì„¸ìš”.',0);
 SELECT b_id from coin_board order by b_id desc;
 
 
