@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import util.JdbcUtil;
+import util.SHA256;
 import vo.RegisterVO;
 
 public class MemberDAO {
@@ -19,15 +20,15 @@ public class MemberDAO {
 		try {
 			con = JdbcUtil.getConnection();
 			pstmt = con.prepareStatement(INSERTREGISTER);
-			
+			String shapwd = SHA256.getHash(vo.getM_password());
 			pstmt.setString(1, vo.getM_id());
 			pstmt.setString(2, vo.getM_name());
 			pstmt.setString(3, vo.getM_phone());
-			pstmt.setString(4, vo.getM_password());
+			pstmt.setString(4, shapwd);
 			
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("insertregist() ¿À·ù¹ß»ý");
+			System.out.println("insertregist() ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}finally {
 			JdbcUtil.close(con, pstmt);
@@ -45,7 +46,7 @@ public class MemberDAO {
 				result = true;
 			}
 		} catch (Exception e) {
-			System.out.println("confirmId() ¿À·ù¹ß»ý");
+			System.out.println("confirmId() ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}finally {
 			JdbcUtil.close(con, pstmt, rs);
@@ -54,18 +55,19 @@ public class MemberDAO {
 	}
 	public RegisterVO getUserData(String m_id, String m_password) {
 		RegisterVO vo = null;
+		String shapwd = SHA256.getHash(m_password);
 		try {
 			con = JdbcUtil.getConnection();
 			pstmt = con.prepareStatement(GETUSERDATA);
 			pstmt.setString(1, m_id);
-			pstmt.setString(2, m_password);
+			pstmt.setString(2, shapwd);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				vo = new RegisterVO(rs.getString("m_id"), rs.getString("m_name"), 
 					rs.getString("m_phone_number"), rs.getString("m_password"), rs.getInt("m_krw"));
 			}
 		} catch (Exception e) {
-			System.out.println("getUserData() ¿À·ù¹ß»ý");
+			System.out.println("getUserData() ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			 e.printStackTrace();
 		}finally {
 			JdbcUtil.close(con, pstmt, rs);
