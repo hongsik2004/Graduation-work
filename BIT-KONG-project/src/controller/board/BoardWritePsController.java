@@ -30,10 +30,10 @@ public class BoardWritePsController implements Controller {
 		int n = dao.write(b_title, b_name, m_id,c_tag,b_context);
 		String path = "";
 		if( n > 0){
-			session.setAttribute("alert", "¼º°øÀûÀ¸·Î ±ÛÀ» ÀÛ¼ºÇÏ¿´½À´Ï´Ù");
+			session.setAttribute("alert", "ì„±ê³µì ìœ¼ë¡œ ê¸€ì„ ì‘ì„±í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			path = "/board";
 		}else{
-			session.setAttribute("alert", "±Û ÀÛ¼ºÀ» ½ÇÆĞ ÇÏ¿´½À´Ï´Ù! ´Ù½Ã ½Ãµµ ÇØÁÖ¼¼¿ä.");
+			session.setAttribute("alert", "ì˜¤ë¥˜ë°œìƒ! ë‹¤ì‹œ ì‹œë„ í•´ì£¼ì„¸ìš”.");
 			path = "/board/write";
 		}
 		return new MyView(path);

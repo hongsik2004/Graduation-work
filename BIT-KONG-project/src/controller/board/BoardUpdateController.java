@@ -23,18 +23,18 @@ public class BoardUpdateController implements Controller {
 		
 		int b_id = Integer.parseInt(request.getParameter("b_id"));
 		if(b_id == 0) {
-			session.setAttribute("alert", "Àß¸øµÈ Á¢±ÙÀÔ´Ï´Ù.");
+			session.setAttribute("alert", "ì„±ê³µì ìœ¼ë¡œ ê¸€ì„ ìˆ˜ì •í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			return new MyView("/board");
 		}
 		
 		BoardlistVO vo = dao.getBoardContext(b_id);
 		RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
 		if(!userVO.getM_id().equals(vo.getM_id())) {
-			session.setAttribute("alert", "Àß¸øµÈ Á¢±ÙÀÔ´Ï´Ù.");
+			session.setAttribute("alert", "ì˜¤ë¥˜ë°œìƒ! ë‹¤ì‹œì‹œë„í•´ì£¼ì„¸ìš”.");
 			return new MyView("/board");
 		}
 		
-		String[] coin_list = {"ÄáÆ®","ºñÆ®ÄáÆ®","ÀÌ´õ¸®¿ò","¾îÂ¼±¸"};
+		String[] coin_list = {"ì½©íŠ¸","ë¹„íŠ¸ì½©íŠ¸","ì´ë”ë¦¬ì›€","ì–´ì©Œêµ¬"};
 		
 		session.setAttribute("vo", vo);
 		session.setAttribute("coin_list", coin_list);

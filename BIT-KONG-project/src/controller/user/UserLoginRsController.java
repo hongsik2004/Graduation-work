@@ -27,10 +27,10 @@ public class UserLoginRsController implements Controller {
 		
 		if(vo != null){
 			session.setAttribute("userVO", vo);
-			session.setAttribute("alert", "·Î±×ÀÎ ¼º°ø!");
+			session.setAttribute("alert", "ë¡œê·¸ì¸ ì„±ê³µ!");
 			path = "/index";
 		}else{	
-			session.setAttribute("alert", "¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù!!");
+			session.setAttribute("alert", "ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤!!");
 			path = "/user/login";
 		}
 		return new MyView(path);

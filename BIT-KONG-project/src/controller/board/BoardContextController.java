@@ -23,7 +23,7 @@ public class BoardContextController implements Controller {
 		
 		int b_id = Integer.parseInt(request.getParameter("b_id"));
 		if(b_id == 0) {
-			session.setAttribute("alert", "Àß¸øµÈ Á¢±ÙÀÔ´Ï´Ù.");
+			session.setAttribute("alert", "ì„±ê³µì ìœ¼ë¡œ ê¸€ì„ ì‘ì„±í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			return new MyView("/board");
 		}
 		

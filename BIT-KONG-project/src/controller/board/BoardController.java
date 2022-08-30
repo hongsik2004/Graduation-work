@@ -29,7 +29,7 @@ public class BoardController implements Controller {
     	}
     	
     	ArrayList<BoardlistVO> list = dao.getBoardlist(c_tag);
-    	String[] coin_list = {"ÄáÆ®","ºñÆ®ÄáÆ®","ÀÌ´õ¸®¿ò","¾îÂ¼±¸"};
+    	String[] coin_list = {"ì½©íŠ¸","ë¹„íŠ¸ì½©íŠ¸","ì´ë”ë¦¬ì›€","ì–´ì©Œêµ¬"};
     	
     	session.setAttribute("c_tag", c_tag);
     	session.setAttribute("list", list);

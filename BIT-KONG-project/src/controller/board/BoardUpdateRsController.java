@@ -34,10 +34,10 @@ public class BoardUpdateRsController implements Controller {
 		
 		String path = "";
 		if(n == 1){
-			session.setAttribute("alert","°Ô½Ã±Û ¼öÁ¤ÀÌ ¼º°øÇÏ¿´½À´Ï´Ù.");
+			session.setAttribute("alert","ì„±ê³µì ìœ¼ë¡œ ê¸€ì„ ìˆ˜ì •í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			path="/board";
 		}else {
-			session.setAttribute("alert","¿À·ù¹ß»ı");
+			session.setAttribute("alert","ì˜¤ë¥˜ë°œìƒ! ë‹¤ì‹œì‹œë„í•´ì£¼ì„¸ìš”.");
 			path = "/board";
 		}
 

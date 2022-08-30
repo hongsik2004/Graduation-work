@@ -23,15 +23,15 @@ public class BoardDeleteController implements Controller {
 		BoardDAO dao = new BoardDAO();
 		
 		int b_id = Integer.parseInt(request.getParameter("b_id"));
-//		º»ÀÎ È®ÀÎ ÇÊ¼ö 
+//		ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ ï¿½Ê¼ï¿½ 
 		RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
 		String m_id = userVO.getM_id();
 		int n = dao.deleteboard(b_id,m_id);
 		String path = "";
-		if(n == 1){ // »èÁ¦¿Ï·á
-			session.setAttribute("alert", "¼º°øÀûÀ¸·Î »èÁ¦ µÇ¾ú½À´Ï´Ù.");
+		if(n == 1){ // ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½
+			session.setAttribute("alert", "ì„±ê³µì ìœ¼ë¡œ ì‚­ì œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}else{
-			session.setAttribute("alert", "°Ô½Ã±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê°Å³ª, °Ô½Ã±ÛÀÇ ±ÇÇÑÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+			session.setAttribute("alert", "ì˜¤ë¥˜ë°œìƒ! ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.");
 		}
 		return new MyView("/board");
 	}
