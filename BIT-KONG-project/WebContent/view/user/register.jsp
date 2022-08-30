@@ -21,12 +21,12 @@
             </div>
             <div class="main-right">
                 <div class="login-menu">
-                        <form class="login" action="<%=request.getContextPath() %>/user/register" name="frm" onsubmit="return check();" method="post">
+                        <form class="login" action="<%=request.getContextPath() %>/user/register_rs" name="frm" onsubmit="return check();" method="post">
                             <div class="logo">
                                 <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="email-input">
-                                <input type="email" placeholder="이메일 주소" class="input-email" name="m_id" id="m_id">
+                                <input type="text" placeholder="이메일 주소" class="input-email" name="m_id" id="m_id">
                                 <button type="button" class="overlap" name="confirm_id" onclick="buttons(this.form)">중복확인</button>
                                 <i class="bi bi-envelope-fill"></i>
                             </div>

@@ -1,4 +1,4 @@
-package controller;
+package controller.user;
 
 import java.io.IOException;
 
@@ -7,9 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.Controller;
+import controller.MyView;
 import dao.MemberDAO;
+import vo.RegisterVO;
 
-public class UserLoginController implements Controller{
+public class UserLoginRsController implements Controller {
 
 	@Override
 	public MyView process(HttpServletRequest request, HttpServletResponse response)
@@ -18,19 +21,17 @@ public class UserLoginController implements Controller{
 		String path = "";
 		String m_id = request.getParameter("m_id");
 		String m_password = request.getParameter("m_password");
-		String m_name = request.getParameter("m_name");
 		
 		MemberDAO dao = new MemberDAO();
-		if(dao.checkUser(m_id, m_password) == 1){
-			session.setAttribute("m_id", m_id);
-			session.setAttribute("alert", "ë¡œê·¸ì¸ ì„±ê³µ!");
+		RegisterVO vo = dao.getUserData(m_id, m_password);
+		
+		if(vo != null){
+			session.setAttribute("userVO", vo);
+			session.setAttribute("alert", "·Î±×ÀÎ ¼º°ø!");
 			path = "/index";
-		}else if(dao.checkUser(m_id, m_password) == 0){	
-			session.setAttribute("alert", "ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤!!");
-			path = "/view/login.jsp";
-		}else{
-			session.setAttribute("alert", "ì•„ì´ë””ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤!!");
-			path = "/view/login.jsp";
+		}else{	
+			session.setAttribute("alert", "¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù!!");
+			path = "/user/login";
 		}
 		return new MyView(path);
 	}

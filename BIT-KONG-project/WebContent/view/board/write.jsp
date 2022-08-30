@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/coin_write.css">
-	<jsp:include page="../view/template/header.jsp"></jsp:include>
+	<jsp:include page="/view/template/header.jsp"></jsp:include>
     <div class="con">
         <div class="box1">
             <div class="coin-board">
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="box2">
-        <form action="./write_Action.jsp" method="post" name="frm" onsubmit="return checks();">
+        <form action="/board/write_rs" method="post" name="frm" onsubmit="return checks();">
             <table>
             	<tbody>
                 <tr>
@@ -17,9 +17,6 @@
                 </tr>
                 <tr>
                 	<td><input type="text" class="b-name" placeholder="이름" name="b_name" maxlength="10"></td>
-                </tr>
-                <tr>
-                	<td><input type="password" class="b-pass" placeholder="비밀번호" name="b_pass" maxlength="6"></td>
                 </tr>
                 <tr>
                 	<td><select name="c_tag" class="c-tag">

@@ -6,11 +6,11 @@ public class BoardlistVO {
 	private String b_title;
 	private String b_name;
 	private String b_date;
-	private String b_pass;
+	private String m_id;
 	private String b_context;
 	private int b_view;
 	
-	public BoardlistVO(int b_id, int c_tag, String b_title, String b_name, String b_date, String b_pass,
+	public BoardlistVO(int b_id, int c_tag, String b_title, String b_name, String b_date, String m_id,
 			String b_context, int b_view) {
 		super();
 		this.b_id = b_id;
@@ -18,7 +18,7 @@ public class BoardlistVO {
 		this.b_title = b_title;
 		this.b_name = b_name;
 		this.b_date = b_date;
-		this.b_pass = b_pass;
+		this.m_id = m_id;
 		this.b_context = b_context;
 		this.b_view = b_view;
 	}
@@ -63,12 +63,12 @@ public class BoardlistVO {
 		this.b_date = b_date;
 	}
 
-	public String getB_pass() {
-		return b_pass;
+	public String getM_id() {
+		return m_id;
 	}
 
-	public void setB_pass(String b_pass) {
-		this.b_pass = b_pass;
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 
 	public String getB_context() {

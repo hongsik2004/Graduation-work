@@ -14,14 +14,15 @@ public class BoardDAO {
 	PreparedStatement pstmt2;
 	ResultSet rs;
 	
-	final String NOWDATE = "select sysdate from dual"; // ÌòÑÏû¨ ÏãúÍ∞Ñ Í∞ÄÏ†∏Ïò§Í∏∞
+	final String NOWDATE = "select sysdate from dual"; // «ˆ¿Á Ω√∞£ ∞°¡Æø¿±‚
 	final String NEXTNUM = "SELECT b_id from coin_board order by b_id desc";
 	final String BOARDWRITE = "INSERT INTO coin_board values(?,?,?,?,SYSDATE,?,?,?)";
-	final String BOARDDATA = "select b_id,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD where c_tag = ? order by b_id desc";
+	final String BOARDDATA = "select b_id,b_title,b_name,b_context,m_id,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD where c_tag = ? order by b_id desc";
 	final String BOARDCONTEXT = "select * from coin_board where b_id = ?";
-	final String BOARDPASSSELETE = "select b_pass from coin_board where b_id = ?";
-	final String BOARDDELETE = "delete from coin_board where b_id = ?";
-	final String BOARDUPDATE = "update coin_board set b_title = ?, b_name = ?,b_pass=?,c_tag=?,b_context=? where b_id = ?";
+//	final String BOARDPASSSELETE = "select b_pass from coin_board where b_id = ?";
+	final String BOARDDELETE = "delete from coin_board where b_id = ? and m_id = ?";
+	final String BOARDUPDATE = "update coin_board set b_title = ?, b_name = ?,c_tag=?,b_context=? where b_id = ?";
+	
 	public String getDate() {
 		try {
 			con = JdbcUtil.getConnection();
@@ -31,9 +32,10 @@ public class BoardDAO {
 				return rs.getString(1);
 			}
 		} catch (Exception e) {
+			System.out.println("getDate() ø¿∑˘πﬂª˝");
 			e.printStackTrace();
 		}
-		return ""; // Îç∞Ïù¥ÌÑ∞Î≤†Ïù¥Ïä§ Ïò§Î•ò
+		return ""; // µ•¿Ã≈Õ∫£¿ÃΩ∫ ø¿∑˘
 	}
 	public int getNext() {
 		try {
@@ -43,12 +45,12 @@ public class BoardDAO {
 			if(rs.next()) {
 				return rs.getInt(1) + 1;
 			}
-			return 1; // Ï≤´Î≤àÏß∏ Í≤åÏãúÎ¨ºÏù∏ Í≤ΩÏö∞
+			return 1; // √ππ¯¬∞ ∞‘Ω√π∞¿Œ ∞ÊøÏ
 		} catch (Exception e) {
-			System.out.println("ÎÇ¥Í∞Ä Î¨∏Ï†úÏûÑ");
+			System.out.println("getNext() πÆ¡¶πﬂª˝");
 			e.printStackTrace();
 		}
-		return -1; // Îç∞Ïù¥ÌÑ∞Î≤†Ïù¥Ïä§ Ïò§Î•ò
+		return -1; // µ•¿Ã≈Õ∫£¿ÃΩ∫ ø¿∑˘
 	}
 	public BoardlistVO getBoardContext(int b_id) {
 		BoardlistVO vo = null;
@@ -62,17 +64,18 @@ public class BoardDAO {
 				String b_title = rs.getString("b_title");
 				String b_name = rs.getString("b_name");
 				String b_date = rs.getString("b_date");
-				String b_pass = rs.getString("b_pass");
+				String m_id = rs.getString("m_id");
 				String b_context = rs.getString("b_context");
 				int b_view = rs.getInt("b_view");
-				vo = new BoardlistVO(b_id,c_tag,b_title,b_name,b_date,b_pass,b_context,b_view);
+				vo = new BoardlistVO(b_id,c_tag,b_title,b_name,b_date,m_id,b_context,b_view);
 			}
 		} catch (Exception e) {
+			System.out.println("getBoardContext() ø¿∑˘πﬂª˝");
 			e.printStackTrace();
 		}
 		return vo;
 	}
-	public int write(String b_title, String b_name, String b_pass,int c_tag , String b_context) {
+	public int write(String b_title, String b_name, String m_id,int c_tag , String b_context) {
 		int n = 0;
 		int idx = getNext();
 		try {
@@ -82,13 +85,13 @@ public class BoardDAO {
 			pstmt.setInt(2, c_tag);
 			pstmt.setString(3, b_title);
 			pstmt.setString(4, b_name);
-			pstmt.setString(5, b_pass);
+			pstmt.setString(5, m_id);
 			pstmt.setString(6, b_context);
 			pstmt.setInt(7, 0);
 			
 			n = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("ÏûáÏ∏†ÎØ∏");
+			System.out.println("write() ø¿∑˘πﬂª˝");
 			e.printStackTrace();
 		}
 		return n;
@@ -106,43 +109,33 @@ public class BoardDAO {
 				String b_title = rs.getString("b_title");
 				String b_name = rs.getString("b_name");
 				String b_date = rs.getString("b_date");
+				String m_id = rs.getString("m_id");
 				String b_context = rs.getString("b_context");
 				int b_view = rs.getInt("b_view");
 				
-				BoardlistVO vo = new BoardlistVO(b_id,c_tag,b_title,b_name,b_date,"",b_context,b_view);
+				BoardlistVO vo = new BoardlistVO(b_id,c_tag,b_title,b_name,b_date,m_id,b_context,b_view);
 				
 				list.add(vo);
 			}
 		} catch (Exception e) {
+			System.out.println("getBoardlist() πÆ¡¶πﬂª˝");
 			e.printStackTrace();
 		}finally {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 		return list;
 	}
-	public int deleteboard(int b_id,String b_pass) {
+	public int deleteboard(int b_id,String m_id) {
 		int n = -1;
 		try {
 			con = JdbcUtil.getConnection();
-			pstmt = con.prepareStatement(BOARDPASSSELETE);
+			pstmt = con.prepareStatement(BOARDDELETE);
 			pstmt.setInt(1, b_id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				if(b_pass.equals(rs.getString("b_pass"))) {
-					pstmt = con.prepareStatement(BOARDDELETE);
-					
-					pstmt.setInt(1, b_id);
-					
-					n = pstmt.executeUpdate();
-				}else {
-					n = 0;
-				}
-			}else {
-				n = -1;
-			}
-			System.out.println(n);
+			pstmt.setString(2,m_id);
+			n = pstmt.executeUpdate();
+
 		} catch (Exception e) {
+			System.out.println("deleteboard() ø¿∑˘πﬂª˝");
 			e.printStackTrace();
 		}finally {
 			JdbcUtil.close(con, pstmt,rs);
@@ -159,24 +152,20 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				if(vo.getB_pass().equals(rs.getString("b_pass"))) {
 					pstmt = con.prepareStatement(BOARDUPDATE);
 					pstmt.setString(1, vo.getB_title());
 					pstmt.setString(2, vo.getB_name());
-					pstmt.setString(3, vo.getB_pass());
-					pstmt.setInt(4, vo.getC_tag());
-					pstmt.setString(5, vo.getB_context());
-					pstmt.setInt(6, vo.getB_id());
+					pstmt.setInt(3, vo.getC_tag());
+					pstmt.setString(4, vo.getB_context());
+					pstmt.setInt(5, vo.getB_id());
 					
 					n = pstmt.executeUpdate();
-				}else {
-					n = 0;
-				}
+	
 			}else {
 				n = -1;
 			}
-			System.out.println(n);
 		} catch (Exception e) {
+			System.out.println("updateboard() ø¿∑˘πﬂª˝");
 			e.printStackTrace();
 		}
 		return n;
