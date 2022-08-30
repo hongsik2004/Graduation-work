@@ -37,11 +37,7 @@
                                 <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="input-group">
-<<<<<<< HEAD:BIT-KONG-project/WebContent/view/login.jsp
-                                <input type="Text" placeholder="이메일 주소" class="input-email" name="m_id">
-=======
                                 <input type="text" placeholder="이메일 주소" class="input-email" name="m_id">
->>>>>>> 25b768d186ac2de48ee000cfa4746ee96a9c6bb8:BIT-KONG-project/WebContent/view/user/login.jsp
                                 <i class="bi bi-envelope-fill"></i>
                                 <input type="password" placeholder="비밀번호" name="m_password">
                                 <i class="bi bi-key"></i>
