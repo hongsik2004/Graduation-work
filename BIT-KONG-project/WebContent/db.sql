@@ -9,8 +9,10 @@ drop table member_table;
 insert into member_table(m_id,m_name,m_phone_number,m_password) values('admin','admin','01040772018','5563');
 select * from MEMBER_TABLE;
 select m_id,m_password from MEMBER_TABLE;
+
 select * from member_table;
---ì½”ì¸ ê²Œì‹œíŒ ì „ìš© DB êµ¬ì¶•
+
+--ÄÚÀÎ °Ô½ÃÆÇ Àü¿ë DB ±¸Ãà
 desc coin_board;
 select * from coin_board
 create table coin_board(
@@ -19,18 +21,24 @@ create table coin_board(
 	b_title varchar2(50),
 	b_name varchar2(30),
 	b_date DATE,
-	b_pass varchar2(20),
+	m_id varchar2(30),
 	b_context varchar2(2048),
 	b_view number(5)
 );
+<<<<<<< HEAD
 select DISTINCT c_tag from coin_board;
 update coin_board set b_title = 'ë°˜ê°‘ë‹¤', b_name = 'ê°“ëƒ¥ì´',b_pass='1234',b_context='ì›Œë¡œë“œë‹¤.' where b_id = '2';
 --ì „ì²´ í˜ì´ì§€ ìˆ˜ =(ì „ì²´ ê²Œì‹œë¬¼ ìˆ˜ / í•œ í˜ì´ì§€ì˜ ì¶œë ¥í•  ìˆ˜ ) + 1 (ë‚˜ë¨¸ì§€ê°€ ìˆì„ ê²½ìš°)
+=======
+select DISTINCT c_tag from coin_board order by c_tag asc;
+update coin_board set b_title = '¹İ°©´Ù', b_name = '°«³ÉÀÌ',m_id='admin',b_context='¿ö·Îµå´Ù.' where b_id = '2';
+--ÀüÃ¼ ÆäÀÌÁö ¼ö =(ÀüÃ¼ °Ô½Ã¹° ¼ö / ÇÑ ÆäÀÌÁöÀÇ Ãâ·ÂÇÒ ¼ö ) + 1 (³ª¸ÓÁö°¡ ÀÖÀ» °æ¿ì)
+>>>>>>> 25b768d186ac2de48ee000cfa4746ee96a9c6bb8
 select b_id,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD where c_tag = 0 order by b_id desc;
 select b_id,c_tag,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD where c_tag = 0 order by b_id desc;
-select count(b_id) as b_id from coin_board; --ì „ì²´ í˜ì´ì§€ ê°¯ìˆ˜ êµ¬í•˜ê¸°
---ê°€ì§€ê³  ì‡ëŠ” ê¸€ ìˆ˜,í•œ í˜ì´ì§€ë‹¹ ë³´ì—¬ì£¼ëŠ” ê¸€ ìˆ˜,í˜„ì¬ í˜ì´ì§€ ë²ˆí˜¸ 
-select * from coin_board where ROWNUM >= 1 and ROWNUM <= 9 order by b_id; --í˜„ì¬ 1 ~ 9 ê°œì˜ ê¸€ì„ ë³´ì—¬ì¤€ë‹¤.
+select count(b_id) as b_id from coin_board; --ÀüÃ¼ ÆäÀÌÁö °¹¼ö ±¸ÇÏ±â
+--°¡Áö°í ÀÕ´Â ±Û ¼ö,ÇÑ ÆäÀÌÁö´ç º¸¿©ÁÖ´Â ±Û ¼ö,ÇöÀç ÆäÀÌÁö ¹øÈ£ 
+select * from coin_board where ROWNUM >= 1 and ROWNUM <= 9 order by b_id; --ÇöÀç 1 ~ 9 °³ÀÇ ±ÛÀ» º¸¿©ÁØ´Ù.
 select B.m_name from coin_board A, member_table B;
 drop table coin_board;
 delete from coin_board;
@@ -38,8 +46,11 @@ select b_pass from coin_board where b_id = ?;
 delete from coin_board where b_id = 1;
 select * from coin_board where b_id = ?;
 SELECT b_id from coin_board order by b_id desc;
-insert into coin_board values(1,0,'ë°˜ê°‘ìŠµë‹ˆë‹¤.','ë°•í™ì‹','2022-08-25','1234','ì•ˆë…•í•˜ì„¸ìš”.',0);
+
+insert into coin_board values(1,0,'¹İ°©½À´Ï´Ù.','¹ÚÈ«½Ä','2022-08-25','admin','¾È³çÇÏ¼¼¿ä.',0);
 SELECT b_id from coin_board order by b_id desc;
+
+
 select max(b_id) + 1 as b_id from coin_board;
 select b_id,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD;
 select sysdate from dual;

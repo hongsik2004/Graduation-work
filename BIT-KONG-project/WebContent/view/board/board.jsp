@@ -5,16 +5,12 @@
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/coin_board.css">
     <%
-    	BoardDAO dao = new BoardDAO();
-    	int c_tag = 0;
+    	int c_tag = (int)session.getAttribute("c_tag");
+    	String[] coin_list = (String[])session.getAttribute("coin_list");
+    	ArrayList<BoardlistVO> list = (ArrayList<BoardlistVO>)session.getAttribute("list");
     	
-    	if(request.getParameter("c_tag") != null){
-    		c_tag = Integer.parseInt(request.getParameter("c_tag"));
-    	}
-    	ArrayList<BoardlistVO> list = dao.getBoardlist(c_tag);
-    	String[] coin_list = {"콩트","비트콩트","이더리움","어쩌구"};
     %>
-	<jsp:include page="../view/template/header.jsp"></jsp:include>
+	<jsp:include page="/view/template/header.jsp"></jsp:include>
     <div class="con">
         <div class="box1">
             <div class="coin-board">
@@ -23,7 +19,7 @@
             <div class="coins">
                 <ul class="bitcoin">
                 	<%for(int i = 0; i < coin_list.length; i++){ %>
-                    <li><a href="<%=request.getContextPath() %>/coin/coin_board?c_tag=<%=i %>" class="<%= c_tag == i ? "on" :"" %>"><%= coin_list[i] %>코인</a></li>
+                    <li><a href="<%=request.getContextPath() %>/board?c_tag=<%=i %>" class="<%= c_tag == i ? "on" :"" %>"><%= coin_list[i] %>코인</a></li>
                     <%} %>
                 </ul>
             </div>
@@ -31,7 +27,7 @@
         <div class="box2">
             <div class="board-main">
             	<div class="board-write">
-            		<a href="/view/coin_write.jsp">글쓰기</a>
+            		<a href="/board/write">글쓰기</a>
             	</div>
                 <div class="board-title">
                     <h2><%= coin_list[c_tag] %>코인 게시판에 오신걸 환영합니다.</h2>
@@ -50,7 +46,7 @@
                 <%for(BoardlistVO vo : list ){%>
                 <tr>
                 	<td><%=vo.getB_id() %></td>
-                    <td><p><a href="<%=request.getContextPath()%>/view/board_context.jsp?b_id=<%=vo.getB_id()%>"><%=vo.getB_title() %></p></a></td>
+                    <td><p><a href="<%=request.getContextPath()%>/board/context?b_id=<%=vo.getB_id()%>"><%=vo.getB_title() %></p></a></td>
                     <td><%=vo.getB_name() %></td>
                     <td><%=vo.getB_date()%></td>
                     <td><%=vo.getB_view() %></td>

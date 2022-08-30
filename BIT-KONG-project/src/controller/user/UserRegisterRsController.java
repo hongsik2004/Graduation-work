@@ -1,4 +1,4 @@
-package controller;
+package controller.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,17 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.Controller;
+import controller.MyView;
 import dao.MemberDAO;
 import vo.RegisterVO;
 
-public class UserRegisterController implements Controller{
+public class UserRegisterRsController implements Controller {
 
 	@Override
 	public MyView process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		PrintWriter out = response.getWriter();
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
@@ -35,10 +34,10 @@ public class UserRegisterController implements Controller{
 		
 		if(n > 0) {
 			session.setAttribute("alert", "회원가입이 완료 되었습니다.");
-			path = "/view/login.jsp";
+			path = "/user/login";
 		}else {
 			session.setAttribute("alert", "오류 발생! 다시 시도 해주세요.");
-			path = "/view/register.jsp";
+			path = "/user/register";
 		}
 		return new MyView(path);
 	}

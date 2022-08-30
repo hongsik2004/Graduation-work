@@ -4,12 +4,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/board_update.css">
-	<jsp:include page="../view/template/header.jsp"></jsp:include>
+	<jsp:include page="/view/template/header.jsp"></jsp:include>
 	<%
-		BoardDAO dao = new BoardDAO();
-		int b_id = Integer.parseInt(request.getParameter("b_id"));
-		BoardlistVO vo = dao.getBoardContext(b_id);
-		String[] coin_list = {"콩트","비트콩트","이더리움","어쩌구"};
+		String[] coin_list = (String[])session.getAttribute("coin_list");
+		BoardlistVO vo = (BoardlistVO)session.getAttribute("vo");
 	%>
     <div class="con">
         <div class="box1">
@@ -18,7 +16,7 @@
             </div>
         </div>
         <div class="box2">
-        <form action="./update_Action.jsp" method="post" name="frm" onsubmit="return checks();">
+        <form action="/board/update_rs" method="post" name="frm" onsubmit="return checks();">
             <table>
             	<tbody>
                 <tr>
@@ -28,8 +26,8 @@
                 	<td><input type="text" class="b-name" placeholder="이름" name="b_name" maxlength="10" value="<%=vo.getB_name()%>"></td>
                 </tr>
                 <tr>
-                	<td><input type="password" class="b-pass" placeholder="비밀번호" name="b_pass" maxlength="6"></td>
-                	<input type="hidden" name="b_id" value="<%=request.getParameter("b_id")%>">
+            
+                	<input type="hidden" name="b_id" value="<%= vo.getB_id()%>">
                 </tr>
                 <tr>
                 	<td><select name="c_tag" class="c-tag">

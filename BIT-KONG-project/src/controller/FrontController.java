@@ -11,10 +11,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.board.BoardContextController;
+import controller.board.BoardController;
+import controller.board.BoardDeleteController;
+import controller.board.BoardUpdateController;
+import controller.board.BoardUpdateRsController;
+import controller.board.BoardWriteController;
+import controller.board.BoardWritePsController;
+import controller.user.UserLoginController;
+import controller.user.UserLoginRsController;
+import controller.user.UserLogoutController;
+import controller.user.UserRegisterController;
+import controller.user.UserRegisterRsController;
+
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns={"/index","/coin/*","/user/*"})
+@WebServlet(urlPatterns={"/index","/coin/*","/user/*","/board","/board/*"})
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,13 +42,25 @@ public class FrontController extends HttpServlet {
 		controllerMap.put("/index", new MainController());
 		// coin
 		controllerMap.put("/coin/coin_wallet", new CoinWalletController());
-		controllerMap.put("/coin/coin_board", new CoinBoardController());
+
 		controllerMap.put("/coin/coin_receipt", new CoinReceiptController());
 		controllerMap.put("/coin/coin_notice", new CoinNoticeController());
 		// user
 		controllerMap.put("/user/login", new UserLoginController());
+		controllerMap.put("/user/login_rs", new UserLoginRsController());
 		controllerMap.put("/user/register", new UserRegisterController());
+		controllerMap.put("/user/register_rs", new UserRegisterRsController());
 		controllerMap.put("/user/logout", new UserLogoutController());
+		
+		//board
+		controllerMap.put("/board", new BoardController());
+		controllerMap.put("/board/context", new BoardContextController());
+		controllerMap.put("/board/write", new BoardWriteController());
+		controllerMap.put("/board/write_rs", new BoardWritePsController());
+		controllerMap.put("/board/update", new BoardUpdateController());
+		controllerMap.put("/board/update_rs", new BoardUpdateRsController());
+		controllerMap.put("/board/delete", new BoardDeleteController());
+		
 	}
 
 
@@ -46,7 +71,6 @@ public class FrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String path = uri.substring(contextPath.length());
 		Controller controller = controllerMap.get(path);
-		System.out.println(path);
 		if(controller == null) {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			return;

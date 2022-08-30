@@ -32,12 +32,16 @@
             </div>
             <div class="main-right">
                 <div class="login-menu">
-                        <form class="login" action="<%=request.getContextPath() %>/user/login" method="post" name="fom" onsubmit="return loginbts();">
+                        <form class="login" action="<%=request.getContextPath() %>/user/login_rs" method="post" name="fom" onsubmit="return loginbts();">
                             <div class="logo">
                                 <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="input-group">
+<<<<<<< HEAD:BIT-KONG-project/WebContent/view/login.jsp
                                 <input type="Text" placeholder="이메일 주소" class="input-email" name="m_id">
+=======
+                                <input type="text" placeholder="이메일 주소" class="input-email" name="m_id">
+>>>>>>> 25b768d186ac2de48ee000cfa4746ee96a9c6bb8:BIT-KONG-project/WebContent/view/user/login.jsp
                                 <i class="bi bi-envelope-fill"></i>
                                 <input type="password" placeholder="비밀번호" name="m_password">
                                 <i class="bi bi-key"></i>
@@ -50,7 +54,7 @@
                                 <ul>
                                     <li><a href="#">아이디 찾기</a></li>
                                     <li><a href="#">비밀번호 찾기</a></li>
-                                    <li><a href="<%=request.getContextPath() %>/view/register.jsp">회원가입</a></li>
+                                    <li><a href="<%=request.getContextPath() %>/user/register">회원가입</a></li>
                                 </ul>
                             </div>
                         </form>
