@@ -23,7 +23,7 @@ create table coin_board(
 	b_context varchar2(2048),
 	b_view number(5)
 );
-select DISTINCT c_tag from coin_board order by c_tag asc;
+select DISTINCT c_tag from coin_board;
 update coin_board set b_title = '반갑다', b_name = '갓냥이',b_pass='1234',b_context='워로드다.' where b_id = '2';
 --전체 페이지 수 =(전체 게시물 수 / 한 페이지의 출력할 수 ) + 1 (나머지가 있을 경우)
 select b_id,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD where c_tag = 0 order by b_id desc;

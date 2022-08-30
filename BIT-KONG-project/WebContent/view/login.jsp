@@ -37,7 +37,7 @@
                                 <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="input-group">
-                                <input type="email" placeholder="이메일 주소" class="input-email" name="m_id">
+                                <input type="Text" placeholder="이메일 주소" class="input-email" name="m_id">
                                 <i class="bi bi-envelope-fill"></i>
                                 <input type="password" placeholder="비밀번호" name="m_password">
                                 <i class="bi bi-key"></i>
