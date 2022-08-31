@@ -28,6 +28,7 @@
                             <div class="email-input">
                                 <input type="text" placeholder="이메일 주소" class="input-email" name="m_id" id="m_id">
                                 <button type="button" class="overlap" name="confirm_id" onclick="buttons(this.form)">중복확인</button>
+                                <input type="hidden" name="chk" value="0">
                                 <i class="bi bi-envelope-fill"></i>
                             </div>
                             <div class="pwd-input">
@@ -92,6 +93,10 @@
 			document.frm.m_password2.focus();
 			return false;
 		}
+		if(document.frm.chk.value == false){
+			alert("중복체크를 해주세요.");
+			return false;
+		}
 		return true;
 	}
 	$(".pw").keyup(function(){
@@ -111,10 +116,10 @@
 	function buttons() {
 		if(document.frm.m_id.value == ""){
 			alert("ID를 입력하세요");
+			document.frm.m_id.focus();
 			return;
 		}
-		
-		url = "confirmId.jsp?m_id=" + document.frm.m_id.value;
+		url = "/view/user/confirm_Id.jsp?m_id=" + document.frm.m_id.value;
 		open(url, "confirm",
 				"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 	}

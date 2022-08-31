@@ -15,6 +15,7 @@ public class MemberDAO {
 	final String INSERTREGISTER = "insert into member_table(m_id,m_name,m_phone_number,m_password) values(?,?,?,?)";
 	final String CONFIRMID = "select m_id from member_table where m_id = ?";
 	final String GETUSERDATA = "select * from MEMBER_TABLE where m_id = ? and m_password = ?";
+	final String REGISTERCHECK = "select * from member_table where m_id = ?";
 	public int insertregist(RegisterVO vo) {
 		int result = 0;
 		try {
