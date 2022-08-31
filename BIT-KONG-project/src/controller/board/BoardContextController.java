@@ -20,8 +20,8 @@ public class BoardContextController implements Controller {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		BoardDAO dao = new BoardDAO();
-		
 		int b_id = Integer.parseInt(request.getParameter("b_id"));
+		dao.plusview(b_id);
 		if(b_id == 0) {
 			session.setAttribute("alert", "성공적으로 글을 작성하였습니다.");
 			return new MyView("/board");

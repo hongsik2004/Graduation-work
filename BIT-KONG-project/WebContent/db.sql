@@ -11,7 +11,7 @@ select * from MEMBER_TABLE;
 select m_id,m_password from MEMBER_TABLE;
 
 select * from member_table;
-
+update coin_board set b_view = b_view + 1 where b_id = 1;
 --코인 게시판 전용 DB 구축
 desc coin_board;
 select * from coin_board

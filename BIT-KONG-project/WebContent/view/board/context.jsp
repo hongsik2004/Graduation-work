@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/board_context.css">
 <%
-	BoardlistVO vo = (BoardlistVO)session.getAttribute("list_data"); 
+	BoardlistVO vo = (BoardlistVO)session.getAttribute("list_data");
 	RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
 %>
 	<jsp:include page="/view/template/header.jsp"></jsp:include>
@@ -19,7 +19,7 @@
             <table>
             	<tbody>
                 <tr>
-                	<td class="b-header"><p class="writer">작성자:<%=vo.getB_name() %></p><p>날짜:<%=vo.getB_date() %></p><p class="hits"> 조회:<%=vo.getB_view() %></p></td>
+                	<td class="b-header"><p class="writer">작성자:<%=vo.getB_name() %></p><p>날짜:<%=vo.getB_date() %></p><p class="hits"> 조회:<%=vo.getB_view()%></p></td>
                 </tr>
 	                <tr>
     	            	<td class="bd-title"><h2><%=vo.getB_title() %></h2></td>

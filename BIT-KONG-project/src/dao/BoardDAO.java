@@ -14,7 +14,7 @@ public class BoardDAO {
 	PreparedStatement pstmt2;
 	ResultSet rs;
 	
-	final String NOWDATE = "select sysdate from dual"; // ÇöÀç ½Ã°£ °¡Á®¿À±â
+	final String NOWDATE = "select sysdate from dual"; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	final String NEXTNUM = "SELECT b_id from coin_board order by b_id desc";
 	final String BOARDWRITE = "INSERT INTO coin_board values(?,?,?,?,SYSDATE,?,?,?)";
 	final String BOARDDATA = "select b_id,b_title,b_name,b_context,m_id,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD where c_tag = ? order by b_id desc";
@@ -22,7 +22,7 @@ public class BoardDAO {
 //	final String BOARDPASSSELETE = "select b_pass from coin_board where b_id = ?";
 	final String BOARDDELETE = "delete from coin_board where b_id = ? and m_id = ?";
 	final String BOARDUPDATE = "update coin_board set b_title = ?, b_name = ?,c_tag=?,b_context=? where b_id = ?";
-	
+	final String BOARDVIEW = "update coin_board set b_view = b_view + 1 where b_id = ?";
 	public String getDate() {
 		try {
 			con = JdbcUtil.getConnection();
@@ -32,10 +32,10 @@ public class BoardDAO {
 				return rs.getString(1);
 			}
 		} catch (Exception e) {
-			System.out.println("getDate() ¿À·ù¹ß»ý");
+			System.out.println("getDate() ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}
-		return ""; // µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return ""; // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 	public int getNext() {
 		try {
@@ -45,12 +45,12 @@ public class BoardDAO {
 			if(rs.next()) {
 				return rs.getInt(1) + 1;
 			}
-			return 1; // Ã¹¹øÂ° °Ô½Ã¹°ÀÎ °æ¿ì
+			return 1; // Ã¹ï¿½ï¿½Â° ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		} catch (Exception e) {
-			System.out.println("getNext() ¹®Á¦¹ß»ý");
+			System.out.println("getNext() ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}
-		return -1; // µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return -1; // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 	public BoardlistVO getBoardContext(int b_id) {
 		BoardlistVO vo = null;
@@ -70,7 +70,7 @@ public class BoardDAO {
 				vo = new BoardlistVO(b_id,c_tag,b_title,b_name,b_date,m_id,b_context,b_view);
 			}
 		} catch (Exception e) {
-			System.out.println("getBoardContext() ¿À·ù¹ß»ý");
+			System.out.println("getBoardContext() ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}
 		return vo;
@@ -91,7 +91,7 @@ public class BoardDAO {
 			
 			n = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("write() ¿À·ù¹ß»ý");
+			System.out.println("write() ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}
 		return n;
@@ -118,7 +118,7 @@ public class BoardDAO {
 				list.add(vo);
 			}
 		} catch (Exception e) {
-			System.out.println("getBoardlist() ¹®Á¦¹ß»ý");
+			System.out.println("getBoardlist() ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}finally {
 			JdbcUtil.close(con, pstmt, rs);
@@ -135,7 +135,7 @@ public class BoardDAO {
 			n = pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("deleteboard() ¿À·ù¹ß»ý");
+			System.out.println("deleteboard() ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}finally {
 			JdbcUtil.close(con, pstmt,rs);
@@ -165,9 +165,21 @@ public class BoardDAO {
 				n = -1;
 			}
 		} catch (Exception e) {
-			System.out.println("updateboard() ¿À·ù¹ß»ý");
+			System.out.println("updateboard() ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}
 		return n;
+	}
+	public int plusview(int b_id) {
+		int count = 0;
+		try {
+			con = JdbcUtil.getConnection();
+			pstmt = con.prepareStatement(BOARDVIEW);
+			pstmt.setInt(1, b_id);
+			count = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 }
