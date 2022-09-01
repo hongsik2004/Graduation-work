@@ -8,7 +8,6 @@
     	int c_tag = (int)session.getAttribute("c_tag");
     	String[] coin_list = (String[])session.getAttribute("coin_list");
     	ArrayList<BoardlistVO> list = (ArrayList<BoardlistVO>)session.getAttribute("list");
-    	
     %>
 	<jsp:include page="/view/template/header.jsp"></jsp:include>
     <div class="con">

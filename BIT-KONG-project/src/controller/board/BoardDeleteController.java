@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import controller.Controller;
 import controller.MyView;
 import dao.BoardDAO;
+import vo.BoardlistVO;
 import vo.RegisterVO;
 
 public class BoardDeleteController implements Controller {
@@ -27,6 +28,11 @@ public class BoardDeleteController implements Controller {
 		RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
 		String m_id = userVO.getM_id();
 		int n = dao.deleteboard(b_id,m_id);
+		BoardlistVO vo = dao.getBoardContext(b_id);
+		if(!userVO.getM_id().equals(vo.getM_id())) {
+			session.setAttribute("alert", "잘못된 접근입니다.");
+			return new MyView("/board");
+		}
 		String path = "";
 		if(n == 1){ // �����Ϸ�
 			session.setAttribute("alert", "성공적으로 삭제가 완료되었습니다.");

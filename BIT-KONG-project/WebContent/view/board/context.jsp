@@ -32,7 +32,7 @@
             <ul class="list">
             	<li><a class="back" href="<%=request.getContextPath()%>/board">돌아가기</a></li>
             	
-            <% if(userVO.getM_id().equals(vo.getM_id())) { %>
+            <% if(userVO.getM_id().equals(vo.getM_id()) || userVO.getM_id().equals("admin")) { %>
             	<li><a class="update" href="<%=request.getContextPath()%>/board/update?b_id=<%=vo.getB_id()%>">수정</a></li>
             	<li><a class="delete" href="<%=request.getContextPath()%>/board/delete?b_id=<%=vo.getB_id()%>">삭제</a></li>
             <%} %>

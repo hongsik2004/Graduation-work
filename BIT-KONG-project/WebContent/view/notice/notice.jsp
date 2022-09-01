@@ -1,9 +1,18 @@
+<%@page import="vo.NoticeVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="vo.RegisterVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/header.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/coin_notice.css">
-<jsp:include page="../view/template/header.jsp"></jsp:include>
+<jsp:include page="/view/template/header.jsp"></jsp:include>
+<%
+	RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
+	int n_tag = (int)session.getAttribute("n_tag");
+	ArrayList<NoticeVO> list = (ArrayList<NoticeVO>)session.getAttribute("list");
+	
+%>
     <div class="con">
         <div class="box1">
             <div class="service-title">
@@ -29,6 +38,11 @@
         <div class="box2">
             <div class="info">
                 <h3>공지사항</h3>
+                <%if(userVO.getM_id().equals("admin")){ %>
+                <div class="notice-write">
+            		<a href="/notice/write">글쓰기</a>
+            	</div>
+            	<%} %>
                 <div class="notice-serch">
                     <div class="input">
                         <input type="text" placeholder="검색어를 입력해주세요.">
@@ -38,40 +52,19 @@
                 <div class="table-b">
                     <table>
                         <tr>
+                        	<th>번호</th>
                             <th>제목</th>
                             <th>등록일</th>
                             <th>조회수</th>
                         </tr>
+                        <%for(NoticeVO vo : list){ %>
                         <tr>
-                            <td><p><a href="#">[공지] 콩트코인 파산 안내</a></p></td>
-                            <td>2022-05-21</td>
-                            <td>1</td>
+                        	<td><%=vo.getN_id() %></td>
+                            <td><a href="<%=request.getContextPath() %>/notice/context?n_id=<%=vo.getN_id()%>"><%=vo.getN_title() %></a></td>
+                            <td><%=vo.getN_date() %></td>
+                            <td><%=vo.getN_view() %></td>
                         </tr>
-                        <tr>
-                            <td><p><a href="#">[공지] 콩트코인 파산 안내</a></p></td>
-                            <td>2022-05-21</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td><p><a href="#">[공지] 콩트코인 파산 안내</a></p></td>
-                            <td>2022-05-21</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td><p><a href="#">[공지] 콩트코인 파산 안내</a></p></td>
-                            <td>2022-05-21</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td><p><a href="#">[공지] 콩트코인 파산 안내</a></p></td>
-                            <td>2022-05-21</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td><p><a href="#">[공지] 콩트코인 파산 안내</a></p></td>
-                            <td>2022-05-21</td>
-                            <td>1</td>
-                        </tr>
+                        <%} %>
                     </table>
                 </div>
             </div>

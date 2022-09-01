@@ -18,6 +18,10 @@ import controller.board.BoardUpdateController;
 import controller.board.BoardUpdateRsController;
 import controller.board.BoardWriteController;
 import controller.board.BoardWritePsController;
+import controller.notice.NoticeContextController;
+import controller.notice.NoticeController;
+import controller.notice.NoticeWriteController;
+import controller.notice.NoticeWriteRsController;
 import controller.user.UserLoginController;
 import controller.user.UserLoginRsController;
 import controller.user.UserLogoutController;
@@ -27,7 +31,7 @@ import controller.user.UserRegisterRsController;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns={"/index","/coin/*","/user/*","/board","/board/*"})
+@WebServlet(urlPatterns={"/index","/coin/*","/user/*","/board","/board/*","/notice","/notice/*"})
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,9 +46,7 @@ public class FrontController extends HttpServlet {
 		controllerMap.put("/index", new MainController());
 		// coin
 		controllerMap.put("/coin/coin_wallet", new CoinWalletController());
-
 		controllerMap.put("/coin/coin_receipt", new CoinReceiptController());
-		controllerMap.put("/coin/coin_notice", new CoinNoticeController());
 		// user
 		controllerMap.put("/user/login", new UserLoginController());
 		controllerMap.put("/user/login_rs", new UserLoginRsController());
@@ -61,6 +63,11 @@ public class FrontController extends HttpServlet {
 		controllerMap.put("/board/update_rs", new BoardUpdateRsController());
 		controllerMap.put("/board/delete", new BoardDeleteController());
 		
+		//notice
+		controllerMap.put("/notice", new NoticeController());
+		controllerMap.put("/notice/write", new NoticeWriteController());
+		controllerMap.put("/notice/write_rs", new NoticeWriteRsController());
+		controllerMap.put("/notice/context", new NoticeContextController());
 	}
 
 

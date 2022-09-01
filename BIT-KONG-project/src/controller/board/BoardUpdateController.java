@@ -30,7 +30,7 @@ public class BoardUpdateController implements Controller {
 		BoardlistVO vo = dao.getBoardContext(b_id);
 		RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
 		if(!userVO.getM_id().equals(vo.getM_id())) {
-			session.setAttribute("alert", "오류발생! 다시시도해주세요.");
+			session.setAttribute("alert", "잘못된 접근입니다.");
 			return new MyView("/board");
 		}
 		

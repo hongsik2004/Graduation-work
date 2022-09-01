@@ -66,54 +66,8 @@
     color: #1261c4;
     font-family: 'Bold';
 }
-.info{
-    width: 1050px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 60px 0 45px;
-    position: relative;
-}
-.info > h3{
-    color: #333;
-    font-size: 32px;
-    line-height: 48px;
-    font-family: 'Bold';
-}
-.notice-serch{
-    display: flex;
-    position: absolute;
-    right: 0;
-    top: 60px;
-}
-.input {
-    width: 300px;
-    height: 50px;
-}
-.input input{
-    width: 100%;
-    height: 100%;
-    border: 1px solid #e1e2e6;
-    font-size: 14px;
-    background-color: #f9fafc;
-    padding: 0 40px 0 20px;
-    border-radius: 10px;
-}
-.notice-serch > .serch-b{
-    padding: 0 20px;
-    display: inline-block;
-    height: 44px;
-    line-height: 44px;
-    color: #fff;
-    font-size: 15px;
-    background-color: #0062df;
-    border-radius: 2px;
-    box-sizing: border-box;
-    margin-left: 8px;
-    font-family: 'Regular';
-}
 .table-b{
     width: 100%;
-    border-top: 2px solid #000;
     margin: 20px 0 0;
 }
 table{
@@ -122,18 +76,9 @@ table{
     font-family: 'Regular';
     margin: 0 auto;
 }
-table tr:first-child{
-    width: 90%;
-    height: 50px;
-    background-color: #F9FAFC;
-    border-bottom: 1px solid #E1E2E6;
-    border-radius: 10px 10px 0px 0px;
-    opacity: 0.6;
-}
 table tr{
     width: 90%;
     height: 50px;
-    border-bottom: 1px solid #E1E2E6;
     text-align: center;
 }
 table td{
@@ -141,14 +86,42 @@ table td{
     font-family: 'Regular';
     opacity: 0.6;
 }
+.td2{
+	width: 100%;
+	height: 500px;
+}
+.n-title{
+	width: 100%;
+	height: 50px;
+	font-size: 20px;
+}
+.n-write{
+	width: 100%;
+	height: 100%;
+	font-size: 30px;
+}
+.input-div{
+	width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-write{
+    width: 90px;
+    height: 40px;
+    background-color: #02020252;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
 table td:first-child{
     opacity: 1;
-}
-table td:nth-child(2){
-	opacity: 1;
+    padding: 10px;
 }
 table td:first-child > p{
-    padding-left:50px ;   
+    padding-left:50px;   
 }
 table td > p > a{
     color: black;

@@ -52,7 +52,7 @@ location.href = "/user/login";
                 <li><a href="/board">코인별 게시판</a></li>
                 <li><a href="/coin/coin_receipt">거래내역</a></li>
                 <li><a href="#">충전</a></li>
-                <li><a href="/coin/coin_notice">고객센터</a></li>
+                <li><a href="/notice">고객센터</a></li>
             </ul>
         </nav>
         <footer>
