@@ -26,11 +26,14 @@
                                 <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="email-input">
-                                <input type="text" placeholder="이메일 주소" class="input-email" name="m_id" id="m_id">
-                                <button type="button" class="overlap" name="confirm_id" onclick="buttons(this.form)">중복확인</button>
-                                <input type="hidden" name="chk" value="0">
                                 <i class="bi bi-envelope-fill"></i>
+                                <input type="text" placeholder="이메일 주소" class="input-email" name="m_id" id="m_id">
                             </div>
+                            <div class="email-button">
+								<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailcheck(frm.m_id.value)" disabled="disabled">인증</button>
+    	                        <button type="button" class="overlap" name="confirm_id" onclick="buttons(this.form)">중복확인</button>
+        	                    <input type="hidden" name="chk" value="0">
+		  	   				</div>
                             <div class="pwd-input">
                                 <input type="password" placeholder="비밀번호" name="m_password" class="pw" id="password_1">
                                 <i class="bi bi-key"></i>
@@ -61,6 +64,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="<%=request.getContextPath() %>/resoures/javascript/register.js"></script>
+    <script src="<%=request.getContextPath() %>/resoures/javascript/emailcode.js"></script>
     	<script type="text/javascript">
 	function check() {
 		if(!document.frm.m_id.value.trim()){
@@ -95,6 +99,10 @@
 		}
 		if(document.frm.chk.value == false){
 			alert("중복체크를 해주세요.");
+			return false;
+		}
+		if(!docuemnt.frm.emailconfirm_btn.value == "1"){
+			alert("이메일 인증해주세요.");
 			return false;
 		}
 		return true;

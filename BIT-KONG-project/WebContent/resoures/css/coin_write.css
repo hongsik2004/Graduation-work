@@ -166,14 +166,16 @@ table td > p > a{
 .c-tag{
 	width: 100%;
 	height: 50px;
-	font-size: 40px;
-	margin-bottom: 5px;	
+	font-size: 34px;
+	margin-bottom: 5px;
+	font-family: 'Regular';
 }
 textarea{
 	width: 100%;
 	height: 415px;
 	padding: 20px;
 	font-size: 40px;
+	font-family: 'Regular';
 }
 .b-title{
 	margin-top:30px;
@@ -181,18 +183,14 @@ textarea{
 	height: 60px;
 	font-size: 40px;
 	margin-bottom: 5px;
+	font-family: 'Regular';
 }
 .b-name {
 	width: 100%;
 	height: 50px;
 	font-size: 40px;
 	margin-bottom: 5px;
-}
-.b-pass {
-	width: 100%;
-	height: 50px;
-	font-size: 40px;
-	margin-bottom: 5px;
+	font-family: 'Regular';
 }
 .btn-write{
 	width: 80px;

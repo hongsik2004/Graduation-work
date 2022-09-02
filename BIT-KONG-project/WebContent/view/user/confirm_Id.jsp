@@ -25,6 +25,8 @@
 	<h4>입력하신<%=m_id %>는 사용하실 수 있는 이메일 입니다.</h4>
 	</center>
 	<script>opener.document.frm.chk.value = false;</script>
+	<script>const target = opener.document.getElementById('emailok');</script>
+	<script>target.disabled = false;</script>
 	<%} %>
 </body>
 </html>

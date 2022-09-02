@@ -1,60 +1,65 @@
 package util;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.util.Properties;
-import java.util.Random;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.mail.Session;
 
-public class MailUtil {
+public class MailUtil{
+	private String id = "bitkongsick@gmail.com";
+	public String connectEmail(String email){
+		String to1=email; // 인증위해 사용자가 입력한 이메일주소
+		String host="smtp.gmail.com"; // smtp 서버
+		String subject="50만원 결제 인증번호"; // 보내는 제목 설정
+		String fromName="비트콩식"; // 보내는 이름 설정
+		String from="bitkongsick@gmail.com"; // 보내는 사람(구글계정)
+		String authNum=MailUtil.authNum(); // 인증번호 위한 난수 발생부분
+		String content="인증번호 ["+authNum+"]"+"사이트 주소:"+"https://hearthstone.blizzard.com/ko-kr"; // 이메일 내용 설정
+		String pass = "";
+        // SMTP 이용하기 위해 설정해주는 설정값들
+		try{
+		Properties props=new Properties();
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.port","465");
+		props.put("mail.smtp.user",from);
+		props.put("mail.smtp.auth","true");
+		props.put("mail.transport.protocol", "smtp");
+		props.setProperty
+                       ("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+		Session mailSession 
+           = Session.getInstance(props,new javax.mail.Authenticator(){
+			    protected PasswordAuthentication getPasswordAuthentication(){
+				    return new PasswordAuthentication
+                                        (id,pass); // gmail계정
+			}
+		});
+		
+		Message msg = new MimeMessage(mailSession);
+		InternetAddress []address1 = {new InternetAddress(to1)};
+		msg.setFrom(new InternetAddress
+                      (from, MimeUtility.encodeText(fromName,"utf-8","B")));
+		msg.setRecipients(Message.RecipientType.TO, address1); // 받는사람 설정
+		msg.setSubject(subject); // 제목설정
+		msg.setSentDate(new java.util.Date()); // 보내는 날짜 설정
+		msg.setContent(content,"text/html; charset=utf-8"); // 내용설정
+		
+		Transport.send(msg); // 메일보내기
+		}catch(MessagingException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return authNum;
+	}
 
-    private Session session;
-    private String user = "hongsik2004@naver.com";
-    public MailUtil() {
-        String password = "";
-
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.naver.com");
-        props.put("mail.smtp.port", 587);
-        props.put("mail.smtp.auth", "true");
-
-        session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(user, password);
-            }
-        });
-    }
-
-    public void sendMessage(String title, String msg, String target) throws MessagingException {
-    	title = "안녕하세요 비트콩 이메일 인증번호 입니다.";
-    	msg = "인증번호 :";
-        MimeMessage message = new MimeMessage(session);
-        StringBuffer temp = new StringBuffer();
-        Random rnd = new Random();
-        for(int i= 0; i< 10; i++) {
-        	int rindex = rnd.nextInt(3);
-        	switch(rindex) {
-        	case 0:
-        			// a-z
-        			temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-        			break; 
-        	case 1:
-        			// A-Z
-        			temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-        			break;
-        	case 2:
-        			// 0-9
-        			temp.append((rnd.nextInt(10)));
-        			break;
-        	}
-        }
-        
-        message.setFrom(new InternetAddress(user));
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress(target));
-
-        message.setSubject(title);
-        message.setText(msg + temp);
-
-        Transport.send(message);
-    }
+    // 난수발생 function
+	public static String authNum(){
+		StringBuffer buffer=new StringBuffer();
+		for(int i=0;i<=4;i++){
+			int num=(int)(Math.random()*9+1);
+			buffer.append(num);
+		}
+		return buffer.toString();
+	}
 }

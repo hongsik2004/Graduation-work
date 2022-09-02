@@ -210,37 +210,94 @@ table td > p > a{
     border: 1px solid dodgerblue;
 }
 .update{
-	display:block;
-	width: 80px;
-    height: 40px;
-    border-radius: 10px;
-    color: orange;
-    line-height: 40px;
+	display: inline-block;
+    width: 98px;
+    height: 42px;
+    border: 1px solid #95959e;
+    border-radius: 3px;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
     text-align: center;
-    border: 1px solid orange;
+    line-height: 40px;
 }
 .delete{
-	display:block;
-	width: 80px;
-    height: 40px;
-    border-radius: 10px;
-    color: red;
-    line-height: 40px;
+	display: inline-block;
+    width: 98px;
+    height: 42px;
+    border: 1px solid #95959e;
+    border-radius: 3px;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
     text-align: center;
-    border: 1px solid red;
-}
-.back:hover {
-	background-color: #1e90ff2b;
-    transition: 0.6s;
-}
-.update:hover{
-	background-color: #ffa50030;
-    transition: 0.6s;
-}
-.delete:hover{
-	background-color: #ff000047;
-    transition: 0.6s;
+    line-height: 40px;
 }
 table div{
 	border: 1px solid #000;
+}
+.btn-right{
+	width: 100%;
+    padding: 20px 0 0;
+    border-top: 1px solid #caccd2;
+    text-align: right;
+}
+.back{
+    display: inline-block;
+    width: 98px;
+    height: 42px;
+    border: 1px solid #95959e;
+    border-radius: 3px;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 40px;
+}
+.info{
+    width: 1050px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 60px 0 45px;
+    position: relative;
+}
+.info > h3{
+    color: #333;
+    font-size: 32px;
+    line-height: 48px;
+    font-family: 'Bold';
+}
+.table-b{
+    width: 100%;
+    border-top: 2px solid #000;
+    margin: 20px 0 0;
+}
+.view{
+	padding: 14px 19px;
+}
+.info > .table-B>.view > strong.tit{
+	display: block;
+    color: #333;
+    font-size: 25px;
+    font-family: 'Bold';
+}
+.info > .table-B>.view > span{
+	display: block;
+    margin: 8px 0 0;
+    color: #999;
+    font-size: 12px;
+    font-family: 'Regular';
+}
+.txt{
+	width: 100%;
+    padding: 15px 0 30px;
+    border-top: 1px solid #f1f1f4;
+}
+.txt > p{
+    padding: 0 14px;
+    color: #666;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 3em;
+    font-family: 'Light';
 }

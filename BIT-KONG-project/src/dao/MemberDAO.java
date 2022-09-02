@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import util.JdbcUtil;
 import util.SHA256;
+import util.JdbcUtil;
 import vo.RegisterVO;
 
 public class MemberDAO {
@@ -48,6 +48,24 @@ public class MemberDAO {
 			}
 		} catch (Exception e) {
 			System.out.println("confirmId() �����߻�");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);
+		}
+		return result;
+	}
+	public String emailCheck(String m_id) {
+		String result = "";
+		try {
+			con = JdbcUtil.getConnection();
+			pstmt = con.prepareStatement(CONFIRMID);
+			pstmt.setString(1, m_id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getString("m_id");
+			}
+		} catch (Exception e) {
+			System.out.println("emailCheck() 오류");
 			e.printStackTrace();
 		}finally {
 			JdbcUtil.close(con, pstmt, rs);

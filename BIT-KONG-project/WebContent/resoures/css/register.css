@@ -89,7 +89,7 @@ table{
 }
 .email-input input{
     border: none;
-    width: 65%;
+    width: 86%;
     height: 70%;
     background: #FFFFFF;
     box-shadow: 1px 1px 8px rgb(0 0 0 / 25%);
@@ -110,7 +110,7 @@ table{
     background: #5D6DFC;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
     border-radius: 7px;
-    width: 17%;
+    width: 12%;
     height: 70%;
     cursor: pointer;
 }
@@ -266,4 +266,19 @@ table{
 }
 .checkpwd{
 	position: absolute;
+}
+.email-select{
+	border: none;
+    width: 18%;
+    height: 70%;
+    background: #FFFFFF;
+    box-shadow: 1px 1px 8px rgb(0 0 0 / 25%);
+    border-radius: 7px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    color: black;
+    padding: 0px 5px 0px 5px;
 }
