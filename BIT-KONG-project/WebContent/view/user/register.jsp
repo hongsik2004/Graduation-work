@@ -1,3 +1,5 @@
+<%@page import="dao.MemberDAO"%>
+<%@page import="util.MailUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,6 +12,13 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap-icons-1.8.3/fonts/bootstrap-icons.woff">
 </head>
 <body>
+<%
+	String m_id = request.getParameter("m_id");
+	MemberDAO dao = new MemberDAO();
+	// 위에서 작성한 java파일 객체 생성
+	MailUtil emailconfirm = new MailUtil();
+	String authNum=emailconfirm.connectEmail(m_id);
+%>
     <div class="main">
         <div class="main-menu">
             <div class="main-left">
@@ -28,11 +37,13 @@
                             <div class="email-input">
                                 <i class="bi bi-envelope-fill"></i>
                                 <input type="text" placeholder="이메일 주소" class="input-email" name="m_id" id="m_id">
-                            </div>
-                            <div class="email-button">
-								<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailcheck(frm.m_id.value)" disabled="disabled">인증</button>
     	                        <button type="button" class="overlap" name="confirm_id" onclick="buttons(this.form)">중복확인</button>
         	                    <input type="hidden" name="chk" value="0">
+                            </div>
+                            <div class="email-button">
+                            <%-- 	<input type="text" name="emailconfirm" placeholder="인증번호를 입력하세요.">
+                            	<input type="button" value="확인" onclick="confirmemail(<%=authNum%>)"> --%>
+		 						<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailcheck(frm.m_id.value)" disabled="disabled">인증번호 보내기</button>
 		  	   				</div>
                             <div class="pwd-input">
                                 <input type="password" placeholder="비밀번호" name="m_password" class="pw" id="password_1">
@@ -63,9 +74,23 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="<%=request.getContextPath() %>/resoures/javascript/register.js"></script>
     <script src="<%=request.getContextPath() %>/resoures/javascript/emailcode.js"></script>
     	<script type="text/javascript">
+   	/* function confirmemail(authNum){
+   		let emailconfirm = document.getElementById("emailconfirm").value;
+    	    // 입력한 값이 없거나, 인증코드가 일지하지 않을 경우
+    	if(!emailconfirm || emailconfirm != authNum){
+    		alert("값이 비었거나 인증코드가 일치 하지 않습니다.");
+    		emailconfirm="";
+    		self.close();
+    	    // 인증코드가 일치하는 경우
+    	}else if(emailconfirm==authNum){
+    		alert("인증성공!");
+    		emailconfirm=1;
+    		self.close();
+//    		opener.document.frm.emailconfirm=1;
+    	}
+    } */
 	function check() {
 		if(!document.frm.m_id.value.trim()){
 			alert("이메일이 입력되지 않았습니다!");
@@ -101,10 +126,6 @@
 			alert("중복체크를 해주세요.");
 			return false;
 		}
-		if(!docuemnt.frm.emailconfirm_btn.value == "1"){
-			alert("이메일 인증해주세요.");
-			return false;
-		}
 		return true;
 	}
 	$(".pw").keyup(function(){
@@ -131,4 +152,17 @@
 		open(url, "confirm",
 				"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 	}
+	/* function emailcheck(m_id){//indexOf는 찾는 문자열이 없으면 -1을 반환함.
+		if(!frm.m_id.value){ 
+			alert("아이디를 입력해주세요.");
+			frm.m_id.focus();
+			return;
+		}else{
+			if(frm.m_id.value.indexOf("@")==-1){
+				alert("@가 비어져있습니다.");
+				frm.m_id.focus();
+				return false;
+			}
+		}
+	} */
 	</script>

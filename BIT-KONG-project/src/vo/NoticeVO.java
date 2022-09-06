@@ -61,4 +61,4 @@ public class NoticeVO {
 		this.n_view = n_view;
 	}
 	
-	}
+}

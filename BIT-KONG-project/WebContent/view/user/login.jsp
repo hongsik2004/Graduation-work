@@ -69,7 +69,7 @@
 			alert("비밀번호를 입력하세요.");
 			document.fom.m_password.focus();
 			return false;
-		}
+		}	
 		return true;
 	}
     </script>

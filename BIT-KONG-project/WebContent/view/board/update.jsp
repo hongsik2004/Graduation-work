@@ -17,31 +17,30 @@
         </div>
         <div class="box2">
         <form action="/board/update_rs" method="post" name="frm" onsubmit="return checks();">
-            <table>
-            	<tbody>
-                <tr>
-                	<td><input type="text" class="b-title" placeholder="제목" name="b_title" maxlength="16" value="<%=vo.getB_title()%>"></td>
-                </tr>
-                <tr>
-                	<td><input type="text" class="b-name" placeholder="이름" name="b_name" maxlength="10" value="<%=vo.getB_name()%>"></td>
-                </tr>
-                <tr>
-            
                 	<input type="hidden" name="b_id" value="<%= vo.getB_id()%>">
-                </tr>
-                <tr>
-                	<td><select name="c_tag" class="c-tag">
+        	<div class="form-title">
+        		<label>제목</label>
+                <input type="text" class="b-title" placeholder="제목을 작성해주세요." name="b_title" maxlength="16" value="<%=vo.getB_title()%>">
+        	</div>
+        	<div class="form-title">
+        		<label>작성자</label>
+                <input type="text" class="b-name" placeholder="이름을 적어주세요." name="b_name" maxlength="10"  value="<%=vo.getB_name()%>">
+        	</div>
+        	<div class="form-title">
+        		<label>코인리스트</label>
+                <select name="c_tag" class="c-tag">
                 	<%	for(int i = 0;i < coin_list.length; i++){%>
                 	<option value=<%=vo.getC_tag() %>><%=coin_list[i] %>코인</option>
                 		<%} %>
-                	</select></td>
-                </tr>
-                <tr>
-                    <td><textarea class="b-write" placeholder="내용" name="b_context" maxlength="2048"><%=vo.getB_context()%></textarea></td>
-                </tr>
-                </tbody>
-            </table>
+                	</select>
+        	</div>
+            <div class="form-write">
+            	<label>내용</label>
+            	<textarea class="b-write"name="b_context" maxlength="2048"><%=vo.getB_context() %></textarea>
+            </div>
+            <div class="form-submit">
                 <input type="submit" class="btn-write" value="수정">
+            </div>
         </form>
         </div>
     </div>

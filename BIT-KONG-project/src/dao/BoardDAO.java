@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import util.JdbcUtil;
 import vo.BoardlistVO;
 
+
 public class BoardDAO {
 	Connection con;
 	PreparedStatement pstmt;
 	PreparedStatement pstmt2;
 	ResultSet rs;
 	
-	final String NOWDATE = "select sysdate from dual"; // ���� �ð� ��������
+	final String NOWDATE = "select sysdate from dual";
 	final String NEXTNUM = "SELECT b_id from coin_board order by b_id desc";
 	final String BOARDWRITE = "INSERT INTO coin_board values(?,?,?,?,SYSDATE,?,?,?)";
 	final String BOARDDATA = "select b_id,b_title,b_name,b_context,m_id,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD where c_tag = ? order by b_id desc";
@@ -35,7 +36,7 @@ public class BoardDAO {
 			System.out.println("getDate() �����߻�");
 			e.printStackTrace();
 		}
-		return ""; // �����ͺ��̽� ����
+		return "";
 	}
 	public int getNext() {
 		try {
@@ -45,12 +46,12 @@ public class BoardDAO {
 			if(rs.next()) {
 				return rs.getInt(1) + 1;
 			}
-			return 1; // ù��° �Խù��� ���
+			return 1;
 		} catch (Exception e) {
 			System.out.println("getNext() �����߻�");
 			e.printStackTrace();
 		}
-		return -1; // �����ͺ��̽� ����
+		return -1;
 	}
 	public BoardlistVO getBoardContext(int b_id) {
 		BoardlistVO vo = null;

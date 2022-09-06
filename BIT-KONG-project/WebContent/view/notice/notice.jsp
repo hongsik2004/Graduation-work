@@ -68,7 +68,7 @@
                     </table>
                 </div>
             </div>
-            <div class="paglist">
+            <!-- <div class="paglist">
                 <ul class="pagination">
                     <li class="page-item"><a href="#">&lt;</a></li>
                     <li class="page-item"><a href="#" class="num action">1</a></li>
@@ -77,7 +77,7 @@
                     <li class="page-item"><a href="#" class="num">4</a></li>
                     <li class="page-item"><a href="#">&gt;</a></li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

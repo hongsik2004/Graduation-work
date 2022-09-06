@@ -11,28 +11,30 @@
         </div>
         <div class="box2">
         <form action="/board/write_rs" method="post" name="frm" onsubmit="return checks();">
-            <table>
-            	<tbody>
-                <tr>
-                	<td><input type="text" class="b-title" placeholder="제목" name="b_title" maxlength="16"></td>
-                </tr>
-                <tr>
-                	<td><input type="text" class="b-name" placeholder="이름" name="b_name" maxlength="10"></td>
-                </tr>
-                <tr>
-                	<td><select name="c_tag" class="c-tag">
-                	<option value=0>콩트코인</option>
-                	<option value=1>비트콩트코인</option>
-                	<option value=2>이더리움코인</option>
-                	<option value=3>어쩌구코인</option>
-                	</select></td>
-                </tr>
-                <tr>
-                    <td><textarea class="b-write" placeholder="내용" name="b_context" maxlength="2048"></textarea></td>
-                </tr>
-                </tbody>
-            </table>
+        	<div class="form-title">
+        		<label>제목</label>
+                <input type="text" class="b-title" placeholder="제목을 작성해주세요." name="b_title" maxlength="16">
+        	</div>
+        	<div class="form-title">
+        		<label>작성자</label>
+                <input type="text" class="b-name" placeholder="이름을 적어주세요." name="b_name" maxlength="10">
+        	</div>
+        	<div class="form-title">
+        		<label>코인리스트</label>
+                <select name="c_tag" class="c-tag">
+                <option value=0>콩트코인</option>
+                <option value=1>비트콩트코인</option>
+                <option value=2>이더리움코인</option>
+                <option value=3>어쩌구코인</option>
+                </select>
+        	</div>
+            <div class="form-write">
+            	<label>내용</label>
+            	<textarea class="b-write"name="b_context" maxlength="2048"></textarea>
+            </div>
+            <div class="form-submit">
                 <input type="submit" class="btn-write" value="글쓰기">
+            </div>
         </form>
         </div>
     </div>

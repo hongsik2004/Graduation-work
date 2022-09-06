@@ -36,8 +36,9 @@ drop table member_table;
 insert into member_table(m_id,m_name,m_phone_number,m_password) values('admin','admin','01040772018','5563');
 select * from MEMBER_TABLE;
 select m_id,m_password from MEMBER_TABLE;
-
+delete from coin_notice;
 select * from member_table;
+delete from member_table where m_id = 'y2010213@y-y.hs.kr';
 update coin_board set b_view = b_view + 1 where b_id = 1;
 --코인 게시판 전용 DB 구축
 desc coin_board;

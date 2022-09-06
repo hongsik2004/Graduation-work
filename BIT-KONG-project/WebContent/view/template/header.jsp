@@ -51,7 +51,7 @@ location.href = "/user/login";
                 <li><a href="/coin/coin_wallet">보유코인</a></li>
                 <li><a href="/board">코인별 게시판</a></li>
                 <li><a href="/coin/coin_receipt">거래내역</a></li>
-                <li><a href="#">충전</a></li>
+                <li><a href="<%=request.getContextPath()%>/view/pay/pay.jsp">충전</a></li>
                 <li><a href="/notice">고객센터</a></li>
             </ul>
         </nav>

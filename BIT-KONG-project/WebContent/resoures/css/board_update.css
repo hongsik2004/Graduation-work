@@ -164,49 +164,81 @@ table td > p > a{
     top: 60px;
 }
 textarea{
-	width: 100%;
-	height: 410px;
+	margin-top:15px;
+	width: 99%;
+	height: 310px;
 	padding: 20px;
-	font-size: 40px;
+	font-size: 25px;
+	font-family: 'Regular';
+	border-radius: 5px;
+    border: 1px solid #7676768c;
 }
 .b-title{
-	margin-top:30px;
-	width: 100%;
-	height: 60px;
-	font-size: 40px;
-	margin-bottom: 5px;
+	margin-top: 15px;
+    width: 99%;
+    height: 50px;
+    font-size: 25px;
+    font-family: 'Regular';
+    padding: 0px 0px 0px 10px;
+    border-radius: 5px;
+    border: 1px solid #7676768c;
 }
 .b-name {
-	width: 100%;
-	height: 50px;
-	font-size: 40px;
-	margin-bottom: 5px;
-}
-.b-pass {
-	width: 100%;
-	height: 50px;
-	font-size: 40px;
-	margin-bottom: 5px;
+	margin-top: 15px;
+    width: 99%;
+    height: 50px;
+    font-size: 25px;
+    font-family: 'Regular';
+    padding: 0px 0px 0px 10px;
+    border-radius: 5px;
+    border: 1px solid #7676768c;
 }
 .c-tag{
-	width: 100%;
-	height: 50px;
-	font-size: 40px;
-	margin-bottom: 5px;	
+	margin-top: 15px;
+    width: 99%;
+    height: 50px;
+    font-size: 25px;
+    font-family: 'Regular';
+    padding: 0px 0px 0px 10px;
+    border-radius: 5px;
+    border: 1px solid #7676768c;
 }
 .btn-write{
 	width: 80px;
     height: 40px;
-    border: none;
     border-radius: 10px;
     background-color: white;
     color: dodgerblue;
-    position: absolute;
-    right: 75px;
-    bottom: 15px;
     border: 1px solid dodgerblue;
+    margin-top: 10px;
+    margin-right: 8px;
 }
 .btn-write:hover{
 	background-color: #1e90ff2b;
     transition: 0.6s;
+}
+label{
+	font-size: 25px;
+    font-family: 'Regular';
+    padding: 10px 0px 0px 10px;
+    color: #767676;
+    display: block;
+    text-align: left;
+}
+.form-title{
+	display:inline-block;
+	text-align:center;
+	width: 100%;
+	height: 110px;
+}
+.form-write{
+	display:inline-block;
+	text-align:center;
+	width: 100%;
+	height: 366px;
+}
+.form-submit{
+	width: 100%;
+	height: 54px;
+	text-align: right;
 }
