@@ -13,17 +13,16 @@
     width: 200px;
     height: 730px;
     background-color: white;
-    margin: 0 auto;
     margin-top: 30px;
     margin-left: 50px;
 }
 .box2{
     position: relative;
-    width: 1280px;
+    width: 1000px;
     height: 870px;
     background-color: white;
     border-radius: 10px;
-    margin: 0 auto;
+    margin-left: 50px;
     margin-top: 30px;
 }
 .title{
@@ -47,7 +46,16 @@
 	padding: 8px 0;
 	border-bottom: 1px solid #bebebe;
 }
-.service > ul > li span{
+.email{
+	font-size: 15px;
+	font-family: 'Light';
+}
+.moneys{
+	font-size: 20px;
+	font-family: 'Bold';
+	color: red;
+}
+.service > ul > li > span{
 	font-size: 12px;
     font-family: 'Regular';
     color: #767676;
@@ -57,4 +65,90 @@
 	display: flex;
     justify-content: right;
     align-items: center;
+}
+.header{
+	color: white;
+    font-family: 'Regular';
+    padding: 0px 0px 0px 10px;
+}
+.pay-header{
+	border-radius:10px 10px 0px 0px;
+	height: 30px;
+    line-height: 30px;
+    background-color: #00000078;
+}
+.name{
+	font-size: 15px;
+    font-family: 'Regular';
+    color: #767676;
+}
+.price{
+	margin-top: 10px;
+    padding-left: 12px;
+    font-size: 24px;
+}
+.price-list{
+	display: flex;
+	margin-top: 15px;
+}
+.price-list dl{
+	flex-grow: 0;
+	flex-basis: 135px;
+	background-color: #ddd;
+	margin-left: 5px;
+}
+.price-list dl > dt > span{
+	font-size: 18px;
+	font-family: 'Light';
+}
+.price-point{
+	height: 132px;
+	border: 1px solid #767676;
+	cursor: pointer;
+}
+dd > ul{
+	display: flex;
+}
+dd{
+	flex-grow: 1;
+}
+dd > ul > li{
+	flex-basis: 0;
+	flex-grow: 1;
+	margin-left: 7px;
+}
+.pay-money{
+	height: 50px;
+    padding: 10px;
+    background-color: #ddd;
+    border-bottom: 1px solid #767676;
+}
+.payment{
+	height: 150px;
+    display: flex;
+    margin-top: 10px;
+}
+.dl{
+	width: 135px;
+    margin-left: 5px;
+    background-color: #ddd;
+    font-size: 18px;
+	font-family: 'Light';
+}
+.dd{
+	flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.paying{
+	width: 150px;
+    height: 60px;
+    border: none;
+    background-color: dodgerblue;
+    color: white;
+    font-size: 20px;
+    font-family: 'Regular';
+    border-radius: 5px;
+    cursor: pointer;
 }
