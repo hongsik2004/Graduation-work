@@ -15,7 +15,7 @@ public class MailUtil{
 		String from="bitkongsick@gmail.com"; // 보내는 사람(구글계정)
 		String authNum=MailUtil.authNum(); // 인증번호 위한 난수 발생부분
 		String content="인증번호 ["+authNum+"]"+"사이트 주소:"+"https://hearthstone.blizzard.com/ko-kr"; // 이메일 내용 설정
-		String pass = "xjptwnougjchvshk";
+		String pass = "";
         // SMTP 이용하기 위해 설정해주는 설정값들
 		try{
 		Properties props=new Properties();
