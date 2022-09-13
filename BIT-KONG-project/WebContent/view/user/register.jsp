@@ -16,8 +16,6 @@
 	String m_id = request.getParameter("m_id");
 	MemberDAO dao = new MemberDAO();
 	// 위에서 작성한 java파일 객체 생성
-	MailUtil emailconfirm = new MailUtil();
-	String authNum=emailconfirm.connectEmail(m_id);
 %>
     <div class="main">
         <div class="main-menu">
@@ -42,7 +40,7 @@
                             </div>
                             <div class="email-button">
                             	<input type="text" name="emailconfirm" placeholder="인증번호를 입력하세요.">
-		 						<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailcheck(this.form)" disabled="disabled">인증번호 보내기</button>
+		 						<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailCheck(this.form)" disabled="disabled">인증번호 보내기</button>
 		  	   				</div>
                             <div class="pwd-input">
                                 <input type="password" placeholder="비밀번호" name="m_password" class="pw" id="password_1">
@@ -76,21 +74,6 @@
     <script src="<%=request.getContextPath() %>/resoures/javascript/emailcode.js"></script>
     	<script type="text/javascript">
     	let id_check = false;
-   	/* function confirmemail(authNum){
-   		let emailconfirm = document.getElementById("emailconfirm").value;
-    	    // 입력한 값이 없거나, 인증코드가 일지하지 않을 경우
-    	if(!emailconfirm || emailconfirm != authNum){
-    		alert("값이 비었거나 인증코드가 일치 하지 않습니다.");
-    		emailconfirm="";
-    		self.close();
-    	    // 인증코드가 일치하는 경우
-    	}else if(emailconfirm==authNum){
-    		alert("인증성공!");
-    		emailconfirm=1;
-    		self.close();
-//    		opener.document.frm.emailconfirm=1;
-    	}
-    } */
 	function check() {
 		if(!document.frm.m_id.value.trim()){
 			alert("이메일이 입력되지 않았습니다!");
@@ -164,12 +147,6 @@
 	    			},error: log =>{console.log("실패"+log)}
 	    		}		
 	    	)
-		/*url = "/view/user/confirm_Id.jsp?m_id=" + document.frm.m_id.value;
-		open(url, "confirm",
-				"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
-		*/
-	}
-	/* function emailcheck(m_id){//indexOf는 찾는 문자열이 없으면 -1을 반환함.
 		if(!frm.m_id.value){ 
 			alert("아이디를 입력해주세요.");
 			frm.m_id.focus();
@@ -181,12 +158,33 @@
 				return false;
 			}
 		}
-	} */
-	function emailcheck() {
+	} 
+	let num = 0;
+	function emailCheck(email) {
+		let num = setPass();
+		sendEmail(email,num);
+	}
+	function comfirmEmail(nums) {
+		if(num == nums && nums != 0){
+			alert("이메일 인증통과");
+		}
+	}
+	
+	function setPass() {
+		let str = ''
+			  for (let i = 0; i < 6; i++) {
+			    str += Math.floor(Math.random() * 10)
+			  }
+			  return st
+	}
+	function sendEmail(email,num) {
 		$.ajax({
 			type : "POST",
-			url : "/ajax/emailCheck",
-			data : {}
+			url : "/ajax/sendMail",
+			data : {"email":email ,"num":num},
+			dataType:"json",
+			success :  res => {console.log("성공")}
+			},error: log =>{console.log("실패"+log)}
 		})
 	}
 	</script>

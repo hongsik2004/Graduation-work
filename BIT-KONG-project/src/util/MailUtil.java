@@ -1,21 +1,26 @@
 package util;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Properties;
+import java.util.Scanner;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.mail.Session;
 
 public class MailUtil{
 	private String id = "bitkongsick@gmail.com";
-	public String connectEmail(String email){
+	
+	
+	public String connectEmail(String email,String authNum){
 		String to1=email; // 인증위해 사용자가 입력한 이메일주소
 		String host="smtp.gmail.com"; // smtp 서버
 		String subject="50만원 결제 인증번호"; // 보내는 제목 설정
 		String fromName="비트콩식"; // 보내는 이름 설정
 		String from="bitkongsick@gmail.com"; // 보내는 사람(구글계정)
-		String authNum=MailUtil.authNum(); // 인증번호 위한 난수 발생부분
 		String content="인증번호 ["+authNum+"]"+"사이트 주소:"+"https://hearthstone.blizzard.com/ko-kr"; // 이메일 내용 설정
-		String pass = "";
+		String pass = findPassword();
         // SMTP 이용하기 위해 설정해주는 설정값들
 		try{
 		Properties props=new Properties();
@@ -52,9 +57,23 @@ public class MailUtil{
 		}
 		return authNum;
 	}
-
+	private String findPassword() {
+		String pass = "";
+		try {
+			Scanner in = new Scanner(new File("..\\pass.txt"));
+			while (in.hasNext()) {          
+				System.out.println(pass);
+				pass = in.next();                    
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return pass;
+	}
+	
+	
     // 난수발생 function
-	public static String authNum(){
+	private String authNum(){
 		StringBuffer buffer=new StringBuffer();
 		for(int i=0;i<=4;i++){
 			int num=(int)(Math.random()*9+1);

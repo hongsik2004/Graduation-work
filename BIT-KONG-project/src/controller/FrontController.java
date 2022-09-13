@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.ajax.CheckIdController;
+import controller.ajax.SendMailController;
 import controller.board.BoardContextController;
 import controller.board.BoardController;
 import controller.board.BoardDeleteController;
@@ -70,8 +71,9 @@ public class FrontController extends HttpServlet {
 		controllerMap.put("/notice/write_rs", new NoticeWriteRsController());
 		controllerMap.put("/notice/context", new NoticeContextController());
 		
-		//json 
+		//ajax
 		controllerMap.put("/ajax/checkId", new CheckIdController());
+		controllerMap.put("/ajax/sendMail",new SendMailController());
 	}
 
 
