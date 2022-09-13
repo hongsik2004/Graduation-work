@@ -117,14 +117,29 @@
         		</dd>
         	</div>
 	        <div class="payment">
-    	    	<dl class="dl">
+    	    	<span>결제 금액 : 4900원</span>
+    	    	<span>충전 금액 : 1500만</span>
+    	    	<span>결제일 : 2022-09-13</span>
+    	    	<span>고맙습니다 사랑합니다.</span>
+        	</div>
+        	<div class="donge">
+        		<dl class="dls">
         			<dt>
-        				<span>결제 하기</span>
+        				<span>가상 돈 정책 동의 및 결제 전주의 사항</span>
         			</dt>
         		</dl>
-        		<dd class="dd">
-        			<button class="paying">결제하기</button>
+        		<dd class="dds">
+        			<div class="payok">
+        				<span>결제 시 환불 불가능 하며 문의사항은 홈페이지 또는 고객센터를 확인 해주세요.</span>
+        				<div class="dongehae">
+        					<span>상품 가격 및 충전 금액을 확인하고, 개인 관련 고지 사항 과 비트콩식 정책 및 결제 진행에 동의 합니다.</span>
+        					<button class="dongeham">동의</button>
+        				</div>
+        			</div>	
         		</dd>
+        	</div>
+        	<div class="pay-progress">
+        	<button class="paying">결제하기</button>
         	</div>
         </div>
     </div>

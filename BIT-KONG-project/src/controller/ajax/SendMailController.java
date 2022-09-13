@@ -26,7 +26,11 @@ public class SendMailController implements Controller {
 		MailUtil Mu = new MailUtil();
 		Mu.connectEmail(email,num);
 		System.out.println("메일 발송 (SendMailController)");
-		return null;
+		boolean result = true;
+		
+		request.setAttribute("same", result);
+		
+		return new MyView("/view/ajax/ajax.jsp");
 	}
 
 }

@@ -35,12 +35,15 @@
                             <div class="email-input">
                                 <i class="bi bi-envelope-fill"></i>
                                 <input type="text" placeholder="이메일 주소" class="input-email" name="m_id" id="m_id">
-    	                        <button type="button" class="overlap" name="confirm_id" onclick="buttons(this.form)">중복확인</button>
+    	                        <button type="button" class="overlap" name="confirm_id" onclick="buttons()">중복확인</button>
         	                    <input type="hidden" name="chk" value="0">
                             </div>
                             <div class="email-button">
-                            	<input type="text" name="emailconfirm" placeholder="인증번호를 입력하세요.">
-		 						<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailCheck(this.form)" disabled="disabled">인증번호 보내기</button>
+                            	<div class="bundle">
+	                            	<input type="hidden" name="emailconfirm" id="emailconfirm" placeholder="인증번호를 입력하세요.">
+    	                        	<input type="hidden" name="emailsok" id="emailsok" onclick="comfirmEmail()" value="확인">
+                            	</div>
+		 						<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailCheck()" disabled="disabled">인증번호 보내기</button>
 		  	   				</div>
                             <div class="pwd-input">
                                 <input type="password" placeholder="비밀번호" name="m_password" class="pw" id="password_1">
@@ -74,6 +77,7 @@
     <script src="<%=request.getContextPath() %>/resoures/javascript/emailcode.js"></script>
     	<script type="text/javascript">
     	let id_check = false;
+    	let email_check = false;
 	function check() {
 		if(!document.frm.m_id.value.trim()){
 			alert("이메일이 입력되지 않았습니다!");
@@ -105,8 +109,12 @@
 			document.frm.m_password2.focus();
 			return false;
 		}
-		if(document.frm.chk.value == false){
+		if(id_check == false){
 			alert("중복체크를 해주세요.");
+			return false;
+		}
+		if(email_check == false){
+			alert("이메일 인증 해주세요.");
 			return false;
 		}
 		return true;
@@ -160,13 +168,22 @@
 		}
 	} 
 	let num = 0;
-	function emailCheck(email) {
-		let num = setPass();
+	function emailCheck() {
+		let email = document.frm.m_id.value;
+		num = setPass();
 		sendEmail(email,num);
+		document.frm.emailconfirm.type="text";
+		document.frm.emailsok.type="button";
 	}
-	function comfirmEmail(nums) {
+	function comfirmEmail() {
+		let nums = document.frm.emailconfirm.value;
+		console.log(nums);
+		console.log(num);
 		if(num == nums && nums != 0){
 			alert("이메일 인증통과");
+			email_check = true;
+		}else{
+			alert("값이 비어 있거나 똑같지 않음.")
 		}
 	}
 	
@@ -175,16 +192,17 @@
 			  for (let i = 0; i < 6; i++) {
 			    str += Math.floor(Math.random() * 10)
 			  }
-			  return st
+			  return str
 	}
 	function sendEmail(email,num) {
+		console.log(email)
 		$.ajax({
 			type : "POST",
 			url : "/ajax/sendMail",
-			data : {"email":email ,"num":num},
+			data : {"email":email,"num":num},
 			dataType:"json",
-			success :  res => {console.log("성공")}
-			},error: log =>{console.log("실패"+log)}
+			success :  res => {console.log("성공"+res)},
+			error: log =>{console.log("실패"+log)}
 		})
 	}
 	</script>

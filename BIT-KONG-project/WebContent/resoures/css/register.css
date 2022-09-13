@@ -282,3 +282,7 @@ table{
     color: black;
     padding: 0px 5px 0px 5px;
 }
+.email-button{
+	display: flex;
+    justify-content: space-evenly;
+}
