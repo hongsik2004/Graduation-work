@@ -76,6 +76,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="<%=request.getContextPath() %>/resoures/javascript/emailcode.js"></script>
     	<script type="text/javascript">
+    	let id_check = false;
    	/* function confirmemail(authNum){
    		let emailconfirm = document.getElementById("emailconfirm").value;
     	    // 입력한 값이 없거나, 인증코드가 일지하지 않을 경우
@@ -148,9 +149,25 @@
 			document.frm.m_id.focus();
 			return;
 		}
-		url = "/view/user/confirm_Id.jsp?m_id=" + document.frm.m_id.value;
+		$.ajax(
+	    		{
+	    			type:"POST",
+	    			url:"/ajax/checkId",
+	    			data:{id:document.frm.m_id.value},
+	    			dataType:"json",
+	    			success :  res => {
+						if(res.same == "true") alert("아이디가 이미 사용중입니다.")
+						else{
+							alert("아이디가 사용가능합니다.");
+							id_check = true;
+						}
+	    			},error: log =>{console.log("실패"+log)}
+	    		}		
+	    	)
+		/*url = "/view/user/confirm_Id.jsp?m_id=" + document.frm.m_id.value;
 		open(url, "confirm",
 				"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
+		*/
 	}
 	/* function emailcheck(m_id){//indexOf는 찾는 문자열이 없으면 -1을 반환함.
 		if(!frm.m_id.value){ 

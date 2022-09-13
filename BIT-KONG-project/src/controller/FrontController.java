@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.ajax.CheckIdController;
 import controller.board.BoardContextController;
 import controller.board.BoardController;
 import controller.board.BoardDeleteController;
@@ -68,6 +69,9 @@ public class FrontController extends HttpServlet {
 		controllerMap.put("/notice/write", new NoticeWriteController());
 		controllerMap.put("/notice/write_rs", new NoticeWriteRsController());
 		controllerMap.put("/notice/context", new NoticeContextController());
+		
+		//json 
+		controllerMap.compute("/json/checkId", new CheckIdController());
 	}
 
 
