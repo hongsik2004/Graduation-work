@@ -32,7 +32,7 @@ import controller.user.UserRegisterRsController;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns={"/index","/coin/*","/user/*","/board","/board/*","/notice","/notice/*"})
+@WebServlet(urlPatterns={"/index","/coin/*","/user/*","/board","/board/*","/notice","/notice/*","/ajax/*"})
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -71,7 +71,7 @@ public class FrontController extends HttpServlet {
 		controllerMap.put("/notice/context", new NoticeContextController());
 		
 		//json 
-		controllerMap.compute("/json/checkId", new CheckIdController());
+		controllerMap.put("/ajax/checkId", new CheckIdController());
 	}
 
 

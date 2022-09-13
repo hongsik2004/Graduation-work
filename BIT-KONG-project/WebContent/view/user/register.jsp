@@ -41,9 +41,8 @@
         	                    <input type="hidden" name="chk" value="0">
                             </div>
                             <div class="email-button">
-                            <%-- 	<input type="text" name="emailconfirm" placeholder="인증번호를 입력하세요.">
-                            	<input type="button" value="확인" onclick="confirmemail(<%=authNum%>)"> --%>
-		 						<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailcheck(frm.m_id.value)" disabled="disabled">인증번호 보내기</button>
+                            	<input type="text" name="emailconfirm" placeholder="인증번호를 입력하세요.">
+		 						<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailcheck(this.form)" disabled="disabled">인증번호 보내기</button>
 		  	   				</div>
                             <div class="pwd-input">
                                 <input type="password" placeholder="비밀번호" name="m_password" class="pw" id="password_1">
@@ -160,6 +159,7 @@
 						else{
 							alert("아이디가 사용가능합니다.");
 							id_check = true;
+							document.frm.emailok.disabled=false;
 						}
 	    			},error: log =>{console.log("실패"+log)}
 	    		}		
@@ -182,4 +182,11 @@
 			}
 		}
 	} */
+	function emailcheck() {
+		$.ajax({
+			type : "POST",
+			url : "/ajax/emailCheck",
+			data : {}
+		})
+	}
 	</script>
