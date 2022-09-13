@@ -20,7 +20,7 @@ public class MailUtil{
 		String fromName="비트콩식"; // 보내는 이름 설정
 		String from="bitkongsick@gmail.com"; // 보내는 사람(구글계정)
 		String content="인증번호 ["+authNum+"]"+"사이트 주소:"+"https://hearthstone.blizzard.com/ko-kr"; // 이메일 내용 설정
-		String pass = "xjptwnougjchvshk";
+		String pass = "";
         // SMTP 이용하기 위해 설정해주는 설정값들
 		try{
 		Properties props=new Properties();
@@ -60,7 +60,7 @@ public class MailUtil{
 	private String findPassword() {
 		String pass = "";
 		try {
-			Scanner in = new Scanner(new File("./pass.txt"));
+			Scanner in = new Scanner(new File("pass.txt"));
 			while (in.hasNext()) {          
 				System.out.println(pass);
 				pass = in.next();                    
