@@ -8,7 +8,7 @@
 	RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
 %>
 <jsp:include page="/view/template/header.jsp"></jsp:include>
-    <div class="con">
+        <div class="con">
         <div class="box1">
         	<div class="service">
         		<div class="money">
@@ -25,7 +25,7 @@
         			<li class="pays">
         			<span>충전 예정	</span>
         			<div>
-        				<span class="moneys">1500</span><span class="name">만</span>
+        				<span class="moneys"></span><span class="name"></span>
         			</div>
         			</li>
         		</ul>
@@ -43,84 +43,12 @@
         		</dl>
         		<dd>
         			<ul>
-        				<li>
-        					<div class="price-point">
-        						<div class="pay-money">
-        							<span class="moneys">1500</span><span class="name">만</span>
-        						</div>
-	        					<div class="price">
-    	    						<span>4900원</span>
-        						</div>
-        					</div>
-        				</li>
-        				<li>
-        					<div class="price-point">
-        						<div class="pay-money">
-        							<span class="moneys">1500</span><span class="name">만</span>
-        						</div>
-	        					<div class="price">
-    	    						<span>4900원</span>
-        						</div>
-        					</div>
-        				</li>
-        				<li>
-        					<div class="price-point">
-        						<div class="pay-money">
-        							<span class="moneys">1500</span><span class="name">만</span>
-        						</div>
-	        					<div class="price">
-    	    						<span>4900원</span>
-        						</div>
-        					</div>
-        				</li>
-        				<li>
-        					<div class="price-point">
-        						<div class="pay-money">
-        							<span class="moneys">1500</span><span class="name">만</span>
-        						</div>
-	        					<div class="price">
-    	    						<span>4900원</span>
-        						</div>
-        					</div>
-        				</li>
-        				<li>
-        					<div class="price-point">
-        						<div class="pay-money">
-        							<span class="moneys">1500</span><span class="name">만</span>
-        						</div>
-	        					<div class="price">
-    	    						<span>4900원</span>
-        						</div>
-        					</div>
-        				</li>
-        				<li>
-        					<div class="price-point">
-        						<div class="pay-money">
-        							<span class="moneys">1500</span><span class="name">만</span>
-        						</div>
-	        					<div class="price">
-    	    						<span>4900원</span>
-        						</div>
-        					</div>
-        				</li>
-        				<li>
-        					<div class="price-point">
-        						<div class="pay-money">
-        							<span class="moneys">1500</span><span class="name">만</span>
-        						</div>
-	        					<div class="price">
-    	    						<span>4900원</span>
-        						</div>
-        					</div>
-        				</li>
+
         			</ul>
         		</dd>
         	</div>
 	        <div class="payment">
-    	    	<span>결제 금액 : 4900원</span>
-    	    	<span>충전 금액 : 1500만</span>
-    	    	<span>결제일 : 2022-09-13</span>
-    	    	<span>고맙습니다 사랑합니다.</span>
+                아직 선택 되지 않았습니다.
         	</div>
         	<div class="donge">
         		<dl class="dls">
@@ -144,6 +72,8 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="<%=request.getContextPath() %>/resoures/javascript/coin_noticce.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+    <script src="<%=request.getContextPath() %>/resoures/javascript/coin_pay.js"></script>
 </body>
 </html>

@@ -33,7 +33,7 @@ select n_id,n_tag,n_title,n_context, TO_CHAR(n_date,'YYYY-MM-DD') as n_date,n_vi
 insert into COIN_NOTICE values(2,0,'[공지]축 첫 서버 열림','많은 후원 부탁드립니다.','2022-08-31',0);
 select * from coin_notice;
 drop table member_table;
-insert into member_table(m_id,m_name,m_phone_number,m_password) values('admin','admin','01040772018','5563');
+insert into member_table(m_id,m_name,m_phone_number,m_password) values('admin','admin','01040772018','874ed62968b0bddaae6d1acb514006d9e9e99ff9e50a9c691b14fcca4b8ed416');
 select * from MEMBER_TABLE;
 select m_id,m_password from MEMBER_TABLE;
 delete from coin_notice;
