@@ -13,13 +13,13 @@ public class MailUtil{
 	private String id = "bitkongproject@gmail.com";
 	
 	
-	public String connectEmail(String email,String authNum){
+	public void connectEmail(String email,String title,String txt){
 		String to1=email; // 인증위해 사용자가 입력한 이메일주소
 		String host="smtp.gmail.com"; // smtp 서버
-		String subject="비트콩식 인증 번호"; // 보내는 제목 설정
+		String subject=title; // 보내는 제목 설정
 		String fromName="비트콩식"; // 보내는 이름 설정
 		String from="bitkongproject@gmail.com"; // 보내는 사람(구글계정)
-		String content="인증번호 ["+authNum+"]"; // 이메일 내용 설정
+		String content=txt; // 이메일 내용 설정
 		String pass = "";
         // SMTP 이용하기 위해 설정해주는 설정값들
 		try{
@@ -55,8 +55,9 @@ public class MailUtil{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return authNum;
+		return;
 	}
+	
 	private String findPassword() {
 		String pass = "";
 		try {

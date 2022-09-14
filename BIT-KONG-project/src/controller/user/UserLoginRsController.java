@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import controller.Controller;
 import controller.MyView;
 import dao.MemberDAO;
+import util.SHA256;
 import vo.RegisterVO;
 
 public class UserLoginRsController implements Controller {
@@ -23,6 +24,7 @@ public class UserLoginRsController implements Controller {
 		String m_password = request.getParameter("m_password");
 		
 		MemberDAO dao = new MemberDAO();
+		m_password = SHA256.getHash(m_password);
 		RegisterVO vo = dao.getUserData(m_id, m_password);
 		
 		if(vo != null){

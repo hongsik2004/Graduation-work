@@ -22,10 +22,13 @@ public class SendMailController implements Controller {
 		
 		String email = request.getParameter("email");
 		String num = request.getParameter("num");
-		System.out.println(email+" "+num +"(SendMailController)");
 		MailUtil Mu = new MailUtil();
-		Mu.connectEmail(email,num);
-		System.out.println("메일 발송 (SendMailController)");
+		
+		String subject="비트콩식 인증 번호"; // 보내는 제목 설정
+		String content="인증번호 ["+num+"]"; // 이메일 내용 설정
+		
+		
+		Mu.connectEmail(email,subject,content);
 		boolean result = true;
 		
 		request.setAttribute("same", result);

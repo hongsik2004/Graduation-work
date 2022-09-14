@@ -16,6 +16,7 @@ public class MemberDAO {
 	final String CONFIRMID = "select m_id from member_table where m_id = ?";
 	final String GETUSERDATA = "select * from MEMBER_TABLE where m_id = ? and m_password = ?";
 	final String REGISTERCHECK = "select * from member_table where m_id = ?";
+	final String CHANGEMONEYS = "update member_table set m_krw = ? where m_id = ?";
 	public int insertregist(RegisterVO vo) {
 		int result = 0;
 		try {
@@ -74,12 +75,11 @@ public class MemberDAO {
 	}
 	public RegisterVO getUserData(String m_id, String m_password) {
 		RegisterVO vo = null;
-		String shapwd = SHA256.getHash(m_password);
 		try {
 			con = JdbcUtil.getConnection();
 			pstmt = con.prepareStatement(GETUSERDATA);
 			pstmt.setString(1, m_id);
-			pstmt.setString(2, shapwd);
+			pstmt.setString(2, m_password);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				vo = new RegisterVO(rs.getString("m_id"), rs.getString("m_name"), 
@@ -92,5 +92,20 @@ public class MemberDAO {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 		return vo;
+	}
+	
+	public void changeMoney(int money,String id) {
+		try {
+			con = JdbcUtil.getConnection();
+			pstmt = con.prepareStatement(CHANGEMONEYS);
+			pstmt.setInt(1, money);
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("changeMoney 에러");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(con, pstmt);
+		}
 	}
 }
