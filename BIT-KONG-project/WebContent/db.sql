@@ -43,6 +43,7 @@ update coin_board set b_view = b_view + 1 where b_id = 1;
 --코인 게시판 전용 DB 구축
 desc coin_board;
 select * from coin_board
+select * from(select ROW_NUMBER() over(ORDER BY b_id desc) num,b_id ,b_title from coin_board)where num between 1 and 2;
 select DISTINCT c_tag from coin_board order by c_tag asc;
 update coin_board set b_title = '반갑다', b_name = '갓냥이',m_id='admin',b_context='워로드다.' where b_id = '2';
 --전체 페이지 수 =(전체 게시물 수 / 한 페이지의 출력할 수 ) + 1 (나머지가 있을 경우)
@@ -59,7 +60,11 @@ delete from coin_board where b_id = 1;
 select * from coin_board where b_id = ?;
 SELECT b_id from coin_board order by b_id desc;
 
-insert into coin_board values(1,0,'반갑습니다.','박홍식','2022-08-25','admin','안녕하세요.',0);
+insert into coin_board values(6,0,'반갑습니다6.','박홍식','2022-08-25','admin','안녕하세요.',0);
+insert into coin_board values(2,0,'반갑습니다2.','박홍식','2022-08-25','admin','안녕하세요.',0);
+insert into coin_board values(3,0,'반갑습니다3.','박홍식','2022-08-25','admin','안녕하세요.',0);
+insert into coin_board values(4,0,'반갑습니다4.','박홍식','2022-08-25','admin','안녕하세요.',0);
+insert into coin_board values(5,0,'반갑습니다5.','박홍식','2022-08-25','admin','안녕하세요.',0);
 SELECT b_id from coin_board order by b_id desc;
 
 

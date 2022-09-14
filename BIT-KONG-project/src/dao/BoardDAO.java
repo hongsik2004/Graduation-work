@@ -15,15 +15,35 @@ public class BoardDAO {
 	PreparedStatement pstmt2;
 	ResultSet rs;
 	
+	final String BOARDCNT = "select count(*) as cnt from coin_board";
 	final String NOWDATE = "select sysdate from dual";
 	final String NEXTNUM = "SELECT b_id from coin_board order by b_id desc";
 	final String BOARDWRITE = "INSERT INTO coin_board values(?,?,?,?,SYSDATE,?,?,?)";
 	final String BOARDDATA = "select b_id,b_title,b_name,b_context,m_id,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD where c_tag = ? order by b_id desc";
+	final String BOARDLIST = "select b_id,b_title,b_name,b_context,m_id,b_view,b_date from(select ROW_NUMBER() over(ORDER BY b_id desc) num,"
+							+ "b_id,b_title,b_name,b_context,m_id,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from coin_board where c_tag = ?)"
+							+ "where num between ? and ?";
 	final String BOARDCONTEXT = "select * from coin_board where b_id = ?";
 //	final String BOARDPASSSELETE = "select b_pass from coin_board where b_id = ?";
 	final String BOARDDELETE = "delete from coin_board where b_id = ? and m_id = ?";
 	final String BOARDUPDATE = "update coin_board set b_title = ?, b_name = ?,c_tag=?,b_context=? where b_id = ?";
 	final String BOARDVIEW = "update coin_board set b_view = b_view + 1 where b_id = ?";
+	
+	public int getCnt() {
+		try {
+			con = JdbcUtil.getConnection();
+			pstmt = con.prepareStatement(BOARDCNT);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println("getCnt 오류");
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
 	public String getDate() {
 		try {
 			con = JdbcUtil.getConnection();
@@ -97,12 +117,14 @@ public class BoardDAO {
 		}
 		return n;
 	}
-	public ArrayList<BoardlistVO> getBoardlist(int c_tag){
+	public ArrayList<BoardlistVO> getBoardlist(int c_tag,int start,int end){
 		ArrayList<BoardlistVO> list = new ArrayList<>();
 		try {
 			con = JdbcUtil.getConnection();
-			pstmt = con.prepareStatement(BOARDDATA);
+			pstmt = con.prepareStatement(BOARDLIST);
 			pstmt.setInt(1, c_tag);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

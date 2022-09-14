@@ -1,3 +1,4 @@
+<%@page import="vo.PaginationVO"%>
 <%@page import="vo.BoardlistVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.BoardDAO"%>
@@ -8,6 +9,7 @@
     	int c_tag = (int)session.getAttribute("c_tag");
     	String[] coin_list = (String[])session.getAttribute("coin_list");
     	ArrayList<BoardlistVO> list = (ArrayList<BoardlistVO>)session.getAttribute("list");
+    	PaginationVO pVO = (PaginationVO)session.getAttribute("pVO");
     %>
 	<jsp:include page="/view/template/header.jsp"></jsp:include>
     <div class="con">
@@ -55,12 +57,15 @@
             </div>
             <div class="paglist">
                 <ul class="pagination">
-                    <li class="page-item"><a href="#">&lt;</a></li>
-                    <li class="page-item"><a href="#" class="num action">1</a></li>
-                    <li class="page-item"><a href="#" class="num">2</a></li>
-                    <li class="page-item"><a href="#" class="num">3</a></li>
-                    <li class="page-item"><a href="#" class="num">4</a></li>
-                    <li class="page-item"><a href="#">&gt;</a></li>
+                <% if(pVO.isIsPrePage()) {%>
+                    <li class="page-item"><a href="<%= request.getContextPath()%>/board?c_tag=<%= coin_list[c_tag] %>&idx=<%= pVO.getStart()-1 %>">&lt;</a></li>
+                <%} %>
+                <% for(int i = pVO.getStart(); i< pVO.getEnd();i++ ){ %>
+                    <li class="page-item"><a href="<%= request.getContextPath()%>/board?c_tag=<%= coin_list[c_tag] %>&idx=<%= i %>" class="num <%= i == pVO.getCurrentPage() ? "action" : "" %>">1</a></li>
+                <%} %>
+                <% if(pVO.isIsNextPage()) {%>
+                    <li class="page-item"><a href="<%= request.getContextPath()%>/board?c_tag=<%= coin_list[c_tag] %>&idx=<%= pVO.getEnd()+1 %>">&gt;</a></li>
+                <%} %>
                 </ul>
             </div>
         </div>

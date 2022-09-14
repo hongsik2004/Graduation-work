@@ -12,6 +12,7 @@ import controller.Controller;
 import controller.MyView;
 import dao.BoardDAO;
 import vo.BoardlistVO;
+import vo.PaginationVO;
 
 public class BoardController implements Controller {
 
@@ -28,13 +29,23 @@ public class BoardController implements Controller {
     		c_tag = Integer.parseInt(request.getParameter("c_tag"));
     	}
     	
-    	ArrayList<BoardlistVO> list = dao.getBoardlist(c_tag);
+		int idx = 1;
+    	if(request.getParameter("idx") != null){
+    		idx = Integer.parseInt(request.getParameter("idx"));
+    	}
+    	
+    	int cnt = dao.getCnt();
+    	
+    	PaginationVO pVO = new PaginationVO(idx, cnt);
+    	
+    	
+    	ArrayList<BoardlistVO> list = dao.getBoardlist(c_tag,pVO.getStartBoard(),pVO.getEndBoard());
     	String[] coin_list = {"콩트","비트콩트","이더리움","어쩌구"};
     	
     	session.setAttribute("c_tag", c_tag);
     	session.setAttribute("list", list);
     	session.setAttribute("coin_list", coin_list);
-    	
+    	session.setAttribute("pVO", pVO);
 		return new MyView("/view/board/board.jsp");
 	}
 
