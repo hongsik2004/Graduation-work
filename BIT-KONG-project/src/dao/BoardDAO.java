@@ -15,7 +15,7 @@ public class BoardDAO {
 	PreparedStatement pstmt2;
 	ResultSet rs;
 	
-	final String BOARDCNT = "select count(*) as cnt from coin_board";
+	final String BOARDCNT = "select count(*) as cnt from coin_board WHERE c_tag = ?";
 	final String NOWDATE = "select sysdate from dual";
 	final String NEXTNUM = "SELECT b_id from coin_board order by b_id desc";
 	final String BOARDWRITE = "INSERT INTO coin_board values(?,?,?,?,SYSDATE,?,?,?)";
@@ -29,10 +29,11 @@ public class BoardDAO {
 	final String BOARDUPDATE = "update coin_board set b_title = ?, b_name = ?,c_tag=?,b_context=? where b_id = ?";
 	final String BOARDVIEW = "update coin_board set b_view = b_view + 1 where b_id = ?";
 	
-	public int getCnt() {
+	public int getCnt(int c_tag) {
 		try {
 			con = JdbcUtil.getConnection();
 			pstmt = con.prepareStatement(BOARDCNT);
+			pstmt.setInt(1, c_tag);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				return rs.getInt(1);

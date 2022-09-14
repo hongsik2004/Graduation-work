@@ -6,7 +6,7 @@
 <%
 	MemberDAO dao = new MemberDAO();
 	BoardDAO daos = new BoardDAO();
-	RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -18,14 +18,15 @@
 </head>
 <body>
 <%
-	if(userVO == null){
+RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
+	if(session.getAttribute("userVO") == null){
 %>
 <script type="text/javascript">
 alert("로그인을 하세요.");
 location.href = "/user/login";
 </script>
 <%
-}
+}else {
 %>
 	<script>   
     <%
@@ -60,3 +61,4 @@ location.href = "/user/login";
             <h4>COPYRIGHT&copy;콩콩식식 <br>ALL RIGHTS RESERVED</h4>
         </footer>
     </header>
+<% } %>

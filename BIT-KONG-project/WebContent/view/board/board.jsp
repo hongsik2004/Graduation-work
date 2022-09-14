@@ -58,13 +58,13 @@
             <div class="paglist">
                 <ul class="pagination">
                 <% if(pVO.isIsPrePage()) {%>
-                    <li class="page-item"><a href="<%= request.getContextPath()%>/board?c_tag=<%= coin_list[c_tag] %>&idx=<%= pVO.getStart()-1 %>">&lt;</a></li>
+                    <li class="page-item"><a href="<%= request.getContextPath()%>/board?c_tag=<%= c_tag %>&idx=<%= pVO.getStart()-1 %>">&lt;</a></li>
                 <%} %>
-                <% for(int i = pVO.getStart(); i< pVO.getEnd();i++ ){ %>
-                    <li class="page-item"><a href="<%= request.getContextPath()%>/board?c_tag=<%= coin_list[c_tag] %>&idx=<%= i %>" class="num <%= i == pVO.getCurrentPage() ? "action" : "" %>">1</a></li>
+                <% for(int i = pVO.getStart(); i<= pVO.getEnd();i++ ){ %>
+                    <li class="page-item"><a href="<%= request.getContextPath()%>/board?c_tag=<%= c_tag %>&idx=<%= i %>" class="num <%= i == pVO.getCurrentPage() ? "action" : "" %>"><%=i %></a></li>
                 <%} %>
                 <% if(pVO.isIsNextPage()) {%>
-                    <li class="page-item"><a href="<%= request.getContextPath()%>/board?c_tag=<%= coin_list[c_tag] %>&idx=<%= pVO.getEnd()+1 %>">&gt;</a></li>
+                    <li class="page-item"><a href="<%= request.getContextPath()%>/board?c_tag=<%= c_tag %>&idx=<%= pVO.getEnd()+1 %>">&gt;</a></li>
                 <%} %>
                 </ul>
             </div>

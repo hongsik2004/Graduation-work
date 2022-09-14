@@ -34,7 +34,7 @@ public class BoardController implements Controller {
     		idx = Integer.parseInt(request.getParameter("idx"));
     	}
     	
-    	int cnt = dao.getCnt();
+    	int cnt = dao.getCnt(c_tag);
     	
     	PaginationVO pVO = new PaginationVO(idx, cnt);
     	
