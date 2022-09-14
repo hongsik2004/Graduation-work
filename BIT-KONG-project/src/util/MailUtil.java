@@ -18,9 +18,9 @@ public class MailUtil{
 		String host="smtp.gmail.com"; // smtp 서버
 		String subject=title; // 보내는 제목 설정
 		String fromName="비트콩식"; // 보내는 이름 설정
-		String from="bitkongproject@gmail.com"; // 보내는 사람(구글계정)
+		String from="bitkongsick@gmail.com"; // 보내는 사람(구글계정)
 		String content=txt; // 이메일 내용 설정
-		String pass = "";
+		String pass = "qubqvbxjirrixipq";
         // SMTP 이용하기 위해 설정해주는 설정값들
 		try{
 		Properties props=new Properties();

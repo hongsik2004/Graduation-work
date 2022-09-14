@@ -1,5 +1,15 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="vo.RegisterVO"%>
+<%@page import="dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+MemberDAO dao = new MemberDAO();
+RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
+DecimalFormat decFormat = new DecimalFormat("###,###");
+
+String money = decFormat.format(userVO.getM_krw());
+%>
 <jsp:include page="../view/template/header.jsp"></jsp:include>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/header.css">
@@ -12,7 +22,7 @@
                 <ul>
                     <li>
                         <h4>보유KRW</h4>
-                        <span>1,163,046,578</span>
+                        <span><%=money %></span>
                     </li>
                     <li class="bar"></li>
                     <li>

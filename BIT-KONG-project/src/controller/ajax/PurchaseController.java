@@ -36,7 +36,9 @@ public class PurchaseController implements Controller {
 		// userVO 결제 되면 금액 추가 하는거 넣기 
 		MemberDAO mDAO = new MemberDAO();
 		int p = Integer.parseInt(pay);
+		System.out.println(p);
 		int money = (p * 100000) + userVO.getM_krw();
+		System.out.println(money);
 		mDAO.changeMoney(money, userVO.getM_id());
 		
 		//금액 변경 후 다시 가져오기

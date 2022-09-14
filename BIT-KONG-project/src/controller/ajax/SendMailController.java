@@ -20,9 +20,9 @@ public class SendMailController implements Controller {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		
+		MailUtil Mu = new MailUtil();
 		String email = request.getParameter("email");
 		String num = request.getParameter("num");
-		MailUtil Mu = new MailUtil();
 		
 		String subject="비트콩식 인증 번호"; // 보내는 제목 설정
 		String content="인증번호 ["+num+"]"; // 이메일 내용 설정

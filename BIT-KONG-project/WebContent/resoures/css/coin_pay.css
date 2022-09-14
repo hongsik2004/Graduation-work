@@ -180,6 +180,16 @@ dd > ul > li{
     cursor: pointer;
 }
 
+.dongehamnida{
+    width: 115px;
+    height: 75%;
+    margin-left: 30px;
+    background-color: white;
+    border: 1px solid #767676;
+    border-radius: 5px;
+    color: red;
+    cursor: pointer;
+}
 .dongehae{
 	background-color: #bebebe42;
     position: absolute;
