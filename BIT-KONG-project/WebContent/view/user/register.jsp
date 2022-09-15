@@ -171,7 +171,9 @@
 	function emailCheck() {
 		let email = document.frm.m_id.value;
 		num = setPass();
-		sendEmail(email,num);
+		let subject = "비트콩식 인증코드";
+		let content = "인증코드"+num;
+		sendEmail(email,subject,content);
 		document.frm.emailconfirm.type="text";
 		document.frm.emailsok.type="button";
 	}
@@ -194,12 +196,12 @@
 			  }
 			  return str
 	}
-	function sendEmail(email,num) {
+	function sendEmail(email,subject,content) {
 		console.log(email)
 		$.ajax({
 			type : "POST",
 			url : "/ajax/sendMail",
-			data : {"email":email,"num":num},
+			data : {"email":email,"subject": subject,"content":content},
 			dataType:"json",
 			success :  res => {console.log("성공"+res)},
 			error: log =>{console.log("실패"+log)}

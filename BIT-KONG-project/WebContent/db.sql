@@ -66,8 +66,10 @@ insert into coin_board values(3,0,'반갑습니다3.','박홍식','2022-08-25','
 insert into coin_board values(4,0,'반갑습니다4.','박홍식','2022-08-25','admin','안녕하세요.',0);
 insert into coin_board values(5,0,'반갑습니다5.','박홍식','2022-08-25','admin','안녕하세요.',0);
 SELECT b_id from coin_board order by b_id desc;
-
-
+UPDATE member_table SET m_password = CONCAT('*', UPPER(SHA1(UNHEX(SHA1(?))))) WHERE m_id = 'asdf@naver.com';
+update member_table set m_password = ? where m_id = ?;
+select * from member_table;
+select m_id from member_table where m_name = '박홍식3' and m_phone_number = '01040772023';
 select max(b_id) + 1 as b_id from coin_board;
 select b_id,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD;
 select sysdate from dual;

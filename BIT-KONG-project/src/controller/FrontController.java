@@ -25,6 +25,9 @@ import controller.notice.NoticeContextController;
 import controller.notice.NoticeController;
 import controller.notice.NoticeWriteController;
 import controller.notice.NoticeWriteRsController;
+import controller.user.UserFindLoginController;
+import controller.user.UserFindLoginRsController;
+import controller.user.UserFindPwdController;
 import controller.user.UserLoginController;
 import controller.user.UserLoginRsController;
 import controller.user.UserLogoutController;
@@ -56,6 +59,9 @@ public class FrontController extends HttpServlet {
 		controllerMap.put("/user/register", new UserRegisterController());
 		controllerMap.put("/user/register_rs", new UserRegisterRsController());
 		controllerMap.put("/user/logout", new UserLogoutController());
+		controllerMap.put("/user/findlogin", new UserFindLoginController());
+		controllerMap.put("/user/findlogin_rs", new UserFindLoginRsController());
+		controllerMap.put("/user/findpwd", new UserFindPwdController());
 		
 		//board
 		controllerMap.put("/board", new BoardController());

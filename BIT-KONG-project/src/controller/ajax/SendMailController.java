@@ -22,11 +22,8 @@ public class SendMailController implements Controller {
 		
 		MailUtil Mu = new MailUtil();
 		String email = request.getParameter("email");
-		String num = request.getParameter("num");
-		
-		String subject="비트콩식 인증 번호"; // 보내는 제목 설정
-		String content="인증번호 ["+num+"]"; // 이메일 내용 설정
-		
+		String subject = request.getParameter("subject");
+		String content = request.getParameter("content");
 		
 		Mu.connectEmail(email,subject,content);
 		boolean result = true;

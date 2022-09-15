@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>첫페이지 로그인페이지</title>
+<title>로그인 찾기</title>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/style.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap-icons-1.8.3/fonts/bootstrap-icons.woff">
@@ -32,25 +32,25 @@
             </div>
             <div class="main-right">
                 <div class="login-menu">
-                        <form class="login" action="<%=request.getContextPath() %>/user/login_rs" method="post" name="fom" onsubmit="return loginbts();">
+                        <form class="login" action="<%=request.getContextPath() %>/user/findlogin_rs" method="post" name="fom" onsubmit="return loginbts();">
+                        <input type="hidden" name="m_id">
                             <div class="logo">
                                 <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="input-group">
-                                <input type="text" placeholder="이메일 주소" class="input-email" name="m_id">
-                                <i class="bi bi-envelope-fill"></i>
-                                <input type="password" placeholder="비밀번호" name="m_password">
-                                <i class="bi bi-key"></i>
+                                <input type="text" placeholder="이름" class="input-email" name="m_name">
+                                <i class="bi bi-person-fill"></i>
+                                <input type="text" placeholder="전화번호" name="m_phone_number">
+                                <i class="bi bi-telephone-fill"></i>
                             </div>
                             <div class="form-btn">
-                                <button type="submit" id="login-btn">로그인</button>
+                                <button type="submit" id="login-btn">아이디 찾기</button>
                                 <div class="line"></div>
                             </div>
                             <div class="find-btn">
                                 <ul>
-                                    <li><a href="<%=request.getContextPath()%>/user/findlogin">아이디 찾기</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/user/login">돌아가기</a></li>
                                     <li><a href="<%=request.getContextPath()%>/user/findpwd">비밀번호 찾기</a></li>
-                                    <li><a href="<%=request.getContextPath() %>/user/register">회원가입</a></li>
                                 </ul>
                             </div>
                         </form>
@@ -60,14 +60,14 @@
     </div>
     <script type="text/javascript">
     function loginbts() {
-		if(!document.fom.m_id.value.trim()){
-			alert("이메일을 입력하세요.");
-			document.fom.m_id.focus();
+		if(!document.fom.m_name.value.trim()){
+			alert("이름을 입력하세요.");
+			document.fom.m_name.focus();
 			return false;
 		}
-		if(!document.fom.m_password.value.trim()){
-			alert("비밀번호를 입력하세요.");
-			document.fom.m_password.focus();
+		if(!document.fom.m_phone.value.trim()){
+			alert("전화번호를 입력하세요.");
+			document.fom.m_phone.focus();
 			return false;
 		}	
 		return true;

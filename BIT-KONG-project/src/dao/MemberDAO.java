@@ -17,6 +17,8 @@ public class MemberDAO {
 	final String GETUSERDATA = "select * from MEMBER_TABLE where m_id = ? and m_password = ?";
 	final String REGISTERCHECK = "select * from member_table where m_id = ?";
 	final String CHANGEMONEYS = "update member_table set m_krw = ? where m_id = ?";
+	final String FINDEMAIL = "select m_id from member_table where m_name = ? and m_phone_number = ?";
+	final String FINDPASSWORD = "update member_table set m_password = ? where m_id = ?";
 	public int insertregist(RegisterVO vo) {
 		int result = 0;
 		try {
@@ -107,5 +109,44 @@ public class MemberDAO {
 		}finally {
 			JdbcUtil.close(con, pstmt);
 		}
+	}
+	public String findId(String m_name, String m_phone) {
+		String m_id = "";
+		try {
+			con = JdbcUtil.getConnection();
+			pstmt = con.prepareStatement(FINDEMAIL);
+			pstmt.setString(1, m_name);
+			pstmt.setString(2, m_phone);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				m_id = rs.getString("m_id");
+			}
+		} catch (Exception e) {
+			System.out.println("findId() 오류");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);
+		}
+		return m_id;
+	}
+	public int findpwd(String m_id, String m_password) {
+		int n = -1;
+		try {
+			con = JdbcUtil.getConnection();
+			pstmt = con.prepareStatement(FINDPASSWORD);
+			System.out.println("m_id"+m_id);
+			String shapwd = SHA256.getHash(m_password);
+			
+			pstmt.setString(1,shapwd);
+			pstmt.setString(2,m_id);
+			n = pstmt.executeUpdate();
+			System.out.println(n);
+		} catch (Exception e) {
+			System.out.println("findpwd() 오류");
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(con, pstmt);
+		}
+		return n;
 	}
 }
