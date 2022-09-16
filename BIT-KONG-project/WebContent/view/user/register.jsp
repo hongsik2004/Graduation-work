@@ -172,8 +172,8 @@
 		let email = document.frm.m_id.value;
 		num = setPass();
 		let subject = "비트콩식 인증코드";
-		let content = "인증코드"+num;
-		sendEmail(email,subject,content);
+		let content = "";
+		sendEmail(email,num,subject,content);
 		document.frm.emailconfirm.type="text";
 		document.frm.emailsok.type="button";
 	}
@@ -201,7 +201,7 @@
 		$.ajax({
 			type : "POST",
 			url : "/ajax/sendMail",
-			data : {"email":email,"subject": subject,"content":content},
+			data : {"email":email,"subject": subject,"num": num,"content":content},
 			dataType:"json",
 			success :  res => {console.log("성공"+res)},
 			error: log =>{console.log("실패"+log)}
