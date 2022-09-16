@@ -35,16 +35,20 @@ public class SendMailController implements Controller {
 				"        height: 150px;\r\n" + 
 				"        padding-left: 120px;\r\n" + 
 				"        padding-top: 30px;\">\r\n" + 
-				"            <img src='https://ifh.cc/g/YRfOrr.png' alt=\"\" style=\"            width: 350px;\r\n" + 
-				"            height: 120px;\">\r\n" + 
+				"            <img src='https://ifh.cc/g/YRfOrr.png' alt=\"\" style=\"     width: 350px;\r\n" + 
+				"            height: 140px;\r\n" + 
+				"            object-fit: cover;\">\r\n" + 
 				"        </div>\r\n" + 
 				"        <div class=\"title\" style=\"            height: 100px;\r\n" + 
 				"        display: flex;\r\n" + 
 				"        justify-content: left;\r\n" + 
-				"        align-items: center;\">\r\n" + 
+				"        align-items: center;\r\n" + 
+				"        font-family: fantasy;\">\r\n" + 
 				"            <h3 style=\"font-size: 30px;\">비트콩식 이메일 코드</h3>\r\n" + 
 				"        </div>\r\n" + 
-				"        <div class=\"subcontent\" style=\"margin-bottom: 10px;\">\r\n" + 
+				"        <div class=\"subcontent\" style=\"    margin-bottom: 10px;\r\n" + 
+				"        font-weight: 400;\r\n" + 
+				"        color: #7f7f7f;\">\r\n" + 
 				"            <p style=\"font-size: 13px;\">\r\n" + 
 				"                가상의 코인을 이용한 비트코인 연습 사이트 비트콩식에 가입하신것을 환엽합니다. <br>\r\n" + 
 				"                아래의 인증코드를 입력하시면 가입이 정상적으로 완료됩니다.\r\n" + 
