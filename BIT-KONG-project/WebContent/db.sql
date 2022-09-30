@@ -38,7 +38,7 @@ select * from MEMBER_TABLE;
 select m_id,m_password from MEMBER_TABLE;
 delete from coin_notice;
 select * from member_table;
-delete from member_table where m_id = 'y2010213@y-y.hs.kr';
+delete from member_table where m_id = 'hongsik2004@naver.com';
 update coin_board set b_view = b_view + 1 where b_id = 1;
 --코인 게시판 전용 DB 구축
 desc coin_board;
