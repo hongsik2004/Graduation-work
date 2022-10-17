@@ -59,7 +59,103 @@
             </div>
         </div>
         <div class="box2"><h2>504 나쁜 게이트웨이</h2></div>
-        <div class="box3"><h2>504 나쁜 게이트웨이</h2></div>
+        <div class="box3">
+        	<div class="asking-price-main">
+		        <h2>일반호가</h2>
+		        <div class="asking-price-table">
+		        <table>
+		        	<tr class="down">
+		        		<td class="bar">
+		        		<div class="ty01">0.000</div>
+		        		</td>
+		        		<td class="downe">
+		        		<a href="#">
+		        		<div class="ty03">23,440,000</div>
+		        		<div class="ty02">-0.43%</div>
+		        		</a>
+		        		</td>	
+		        	</tr>
+		        	<tr class="down">
+		        		<td class="bar">
+		        		<div class="ty01">0.000</div>
+		        		</td>
+		        		<td class="downe">
+		        		<a href="#">
+		        		<div class="ty03">23,440,000</div>
+		        		<div class="ty02">-0.43%</div>
+		        		</a>
+		        		</td>	
+		        	</tr>
+		        	<tr class="down">
+		        		<td class="bar">
+		        		<div class="ty01">0.000</div>
+		        		</td>
+		        		<td class="downe">
+		        		<a href="#">
+		        		<div class="ty03">23,440,000</div>
+		        		<div class="ty02">-0.43%</div>
+		        		</a>
+		        		</td>	
+		        	</tr>
+		        	<tr class="down">
+		        		<td class="bar">
+		        		<div class="ty01">0.000</div>
+		        		</td>
+		        		<td class="downe">
+		        		<a href="#">
+		        		<div class="ty03">23,440,000</div>
+		        		<div class="ty02">-0.43%</div>
+		        		</a>
+		        		</td>	
+		        	</tr>
+		        	<tr class="up">
+		        		<td class="downe">
+		        		<a href="#">
+		        		<div class="ty03">23,440,000</div>
+		        		<div class="ty02">-0.43%</div>
+		        		</a>
+		        		</td>
+		        		<td class="bar">
+		        		<div class="ty01">0.000</div>
+		        		</td>
+		        	</tr>		        			        			        	
+		        	<tr class="up">
+		        		<td class="downe">
+		        		<a href="#">
+		        		<div class="ty03">23,440,000</div>
+		        		<div class="ty02">-0.43%</div>
+		        		</a>
+		        		</td>
+		        		<td class="bar">
+		        		<div class="ty01">0.000</div>
+		        		</td>
+		        	</tr>
+		        	<tr class="up">
+		        		<td class="downe">
+		        		<a href="#">
+		        		<div class="ty03">23,440,000</div>
+		        		<div class="ty02">-0.43%</div>
+		        		</a>
+		        		</td>
+		        		<td class="bar">
+		        		<div class="ty01">0.000</div>
+		        		</td>
+		        	</tr>
+		        	<tr class="up">
+		        		<td class="downe">
+		        		<a href="#">
+		        		<div class="ty03">23,440,000</div>
+		        		<div class="ty02">-0.43%</div>
+		        		</a>
+		        		</td>
+		        		<td class="bar">
+		        		<div class="ty01">0.000</div>
+		        		</td>
+		        	</tr>
+		        </table>
+		        </div>
+        	</div>
+        </div>
         <div class="box4"><h2>504 나쁜 게이트웨이</h2></div>
     </div>
 </body>
