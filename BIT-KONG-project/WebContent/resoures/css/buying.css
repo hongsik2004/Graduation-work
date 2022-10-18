@@ -96,3 +96,150 @@ table tr td{
     background-color: rgba(200,74,49,.0784313725490196)!important;
     color: blue;
 }
+.box4 > .title{
+	height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #bebebe;
+}
+.box4 > .title > .buy{
+	width: 50%;
+    text-align: center;
+    border-right: 1px solid #000;
+    height: 50px;
+    line-height: 50px;
+}
+.box4 > .title > .buy a{
+	color: red;
+}
+.box4 > .title > .sell a{
+	color: blue;
+}
+.box4 > .title > .sell{
+	width: 50%;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+.box4 > .order{
+	height: 360px;
+}
+.box4 > .order > .price{
+	height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8px;
+}
+.box4 > .order > .price > strong{
+	font-size: 30px;
+	margin-right: 10px;
+}
+
+.box4 > .order > .pricenum{
+	display: flex;
+	height: 50px;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 5px;
+}
+.box4 > .order > .pricenum > strong{
+	margin-left: 7px;
+}
+.box4 > .order > .pricenum > .inputd{
+	width: 60%;
+	height: 50px;
+	display: flex;
+}
+.box4 > .order > .pricenum > .inputd > input{
+	height: 100%;
+	text-align: right;
+}
+.box4 > .order > .pricenum > .inputd > a{
+	height: 50px;
+    width: 50px;
+    border: 1px solid #bebebe;
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    font-size: 30px;
+    background-color: #eeeeee;
+}
+.box4 > .order > .pricesize{
+	display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    margin-top: 5px;
+}
+.box4 > .order > .pricesize > strong{
+	margin-left: 7px;
+}
+.box4 > .order >.pricesize > .inputd{
+	display: flex;
+    width: 60%;
+    height: 50px;
+}
+.box4 > .order >.pricesize >.inputd > input{
+    width: 96%;
+    font-size: 25px;
+    text-align: right;
+}
+.box4 > .order > .Quantity{
+	margin-top:5px;
+	height: 50px;
+	text-align: right;
+}
+.box4 > .order > .Quantity > a{
+	font-size: 12px;
+    margin-right: 10px;
+    border: 1px solid #dfe0e5;
+    font-weight: 400;
+    text-decoration: none;
+    border-radius: 2px;
+    height: 28px;
+    line-height: 28px;
+    color: #333;
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.pricetotal {
+	height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pricetotal > strong{
+	margin-left: 7px;
+}
+.pricetotal > .inputd{
+	width: 60%;
+    height: 50px;
+}
+.pricetotal > .inputd > input{
+	width: 96%;
+    height: 100%;
+    text-align: right;
+    font-size: 25px;
+}
+.buysell{	
+	width:80%;
+	height:50px;
+	background-color: #1261c4;
+	margin: 0 auto;
+	margin-top: 25px;
+}
+.buysell > a{
+	display: block;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: Roboto,Noto Sans KR,Dotum,\b3cb\c6c0,"sans-serif",Arial,Helvetica;
+    text-align: center;
+}

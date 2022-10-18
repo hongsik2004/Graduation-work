@@ -58,7 +58,7 @@
                 </script>
             </div>
         </div>
-        <div class="box2"><h2>504 나쁜 게이트웨이</h2></div>
+        <div class="box2"></div>
         <div class="box3">
         	<div class="asking-price-main">
 		        <h2>일반호가</h2>
@@ -156,7 +156,30 @@
 		        </div>
         	</div>
         </div>
-        <div class="box4"><h2>504 나쁜 게이트웨이</h2></div>
+        <div class="box4">
+        <div class="title"><h2 class="buy"><a href="#">매수</a></h2><h2 class="sell"><a href="#">매도</a></h2></div>
+        <div class="order">
+        	<div class="price"><p>주문 가능</p><strong>0</strong></div>
+        	<div class="pricenum">
+        	<strong>매수 / 매도 가격 (KRW)</strong>
+        	<div class="inputd">
+        		<input type="text" class="txr">
+        		<a href="#" class="plus">+</a>
+        		<a href="#" class="minus">-</a>
+        	</div>
+        	</div>
+        	<div class="pricesize"><strong>주문 수량 (CHZ)</strong><div class="inputd"><input type="text" value="0"></div></div>
+        	<div class="Quantity">
+        	<a href="#" class="qtbt">10%</a>
+        	<a href="#" class="qtbt">25%</a>
+        	<a href="#" class="qtbt">50%</a>
+        	<a href="#" class="qtbt">100%</a>
+        	<a href="#" class="qtbt">직접입력</a>
+        	</div>
+        	<div class="pricetotal"><strong>주문총액 (KRW)</strong><div class="inputd"><input type="text" value="0"></div></div>
+        	<div class="buysell"><a href="#">매수 & 매도</a></div>
+        </div>
+        </div>
     </div>
 </body>
 </html>
