@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/header.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/buying.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap-icons-1.8.3/fonts/bootstrap-icons.woff">
     <div class="con">
         <div class="box1">
             <div id="anychart-embed-modules--samples-anychart.candlestick dd" class="anychart-embed anychart-embed-modules--samples-anychart.candlestick"style="width: 95%; height: 95%;">
@@ -58,7 +59,60 @@
                 </script>
             </div>
         </div>
-        <div class="box2"></div>
+        <div class="box2">
+        	<div class="search">
+        		<input type="text" placeholder="코인명 검색">
+        		<a href="#"><i class="bi bi-search"></i></a>
+        	</div>
+        	<table class="coinlist">
+        		<tr>
+        			<th>한글명</th>
+        			<th>현재가</th>
+        			<th>전일대비</th>
+        			<th>거래대금</th>
+        		</tr>
+        	</table>
+        	<div class="scrolld">
+				<table>
+					<tr>
+						<td class="name">콩트코인</td>
+						<td class="price">280000</td>
+						<td class="cent">
+						<p>%</p>
+						<span>-0.10</span>
+						</td>
+						<td class="deal">141백만</td>
+					</tr>
+					<tr>
+						<td class="name">콩트코인</td>
+						<td class="price">280000</td>
+						<td class="cent">
+						<p>%</p>
+						<span>-0.10</span>
+						</td>
+						<td class="deal">141백만</td>
+					</tr>
+					<tr>
+						<td class="name">콩트코인</td>
+						<td class="price">280000</td>
+						<td class="cent">
+						<p>%</p>
+						<span>-0.10</span>
+						</td>
+						<td class="deal">141백만</td>
+					</tr>
+					<tr>
+						<td class="name">콩트코인</td>
+						<td class="price">280000</td>
+						<td class="cent">
+						<p>%</p>
+						<span>-0.10</span>
+						</td>
+						<td class="deal">141백만</td>
+					</tr>															
+				</table>
+        	</div>
+        </div>
         <div class="box3">
         	<div class="asking-price-main">
 		        <h2>일반호가</h2>
