@@ -7,58 +7,13 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap-icons-1.8.3/fonts/bootstrap-icons.woff">
     <div class="con">
         <div class="box1">
-            <div id="anychart-embed-modules--samples-anychart.candlestick dd" class="anychart-embed anychart-embed-modules--samples-anychart.candlestick"style="width: 95%; height: 95%;">
-                <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
-                <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
-                <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
-                <div id="ac_style_modules--samples-anychart.candlestick " style="display:none;"style="width: 100%; height: 100%;"></div>
-                <script>(function(){
-                function ac_add_to_head(el){
-                    var head = document.getElementsByTagName('head')[0];
-                    head.insertBefore(el,head.firstChild);
-                }
-                function ac_add_link(url){
-                    var el = document.createElement('link');
-                    el.rel='stylesheet';el.type='text/css';el.media='all';el.href=url;
-                    ac_add_to_head(el);
-                }
-                function ac_add_style(css){
-                    var ac_style = document.createElement('style');
-                    if (ac_style.styleSheet) ac_style.styleSheet.cssText = css;
-                    else ac_style.appendChild(document.createTextNode(css));
-                    ac_add_to_head(ac_style);
-                }
-                ac_add_link('https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css');
-                ac_add_style(document.getElementById("ac_style_modules--samples-anychart.candlestick").innerHTML);
-                ac_add_style(".anychart-embed-modules--samples-anychart.candlestick{width:600px;height:450px;}");
-                })();</script>
-                <div id="container" style="width: 100%; height: 100%;"></div>
-                <script>
-                            const options = {method: 'GET', headers: {Accept: 'application/json'}};
-                fetch('https://api.upbit.com/v1/candles/days?market=KRW-BTC&count=100', options)
-                  .then(response => response.json())
-                  .then(response => draw(dataClear(response)))
-                  .catch(err => console.error(err));
-         
-                function dataClear(data) {
-                    let nextData = new Array(100);
-                    for (let i = 0; i < 100; i++) {
-                    nextData[99-i] = [data[i].timestamp,data[i].opening_price,data[i].high_price,data[i].low_price,data[i].trade_price];
-                    }
-                    nextData[99][0] = nextData[98][0]+86399766;
-                    return nextData;  
-                }
-                function draw(data) {
-                    console.log(data[0][0])
-                    var chart = anychart.candlestick(data);
-                    chart.title('비트코인');
-                    chart.xScale().minimum(data[0][0]-100000).maximum(data[99][0]+1000000);
-                    chart.container('container');
-                    chart.draw();
-                };
-                </script>
-            </div>
+        	<p><span id="now_coin">BTC</span> <span>
+        	</span>
+        	<button class="coin_time" data-time="1m">1분</button><button class="coin_time basic btn_hov"data-time="30m">30분</button>
+        	<button class="coin_time" data-time="1h">1시간</button><button class="coin_time"data-time="24h">1일</button></p>
+            <div id="chart"></div>
         </div>
+		
         <div class="box2">
         	<div class="search">
         		<input type="text" placeholder="코인명 검색">
@@ -87,7 +42,7 @@
 						<td class="name">콩트코인</td>
 						<td class="price">280000</td>
 						<td class="cent">
-						<p>%</p>
+						
 						<span>-0.10</span>
 						</td>
 						<td class="deal">141백만</td>
@@ -235,5 +190,34 @@
         </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="<%=request.getContextPath() %>/resoures/javascript/coin_list.js"></script>
+	<script type="module">
+		import call  from "<%=request.getContextPath() %>/resoures/javascript/coin_chart.js"
+		function but_C(div){
+			var lii = document.querySelectorAll('.coin_time'); 
+			[].forEach.call(lii,function(col){ 
+				col.classList.remove("btn_hov");
+			})
+			div.className += " btn_hov";
+		}
+
+		  let bigData = [];
+		  let chartData;
+		call("30m","BTC");
+		document.querySelector(".scrolld>table").addEventListener("click",(e)=> {
+			document.querySelector("#now_coin").innerHTML =e.target.parentNode.dataset.coin;
+			call("30m",e.target.parentNode.dataset.coin);
+			but_C(document.querySelector(".basic"));
+        })
+var cols = document.querySelectorAll('.coin_time'); 
+[].forEach.call(cols,function(col){ 
+	col.addEventListener("click",(e)=> {
+			call(e.target.dataset.time,document.querySelector("#now_coin").innerHTML);
+			but_C(e.target);
+})
+}); 
+		
+	</script>
 </body>
 </html>
