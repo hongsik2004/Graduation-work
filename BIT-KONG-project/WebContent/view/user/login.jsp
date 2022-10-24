@@ -34,7 +34,7 @@
                 <div class="login-menu">
                         <form class="login" action="<%=request.getContextPath() %>/user/login_rs" method="post" name="fom" onsubmit="return loginbts();">
                             <div class="logo">
-                                <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
+                                <a href="<%=request.getContextPath()%>/user/login"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="input-group">
                                 <input type="text" placeholder="이메일 주소" class="input-email" name="m_id">

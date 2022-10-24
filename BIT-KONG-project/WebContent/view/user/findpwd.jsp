@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 찾기</title>
+<title>비밀번호 찾기</title>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/findpwd.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap-icons-1.8.3/fonts/bootstrap-icons.woff">
@@ -39,18 +39,17 @@
                 <div class="login-menu">
                         <form class="login" action="<%=request.getContextPath() %>/view/user/findpwd_new.jsp" method="post" name="fom" onsubmit="return loginbts();">
                             <div class="logo">
-                                <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
+                                <a href="<%=request.getContextPath()%>/user/login"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="input-group">
-                                <input type="text" placeholder="비밀번호를 찾고자 하는 아이디(이메일)를 입력해주세요." class="input-email" name="m_id" id="m_id">
-                                <button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailCheck()">인증번호 보내기</button>
-                            </div>
-                            <div class="input-emailok">
-                                <input type="hidden" name="emailconfirm" id="emailconfirm" placeholder="인증번호를 입력하세요.">
-    	                       	<input type="hidden" class="overlap" name="emailsok" id="emailsok" onclick="comfirmEmail()" value="확인">
+                            	<div class="input-title">
+	                            	<h2>비밀번호 찾기</h2>
+    	                        	<span>기존에 가입하신 이메일을 입력하시면,<br> 비밀번호 변경 메일을 발송해드립니다.</span>
+                            	</div>
+                                <input type="text" placeholder="이메일 입력" class="input-email" name="m_id" id="m_id">
                             </div>
                             <div class="form-btn">
-                                <button type="submit" id="login-btn">비밀번호 변경</button>
+                                <button id="login-btn" onclick="emailCheck()">비밀번호 변경 이메일 보내기</button>
                                 <div class="line"></div>
                             </div>
                             <div class="find-btn">
@@ -75,7 +74,7 @@
 		}
 		console.log(email_check);
 		if(email_check == false){
-			alert("이메일 인증을 해주세요.");
+			alert("이메일로 가서 확인을 눌러주세요.");
 			return false;
 		}
 		return true;
@@ -104,8 +103,8 @@
 	function sendEmail(email,subject,content) {
 		$.ajax({
 			type : "POST",
-			url : "/ajax/sendMail",
-			data : {"email":email,"subject": subject,"num":num,"content":content},
+			url : "/ajax/sendMails",
+			data : {"email":email,"content":content,"subject": subject},
 			dataType:"json",
 			success :  res => {console.log("성공"+res)},
 			error: log =>{console.log("실패"+log)}

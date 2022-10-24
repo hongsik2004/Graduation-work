@@ -93,8 +93,8 @@ table{
     border: none;
     width: 80%;
     height: 30%;
-    background: #FFFFFF;
-    box-shadow: 1px 1px 8px rgb(0 0 0 / 25%);
+    background: #fcfcfd;
+    box-shadow: 1px 1px 5px rgb(0 0 0 / 25%);
     border-radius: 7px;
     font-family: 'Inter';
     font-style: normal;
@@ -179,4 +179,15 @@ table{
 }
 .find-btn li:first-child::before{
     content: none;
+}
+.input-title{
+	text-align: center;
+}
+.input-title h2{
+	font-size: 35px;
+	font-family: 'Bold';
+}
+.input-title span{
+	font-size: 17px;
+    font-family: 'Regular';
 }

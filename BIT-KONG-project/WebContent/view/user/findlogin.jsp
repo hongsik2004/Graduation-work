@@ -35,12 +35,16 @@
                         <form class="login" action="<%=request.getContextPath() %>/user/findlogin_rs" method="post" name="fom" onsubmit="return loginbts();">
                         <input type="hidden" name="m_id">
                             <div class="logo">
-                                <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
+                                <a href="<%=request.getContextPath()%>/user/login"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
+                           	<div class="input-title">
+                            	<h2>아이디 찾기</h2>
+                            	<span>가입했을때 당시 이름과 전화번호로 찾을수 있습니다.</span>
+                           	</div>
                             <div class="input-group">
                                 <input type="text" placeholder="이름" class="input-email" name="m_name">
                                 <i class="bi bi-person-fill"></i>
-                                <input type="text" placeholder="전화번호" name="m_phone_number">
+                                <input type="text" placeholder="전화번호" name="m_phone_number" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                 <i class="bi bi-telephone-fill"></i>
                             </div>
                             <div class="form-btn">
@@ -65,9 +69,9 @@
 			document.fom.m_name.focus();
 			return false;
 		}
-		if(!document.fom.m_phone.value.trim()){
+		if(!document.fom.m_phone_number.value.trim()){
 			alert("전화번호를 입력하세요.");
-			document.fom.m_phone.focus();
+			document.fom.m_phone_number.focus();
 			return false;
 		}	
 		return true;

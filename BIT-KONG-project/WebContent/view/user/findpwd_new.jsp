@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 찾기</title>
+<title>비밀번호 변경</title>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/findpwd_new.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap-icons-1.8.3/fonts/bootstrap-icons.woff">
@@ -33,9 +33,9 @@
             <div class="main-right">
                 <div class="login-menu">
                         <form class="login" action="<%=request.getContextPath() %>/view/user/findpwdok.jsp" method="post" name="fom" onsubmit="return findpwdbts();">
-                        <input type="hidden" name="m_id"value="<%=request.getParameter("m_id")%>">
+                        <input type="hidden" name="m_id"value="<%=request.getParameter("email")%>">
                             <div class="logo">
-                                <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
+                                <a href="<%=request.getContextPath()%>/user/login"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="pwd-input">
                                 <input type="password" placeholder="새비밀번호" name="m_password" class="pw" id="password_1">
@@ -75,9 +75,9 @@
 			document.fom.m_password2.focus();
 			return false;
 		}
-		if(document.frm.m_password.value != document.frm.m_password2.value){
+		if(document.fom.m_password.value != document.fom.m_password2.value){
 			alert("비밀번호가 일치하지 않습니다.");
-			document.frm.m_password2.focus();
+			document.fom.m_password2.focus();
 			return false;
 		}
 		return true;

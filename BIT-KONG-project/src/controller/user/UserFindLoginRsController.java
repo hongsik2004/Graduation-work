@@ -25,7 +25,7 @@ public class UserFindLoginRsController implements Controller {
 		String m_id = dao.findId(m_name, m_phone);
 		
 		if(m_id.equals("")) {
-			session.setAttribute("alert", "존재하지 않는 아이디 입니다.");
+			session.setAttribute("alert", "존재하지 않는 아이디 이거나 전화번호가 틀립니다.");
 			path = "/user/findlogin";
 		}else {
 //			session.setAttribute("alert", "아이디 찾기 성공! :"+m_id);

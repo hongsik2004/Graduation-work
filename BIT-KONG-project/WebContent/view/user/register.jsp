@@ -30,7 +30,7 @@
                 <div class="login-menu">
                         <form class="login" action="<%=request.getContextPath() %>/user/register_rs" name="frm" onsubmit="return check();" method="post">
                             <div class="logo">
-                                <a href="#"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
+                                <a href="<%=request.getContextPath()%>/user/login"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
                             <div class="email-input">
                                 <i class="bi bi-envelope-fill"></i>
