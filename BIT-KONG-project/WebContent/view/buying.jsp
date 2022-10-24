@@ -194,6 +194,7 @@
     <script src="<%=request.getContextPath() %>/resoures/javascript/coin_list.js"></script>
 	<script type="module">
 		import call  from "<%=request.getContextPath() %>/resoures/javascript/coin_chart.js"
+		import coin  from "<%=request.getContextPath() %>/resoures/javascript/coin_asking_price.js"
 		function but_C(div){
 			var lii = document.querySelectorAll('.coin_time'); 
 			[].forEach.call(lii,function(col){ 
@@ -205,7 +206,9 @@
 		  let bigData = [];
 		  let chartData;
 		call("30m","BTC");
+		coin("BTC");
 		document.querySelector(".scrolld>table").addEventListener("click",(e)=> {
+			coin(e.target.parentNode.dataset.coin);
 			document.querySelector("#now_coin").innerHTML =e.target.parentNode.dataset.coin;
 			call("30m",e.target.parentNode.dataset.coin);
 			but_C(document.querySelector(".basic"));
