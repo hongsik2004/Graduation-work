@@ -99,7 +99,7 @@ table{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 120%;
     color: black;
     margin-top: 5%;
@@ -108,12 +108,12 @@ table{
 
 .input-group>i:nth-child(2){
     position: absolute;
-    left: 11%;
+    left: 58px;
     top: 30%;
 }
 .input-group>i:nth-child(4) {
     position: absolute;
-    left: 11%;
+    left: 58px;
     top: 70%;
 }
 .form-btn{

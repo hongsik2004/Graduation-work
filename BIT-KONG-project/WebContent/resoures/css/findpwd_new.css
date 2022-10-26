@@ -198,14 +198,14 @@ table{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 120%;
     color: black;
     padding: 10px 28px;
 }
 .pwd-input>i{
     position: absolute;
-    left: 11%;
+    left: 58px;
     top: 40%;
 }
 .pwds-input{
@@ -227,14 +227,14 @@ table{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 120%;
     color: black;
     padding: 10px 28px;
 }
 .pwds-input>i{
     position: absolute;
-    left: 11%;
+    left: 58px;
     top: 40%;
 }
 .checkps{

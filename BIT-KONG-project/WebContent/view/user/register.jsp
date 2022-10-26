@@ -35,15 +35,13 @@
                             <div class="email-input">
                                 <i class="bi bi-envelope-fill"></i>
                                 <input type="text" placeholder="이메일 주소" class="input-email" name="m_id" id="m_id">
-    	                        <button type="button" class="overlap" name="confirm_id" onclick="buttons()">중복확인</button>
+                                <div class="checkps"><font id="checkemail" size="2"></font></div>
+    	                        <button type="button" id="over"class="overlap" disabled="disabled" name="confirm_id" onclick="buttons()">중복확인</button>
         	                    <input type="hidden" name="chk" value="0">
                             </div>
                             <div class="email-button">
-                            	<div class="bundle">
-	                            	<input type="hidden" name="emailconfirm" id="emailconfirm" placeholder="인증번호를 입력하세요.">
-    	                        	<input type="hidden" name="emailsok" id="emailsok" onclick="comfirmEmail()" value="확인">
-                            	</div>
-		 						<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailCheck()" disabled="disabled">인증번호 보내기</button>
+	                            <input type="text" name="emailconfirm" id="emailconfirm" placeholder="인증번호를 입력하세요.">
+		 						<button type="button" class="overlap" id="emailok" name="emailconfirm_btn" onclick="emailCheck()" disabled="disabled">인증번호 요청</button>
 		  	   				</div>
                             <div class="pwd-input">
                                 <input type="password" placeholder="비밀번호" name="m_password" class="pw" id="password_1">
@@ -78,6 +76,7 @@
     	<script type="text/javascript">
     	let id_check = false;
     	let email_check = false;
+		var email_auth_cd = '';
 	function check() {
 		if(!document.frm.m_id.value.trim()){
 			alert("이메일이 입력되지 않았습니다!");
@@ -104,8 +103,13 @@
 			document.frm.m_phone_number.focus();
 			return false;
 		}
+		if(!document.frm.emailconfirm.value.trim()){
+			alert("인증번호를 입력해주세요.");
+			document.frm.emailconfirm.focus();
+			return false;
+		}
 		if(document.frm.m_password.value != document.frm.m_password2.value){
-			alert("비밀번호가 일치하지 않습니다.");
+			alert("비밀번호가 일치하지 않습니다!");
 			document.frm.m_password2.focus();
 			return false;
 		}
@@ -113,12 +117,35 @@
 			alert("중복체크를 해주세요.");
 			return false;
 		}
-		if(email_check == false){
-			alert("이메일 인증 해주세요.");
+		if(document.frm.emailconfirm.value != email_auth_cd){
+			alert("인증번호가 일치하지 않습니다!");
+			document.frm.emailconfirm.focus();
 			return false;
 		}
 		return true;
 	}
+	$(".input-email").keyup(function() {
+		email = $('#m_id').val();
+		var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+		
+		if(regEmail.test(email)){
+			$("#checkemail").html('이메일 인증에 성공.');
+			$("#checkemail").attr('color', '#2fb380');
+			$(".overlap").addClass("on");
+			if($(".overlap").addClass("on")){
+				document.frm.over.disabled=false;	
+			}
+		}else{
+			$("#checkemail").html('이메일 입력 방식이 일치하지 않습니다.');
+			$("#checkemail").attr('color', '#dc3545');
+			$(".overlap").removeClass("on");
+			if($(".overlap").removeClass("on")){
+				document.frm.over.disabled=true;
+				document.frm.emailok.disabled=true;
+				id_check = false;
+			}
+		}
+	})
 	$(".pw").keyup(function(){
 		let pass1 = document.getElementById("password_1").value;
 		let pass2 = document.getElementById("password_2").value;
@@ -148,24 +175,17 @@
 	    			success :  res => {
 						if(res.same == "true") alert("아이디가 이미 사용중입니다.")
 						else{
-							alert("아이디가 사용가능합니다.");
 							id_check = true;
 							document.frm.emailok.disabled=false;
 						}
 	    			},error: log =>{console.log("실패"+log)}
 	    		}		
 	    	)
-		if(!frm.m_id.value){ 
-			alert("아이디를 입력해주세요.");
-			frm.m_id.focus();
-			return;
-		}else{
 			if(frm.m_id.value.indexOf("@")==-1){
 				alert("@가 비어져있습니다.");
 				frm.m_id.focus();
 				return false;
 			}
-		}
 	} 
 	let num = 0;
 	function emailCheck() {
@@ -203,7 +223,11 @@
 			url : "/ajax/sendMail",
 			data : {"email":email,"subject": subject,"num": num,"content":content},
 			dataType:"json",
-			success :  res => {console.log("성공"+res)},
+			success :  res => {
+				console.log("성공"+res);
+				email_auth_cd = num;
+				console.log(email_auth_cd);
+				},
 			error: log =>{console.log("실패"+log)}
 		})
 	}

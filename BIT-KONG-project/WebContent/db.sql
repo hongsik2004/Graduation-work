@@ -42,6 +42,8 @@ delete from member_table where m_id = 'hongsik2004@naver.com';
 update coin_board set b_view = b_view + 1 where b_id = 1;
 --코인 게시판 전용 DB 구축
 desc coin_board;
+select * from member_table;
+delete from member_table where m_id = 'admin짭2';
 select * from coin_board
 select * from(select ROW_NUMBER() over(ORDER BY b_id desc) num,b_id ,b_title from coin_board)where num between 1 and 2;
 select DISTINCT c_tag from coin_board order by c_tag asc;
