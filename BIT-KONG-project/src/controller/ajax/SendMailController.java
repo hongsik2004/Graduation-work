@@ -76,7 +76,6 @@ public class SendMailController implements Controller {
 				"        font-weight: 400;\r\n" + 
 				"        line-height: 2em;  \">\r\n" + 
 				"            <hr>\r\n" + 
-				"            <span>Copyright&copy;2022BIT-KONG All rights reserved. Designed by 홍식</span><br>\r\n" + 
 				"            <span>비트콩|개발자 : 박홍식,김규태|사업자등록번호 : 010-xxxx-xxxx | 이메일 : bitkongproject@naver.com</span><br>\r\n" + 
 				"            <span>주소 : 경기도 성남시 분당구 서현동 316 양영디지털고등학교</span>\r\n" + 
 				"        </div>\r\n" + 
