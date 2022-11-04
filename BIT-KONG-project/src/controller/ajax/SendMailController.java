@@ -23,6 +23,7 @@ public class SendMailController implements Controller {
 		MailUtil Mu = new MailUtil();
 		String email = request.getParameter("email");
 		String subject = request.getParameter("subject");
+		subject = "비트콩식 이메일 인증 코드";
 		String content = request.getParameter("content");
 		String num = request.getParameter("num");
 		content = "<body>\r\n" + 
