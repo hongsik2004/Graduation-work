@@ -41,12 +41,10 @@
     	                            <input type="text" class="input-email" name="m_id" required>
 	                            	<label class="login-email"><span>이메일 주소</span></label>
                             	</div>
-                                <!-- <i class="bi bi-envelope-fill"></i> -->
                                 <div class="pwd-form">
 	                                <input type="password" class="input-password" name="m_password" required>
 	                                <label class="login-password"><span>비밀번호</span></label>
                                 </div>
-                                <!-- <i class="bi bi-key"></i> -->
                             </div>
                             <div class="form-btn">
                                 <button type="submit" id="login-btn">로그인</button>

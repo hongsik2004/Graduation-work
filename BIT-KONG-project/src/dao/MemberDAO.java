@@ -85,7 +85,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				vo = new RegisterVO(rs.getString("m_id"), rs.getString("m_name"), 
-					rs.getString("m_phone_number"), rs.getString("m_password"), rs.getInt("m_krw"));
+					rs.getString("m_phone_number"), rs.getString("m_password"));
 			}
 		} catch (Exception e) {
 			System.out.println("getUserData() �����߻�");

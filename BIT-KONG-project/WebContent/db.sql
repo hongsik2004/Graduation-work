@@ -3,8 +3,7 @@ create table member_table(
 	m_id varchar2(30) primary key,
 	m_name varchar2(30),
 	m_phone_number char(11),
-	m_password varchar2(256),
-	m_krw number(16) default 0
+	m_password varchar2(256)
 );
 --코인게시판 테이블
 create table coin_board(
@@ -19,14 +18,16 @@ create table coin_board(
 );
 --코인고객센터 테이블
 create table coin_notice(
-	n_id number(4) not null primary key,
-	n_tag number(2),
-	n_title varchar2(50),
-	n_context varchar2(2048),
-	m_id varchar2(30),
-	n_date DATE,
-	n_view number(5)
+    n_id number(4) not null primary key,
+    n_tag number(2),
+    n_title varchar2(50),
+    n_context varchar2(2048),
+    m_id varchar2(30),
+    n_date DATE,
+    n_view number(5)
 );
+
+CREATE SEQUENCE c_idx_seq START WITH 1 INCREMENT BY 1 NOCACHE;
 drop table coin_notice;
 
 select n_id,n_tag,n_title,n_context, TO_CHAR(n_date,'YYYY-MM-DD') as n_date,n_view from COIN_NOTICE where n_tag = 0 order by n_id desc;
@@ -68,6 +69,7 @@ insert into coin_board values(3,0,'반갑습니다3.','박홍식','2022-08-25','
 insert into coin_board values(4,0,'반갑습니다4.','박홍식','2022-08-25','admin','안녕하세요.',0);
 insert into coin_board values(5,0,'반갑습니다5.','박홍식','2022-08-25','admin','안녕하세요.',0);
 SELECT b_id from coin_board order by b_id desc;
+UPDATE member_table set m_id = 'admin' where m_id = 'y2010213@y-y.hs.kr';
 UPDATE member_table SET m_password = CONCAT('*', UPPER(SHA1(UNHEX(SHA1(?))))) WHERE m_id = 'asdf@naver.com';
 update member_table set m_password = ? where m_id = ?;
 select * from member_table;
@@ -77,6 +79,7 @@ select b_id,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_d
 select sysdate from dual;
 
 
+-- 충전 내역 테이블
 create table charging_history (
     idx int primary key,
     m_id varchar2(20),
@@ -85,13 +88,12 @@ create table charging_history (
     times DATE
 );
 CREATE SEQUENCE idx_seq START WITH 1 INCREMENT BY 1 NOCACHE;
-
 select * from charging_board where m_id ='stop1231';
 
 create table coin_wallet (
     m_id varchar2(20),
-    coin_id varchar2(5),
-    price int,
-    cnt int,
-    CONSTRAINT COIN_LIST_PK PRIMARY KEY(CODE, SEQ)
+    coin_id  varchar2(5),
+    price float,
+    cnt float,
+    CONSTRAINT COIN_LIST_PK PRIMARY KEY(m_id, coin_id)
 );

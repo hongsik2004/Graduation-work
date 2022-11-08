@@ -29,7 +29,7 @@ public class UserRegisterRsController implements Controller {
 		String m_name = request.getParameter("m_name");
 		String m_phone = request.getParameter("m_phone_number");
 		String m_password = request.getParameter("m_password");
-		RegisterVO vo = new RegisterVO(m_id,m_name,m_phone,m_password,0);
+		RegisterVO vo = new RegisterVO(m_id,m_name,m_phone,m_password);
 		int n = dao.insertregist(vo);
 		
 		if(n > 0) {
