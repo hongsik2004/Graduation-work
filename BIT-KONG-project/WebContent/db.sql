@@ -75,3 +75,23 @@ select m_id from member_table where m_name = '박홍식3' and m_phone_number = '
 select max(b_id) + 1 as b_id from coin_board;
 select b_id,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD;
 select sysdate from dual;
+
+
+create table charging_history (
+    idx int primary key,
+    m_id varchar2(20),
+    money int,
+    point int,
+    times DATE
+);
+CREATE SEQUENCE idx_seq START WITH 1 INCREMENT BY 1 NOCACHE;
+
+select * from charging_board where m_id ='stop1231';
+
+create table coin_wallet (
+    m_id varchar2(20),
+    coin_id varchar2(5),
+    price int,
+    cnt int,
+    CONSTRAINT COIN_LIST_PK PRIMARY KEY(CODE, SEQ)
+);
