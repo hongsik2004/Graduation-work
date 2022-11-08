@@ -37,16 +37,18 @@
                             <div class="logo">
                                 <a href="<%=request.getContextPath()%>/user/login"><img src="<%=request.getContextPath() %>/resoures/image/logos.png" alt=""></a>
                             </div>
-                            <div class="pwd-input">
-                                <input type="password" placeholder="새비밀번호" name="m_password" class="pw" id="password_1">
-                                <i class="bi bi-key"></i>
-                                <div class="checkpwd"><font id="checkPws" size="2"></font></div>
-								<div class="valid-feedback"></div>
-                            </div>
-                            <div class="pwds-input">
-                                <input type="password" placeholder="새비밀번호 확인" name="m_password2" class="pw" id="password_2">
-                                <i class="bi bi-key"></i>
-                                <div class="checkps"><font id="checkPw" size="2"></font></div>
+                            <div class="input-group">
+	                            <div class="pwd-input">
+	                                <input type="password" name="m_password" class="pw" id="password_1" required>
+	                                <label class="find-pwd"><span>새비밀번호</span></label>
+	                                <div class="checkpwd"><font id="checkPws" size="2"></font></div>
+									<div class="valid-feedback"></div>
+	                            </div>
+	                            <div class="pwds-input">
+	                                <input type="password" name="m_password2" class="pw" id="password_2" required>
+	                                <label class="find-pwd"><span>새비밀번호 확인</span></label>
+	                                <div class="checkps"><font id="checkPw" size="2"></font></div>
+	                            </div>
                             </div>
                             <div class="form-btn">
                                 <button type="submit" id="login-btn">확인</button>
@@ -86,11 +88,17 @@
 		let pass1 = document.getElementById("password_1").value;
 		let pass2 = document.getElementById("password_2").value;
 		
+		if($(".pw").val() == ""){
+			$("#checkPw").css({"display":"none"});
+			return;
+		}
 		if(pass1 != "" || pass2 != ""){
 				if(pass1 == pass2){
+				$("#checkPw").css({"display":"block"});
 				$("#checkPw").html('비밀번호가 일치합니다.');
 				$("#checkPw").attr('color','#2fb380');
 			} else {
+				$("#checkPw").css({"display":"block"});
 				$("#checkPw").html('비밀번호가 일치하지 않습니다');
 				$("#checkPw").attr('color','#dc3545');
 			}

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>로그인 찾기</title>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/style.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/findlogin.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap-icons-1.8.3/fonts/bootstrap-icons.woff">
 </head>
 <body>
@@ -42,10 +42,14 @@
                             	<span>가입했을때 당시 이름과 전화번호로 찾을수 있습니다.</span>
                            	</div>
                             <div class="input-group">
-                                <input type="text" placeholder="이름" class="input-email" name="m_name">
-                                <i class="bi bi-person-fill"></i>
-                                <input type="text" placeholder="전화번호" name="m_phone_number" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                <i class="bi bi-telephone-fill"></i>
+                            	<div class="find-name">
+	                                <input type="text" class="input-name" name="m_name" required>
+	                                <label class="find-names"><span>이름</span></label>
+                            	</div>
+                            	<div class="find-phone">
+	                                <input type="text" class="input-phone" name="m_phone_number" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+	                                <label class="find-phonenum"><span>전화번호</span></label>
+                            	</div>
                             </div>
                             <div class="form-btn">
                                 <button type="submit" id="login-btn">아이디 찾기</button>

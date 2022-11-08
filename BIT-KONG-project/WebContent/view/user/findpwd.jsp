@@ -46,7 +46,10 @@
 	                            	<h2>비밀번호 찾기</h2>
     	                        	<span>기존에 가입하신 이메일을 입력하시면,<br> 비밀번호 변경 메일을 발송해드립니다.</span>
                             	</div>
-                                <input type="text" placeholder="이메일 입력" class="input-email" name="m_id" id="m_id">
+                            	<div class="find-emails">
+	                                <input type="text" class="input-email" name="m_id" id="m_id" required>
+	                                <label class="find-email"><span>이메일 주소</span></label>
+                            	</div>
                             </div>
                             <div class="form-btn">
                                 <button id="login-btn" onclick="emailCheck()">비밀번호 변경 이메일 보내기</button>
