@@ -62,7 +62,7 @@ select b_pass from coin_board where b_id = ?;
 delete from coin_board where b_id = 1;
 select * from coin_board where b_id = ?;
 SELECT b_id from coin_board order by b_id desc;
-
+delete from member_table where m_id = 'y2010213@y-y.hs.kr';
 insert into coin_board values(10,0,'반갑습니다6.','박홍식','2022-08-25','admin','안녕하세요.',0);
 insert into coin_board values(2,0,'반갑습니다2.','박홍식','2022-08-25','admin','안녕하세요.',0);
 insert into coin_board values(3,0,'반갑습니다3.','박홍식','2022-08-25','admin','안녕하세요.',0);
@@ -70,6 +70,7 @@ insert into coin_board values(4,0,'반갑습니다4.','박홍식','2022-08-25','
 insert into coin_board values(5,0,'반갑습니다5.','박홍식','2022-08-25','admin','안녕하세요.',0);
 SELECT b_id from coin_board order by b_id desc;
 UPDATE member_table set m_id = 'admin' where m_id = 'y2010213@y-y.hs.kr';
+delete from member_table;
 UPDATE member_table SET m_password = CONCAT('*', UPPER(SHA1(UNHEX(SHA1(?))))) WHERE m_id = 'asdf@naver.com';
 update member_table set m_password = ? where m_id = ?;
 select * from member_table;
