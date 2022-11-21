@@ -41,7 +41,7 @@ location.href = "/user/login";
     </script>
     <header>
         <div class="logo">
-            <a href="./buying.jsp"><img src="<%=request.getContextPath() %>/resoures/image/white_logo.png" alt="로고"></a>
+            <a href="<%=request.getContextPath()%>/index"><img src="<%=request.getContextPath() %>/resoures/image/white_logo.png" alt="로고"></a>
         </div>
         <div class="name-tag">
             <h5><%= userVO.getM_name() %></h5>

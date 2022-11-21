@@ -29,17 +29,16 @@ create table coin_notice(
 
 CREATE SEQUENCE c_idx_seq START WITH 1 INCREMENT BY 1 NOCACHE;
 drop table coin_notice;
-
+delete from member_table where m_id = 'hongsik2004@naver.com';
 select n_id,n_tag,n_title,n_context, TO_CHAR(n_date,'YYYY-MM-DD') as n_date,n_view from COIN_NOTICE where n_tag = 0 order by n_id desc;
 insert into COIN_NOTICE values(2,0,'[공지]축 첫 서버 열림','많은 후원 부탁드립니다.','2022-08-31',0);
 select * from coin_notice;
 drop table member_table;
-insert into member_table(m_id,m_name,m_phone_number,m_password) values('admin짭2','admin','01011112222','5563');
+insert into member_table(m_id,m_name,m_phone_number,m_password) values('test3','test2','01011112222','5563');
 select * from MEMBER_TABLE;
 select m_id,m_password from MEMBER_TABLE;
 delete from coin_notice;
 select * from member_table;
-delete from member_table where m_id = 'hongsik2004@naver.com';
 update coin_board set b_view = b_view + 1 where b_id = 1;
 --코인 게시판 전용 DB 구축
 desc coin_board;
@@ -83,18 +82,20 @@ select sysdate from dual;
 -- 충전 내역 테이블
 create table charging_history (
     idx int primary key,
-    m_id varchar2(20),
+    m_id varchar2(30),
     money int,
     point int,
     times DATE
 );
+drop table charging_history;
 CREATE SEQUENCE idx_seq START WITH 1 INCREMENT BY 1 NOCACHE;
 select * from charging_board where m_id ='stop1231';
 
 create table coin_wallet (
-    m_id varchar2(20),
+    m_id varchar2(30),
     coin_id  varchar2(5),
     price float,
     cnt float,
     CONSTRAINT COIN_LIST_PK PRIMARY KEY(m_id, coin_id)
 );
+drop table coin_wallet;

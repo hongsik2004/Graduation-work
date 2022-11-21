@@ -6,15 +6,33 @@
 <%
 MemberDAO dao = new MemberDAO();
 RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
-DecimalFormat decFormat = new DecimalFormat("###,###");
-
-String money = decFormat.format(userVO.getM_krw());
+/* DecimalFormat decFormat = new DecimalFormat("###,###");
+String money = decFormat.format(userVO.getM_krw()); */
 %>
 <jsp:include page="../view/template/header.jsp"></jsp:include>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/header.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/coin_wallert.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script>
+    let datas;
+    $.ajax(
+    		{
+    			type:"GET",
+    			url:"http://34.64.56.248:3000/coin-wallet/"+"<%= userVO.getM_id() %>",
+    			dataType:"json",
+    			success :  res => {
+    				datas = res.data;
+    				console.log(res);
+    				console.log(datas[0].price);
+    			},error: log =>{alert("DB 오류 발생")}
+    		}
+    	)
+    	function draw() {
+    	
+    }
+	</script>
     <div class="con">
         <div class="assets">
             <h2>내 보유자산</h2>
@@ -22,7 +40,7 @@ String money = decFormat.format(userVO.getM_krw());
                 <ul>
                     <li>
                         <h4>보유KRW</h4>
-                        <span><%=money %></span>
+                        <span>${datas[0].price}</span> 
                     </li>
                     <li class="bar"></li>
                     <li>

@@ -20,8 +20,10 @@
          session.removeAttribute("alert");
       }
    	%>
-   	<%String m_id = (String)session.getAttribute("m_id"); %>
-   	<%System.out.println(m_id); %>
+   	<%
+   	String m_id = (String)session.getAttribute("m_id");
+   	System.out.println(m_id);
+   	%>
     </script>
     <div class="main">
         <div class="main-menu">

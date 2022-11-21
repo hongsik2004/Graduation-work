@@ -19,6 +19,7 @@ public class MemberDAO {
 	final String CHANGEMONEYS = "update member_table set m_krw = ? where m_id = ?";
 	final String FINDEMAIL = "select m_id from member_table where m_name = ? and m_phone_number = ?";
 	final String FINDPASSWORD = "update member_table set m_password = ? where m_id = ?";
+	final String INSERTCOIN = "insert into coin_wallet values(?,'KRW',50000000,1)";
 	public int insertregist(RegisterVO vo) {
 		int result = 0;
 		try {
@@ -32,10 +33,18 @@ public class MemberDAO {
 			
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("insertregist() �����߻�");
+			System.out.println("insertregist() 오류");
 			e.printStackTrace();
-		}finally {
-			JdbcUtil.close(con, pstmt);
+		}
+		try {
+			con = JdbcUtil.getConnection();
+			pstmt = con.prepareStatement(INSERTCOIN);
+			pstmt.setString(1, vo.getM_id());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("insertcoin() 오류");
+			e.printStackTrace();
 		}
 		return result;
 	}
@@ -50,7 +59,7 @@ public class MemberDAO {
 				result = true;
 			}
 		} catch (Exception e) {
-			System.out.println("confirmId() �����߻�");
+			System.out.println("confirmId() 오류");
 			e.printStackTrace();
 		}finally {
 			JdbcUtil.close(con, pstmt, rs);
@@ -88,7 +97,7 @@ public class MemberDAO {
 					rs.getString("m_phone_number"), rs.getString("m_password"));
 			}
 		} catch (Exception e) {
-			System.out.println("getUserData() �����߻�");
+			System.out.println("getUserData() 오류");
 			 e.printStackTrace();
 		}finally {
 			JdbcUtil.close(con, pstmt, rs);

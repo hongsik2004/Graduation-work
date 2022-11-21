@@ -184,17 +184,13 @@
 		}
 		$.ajax(
 	    		{
-	    			type:"POST",
-	    			url:"/ajax/checkId",
-	    			data:{id:document.frm.m_id.value},
+	    			type:"GET",
+	    			url:"http://34.64.56.248:3000/user/exist/"+document.frm.m_id.value,
 	    			dataType:"json",
 	    			success :  res => {
-						if(res.same == "true") alert("아이디가 이미 사용중입니다.")
-						else{
-							id_check = true;
-							document.frm.emailok.disabled=false;
-						}
-	    			},error: log =>{console.log("실패"+log)}
+						id_check = true;
+						document.frm.emailok.disabled=false;
+	    			},error: log =>{alert("아이디가 이미 사용중입니다.")}
 	    		}		
 	    	)
 			if(frm.m_id.value.indexOf("@")==-1){
