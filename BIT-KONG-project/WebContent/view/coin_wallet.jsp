@@ -6,9 +6,6 @@
 <%
 MemberDAO dao = new MemberDAO();
 RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
-DecimalFormat decFormat = new DecimalFormat("###,###");
-
-String money = decFormat.format(userVO.getM_krw());
 %>
 <jsp:include page="../view/template/header.jsp"></jsp:include>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
