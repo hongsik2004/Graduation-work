@@ -34,6 +34,7 @@ select n_id,n_tag,n_title,n_context, TO_CHAR(n_date,'YYYY-MM-DD') as n_date,n_vi
 insert into COIN_NOTICE values(2,0,'[공지]축 첫 서버 열림','많은 후원 부탁드립니다.','2022-08-31',0);
 select * from coin_notice;
 drop table member_table;
+update
 insert into member_table(m_id,m_name,m_phone_number,m_password) values('test3','test2','01011112222','5563');
 select * from MEMBER_TABLE;
 select m_id,m_password from MEMBER_TABLE;
@@ -43,7 +44,7 @@ update coin_board set b_view = b_view + 1 where b_id = 1;
 --코인 게시판 전용 DB 구축
 desc coin_board;
 select * from member_table;
-delete from member_table where m_id = 'admin짭2';
+delete from member_table where m_id = 'test2@naver.com';
 select * from coin_board
 select * from(select ROW_NUMBER() over(ORDER BY b_id desc) num,b_id ,b_title from coin_board)where num between 1 and 2;
 select DISTINCT c_tag from coin_board order by c_tag asc;
@@ -69,15 +70,15 @@ insert into coin_board values(4,0,'반갑습니다4.','박홍식','2022-08-25','
 insert into coin_board values(5,0,'반갑습니다5.','박홍식','2022-08-25','admin','안녕하세요.',0);
 SELECT b_id from coin_board order by b_id desc;
 UPDATE member_table set m_id = 'admin' where m_id = 'y2010213@y-y.hs.kr';
-delete from member_table;
-UPDATE member_table SET m_password = CONCAT('*', UPPER(SHA1(UNHEX(SHA1(?))))) WHERE m_id = 'asdf@naver.com';
+delete from member_table where m_id = 'admin';
+insert into member_table values('admin','admin','01012345678','874ed62968b0bddaae6d1acb514006d9e9e99ff9e50a9c691b14fcca4b8ed416');
+UPDATE member_table SET m_password = CONCAT('*', UPPER(SHA1(UNHEX(SHA1(?))))) WHERE m_id = 'admin';
 update member_table set m_password = ? where m_id = ?;
 select * from member_table;
 select m_id from member_table where m_name = '박홍식3' and m_phone_number = '01040772023';
 select max(b_id) + 1 as b_id from coin_board;
 select b_id,b_title,b_name,b_context,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from COIN_BOARD;
 select sysdate from dual;
-
 
 -- 충전 내역 테이블
 create table charging_history (
@@ -98,6 +99,3 @@ create table coin_wallet (
     cnt float,
     CONSTRAINT COIN_LIST_PK PRIMARY KEY(m_id, coin_id)
 );
-drop table coin_wallet;
-
-update coin_wallet set(price=20000000,cnt=4) where m_id = 'admin' and coin_id = 'BTC'
