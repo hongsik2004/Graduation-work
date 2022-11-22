@@ -46,7 +46,7 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
     		let totalM = totalNow; // 보유자금
     		let nowP = totalM - cash; // 총평가
     		let benefit = nowP - pre_buy; // 수익
-    		let percent = Math.round((nowP - pre_buy)*100)/100;//수익률
+    		let percent = Math.round((nowP / pre_buy)*10000)/100;//수익률
     		let money = {
     				pre_buy,cash,totalM,nowP,benefit,percent
     		}
@@ -58,6 +58,7 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
     			  return b.percent - a.percent;
     			});
     		charts(data)
+    		lis(data)
     	}
     	function input(money) {
     		console.log(money)
@@ -80,6 +81,7 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
 			  	for(let i = 0; i< data.length;i++){
 			  		if(data[i].coin_id != "KRW"){			  			
 			  		data[i].now = response.data[data[i].coin_id].closing_price * data[i].cnt;
+			  		data[i].upDown = Math.round(( data[i].now / data[i].price)*10000)/100
 			  		}else {
 				  		data[i].now = data[i].price;			  			
 			  		}
@@ -91,8 +93,16 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
 			return d
     	}
     	function lis(value) {
-    	
-    		
+    		document.querySelector(".tab").innerHTML = '<ul><li>코인명</li><li>보유수량</li><li>매수금액</li><li>평가금액</li><li>평가수익</li></ul>';
+    		for(let i = 0; i< value.length;i++){
+    			if(value[i].coin_id != "KRW"){
+		  		let dom = document.createElement('ul');
+		  		dom.classList.add('coin');
+		  		dom.innerHTML = "<li>"+value[i].coin_id+"</li><li>"+value[i].cnt+" "+value[i].coin_id+"</li><li>"+value[i].price +"KRW</li>"+
+		  		"<li>"+value[i].now+" KRW</li><li class=''>"+value[i].upDown+"%<br>"+(value[i].now- value[i].price)+"KRW</li>";
+		  		document.querySelector(".tab").append(dom);
+    			}
+		  	}
     	}
     	function charts(value) {
     		let list = new Array();
@@ -181,16 +191,17 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
             <div class="tab">
                 <ul>
                     <li>코인명</li>
-                    <li>보유비중</li>
-                    <li>보유수량(평가금액)</li>
-                    <li>보유수량(평가금액)</li>
+                    <li>보유수량</li>
+                    <li>매수금액</li>
+                    <li>평가금액</li>
+                    <li>평가수익</li>
                 </ul>
                 <ul class="coin">
-                    <li><input type="checkbox" id="a"><label for="a"><i class="bi bi-star-fill"></i></label></li>
-                    <li>콩트코인</li>
-                    <li>97.31%</li>
+                    <li>BTE</li>
                     <li>1,890,030,344 KRW</li>
-                    <li>입출금</li>
+                    <li>1,890,030,344 KRW</li>
+                    <li>1,890,030,344 KRW</li>
+                    <li>97.31%<br>s2342342</li>
                 </ul>
                 <ul class="coin">
                     <li><input type="checkbox" id="a"><label for="a"><i class="bi bi-star-fill"></i></label></li>
