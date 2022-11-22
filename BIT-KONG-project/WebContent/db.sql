@@ -99,6 +99,3 @@ create table coin_wallet (
     cnt float,
     CONSTRAINT COIN_LIST_PK PRIMARY KEY(m_id, coin_id)
 );
-select * from coin_wallet;
-drop table coin_wallet;
-insert into member_table values('admin','admin','01099990000',5563);

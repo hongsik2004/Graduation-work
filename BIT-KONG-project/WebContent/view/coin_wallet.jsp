@@ -22,14 +22,109 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
     			dataType:"json",
     			success :  res => {
     				datas = res.data;
-    				console.log(res);
-    				console.log(datas[0].price);
+    				draw(datas)
     			},error: log =>{alert("DB 오류 발생")}
     		}
-    	)
-    	function draw() {
+    	);
+    	async function  draw(data) {
+    		let d = {}
+    		let total = 0
+    		
+    		for(let i = 0; i < data.length; i++){
+    			d[data[i].coin_id] = {price:data[i].price,cnt:data[i].cnt}
+    			total += data[i].price;
+    		}
+    		data = await change(data);
+    		console.log(data);
+    		total -= d["KRW"].price
+    		let totalNow  = 0;
+    		for(let i = 0; i < data.length; i++){
+    			totalNow += data[i].now;
+    		}
+    		let pre_buy = total // 총매수
+    		let cash = d["KRW"].price; // 현금
+    		let totalM = totalNow; // 보유자금
+    		let nowP = totalM - cash; // 총평가
+    		let benefit = nowP - pre_buy; // 수익
+    		let percent = Math.round((nowP - pre_buy)*100)/100;//수익률
+    		let money = {
+    				pre_buy,cash,totalM,nowP,benefit,percent
+    		}
+    		for(let i = 0; i < data.length; i++){
+				data[i].percent = Math.round(data[i].now / totalM * 10000)/100
+    		}
+    		input(money);
+    		data.sort(function(a, b)  {
+    			  return b.percent - a.percent;
+    			});
+    		charts(data)
+    	}
+    	function input(money) {
+    		console.log(money)
+    		document.querySelector("#pre_buy").innerText = money.pre_buy;
+    		document.querySelector("#cash").innerText = money.cash;
+    		document.querySelector("#totalM").innerText = money.totalM;
+    		document.querySelector("#nowP").innerText = money.nowP;
+    		document.querySelector("#benefit").innerText = money.benefit;
+    		document.querySelector("#percent").innerText = money.percent;
+    	}
+    
+    	async function change(data) {
+    		let list = ["XRP","BTC","ETH","WEMIX","APM","MVC","XNO","JST","CON","SUN","SAND","SOL",
+                "ANKR","ANV","TITAN","ETC","CTC","ADA","DOGE"]
+			const options = {method: 'GET', headers: {accept: 'application/json'}};
+    		let d;
+    		await fetch('https://api.bithumb.com/public/ticker/ALL_KRW', options)
+  			.then(response => response.json())
+  			.then(response => {
+			  	for(let i = 0; i< data.length;i++){
+			  		if(data[i].coin_id != "KRW"){			  			
+			  		data[i].now = response.data[data[i].coin_id].closing_price * data[i].cnt;
+			  		}else {
+				  		data[i].now = data[i].price;			  			
+			  		}
+			  	}
+  				d = data
+  				}
+  			)
+  			.catch(err => console.error(err));
+			return d
+    	}
+    	function lis(value) {
     	
-    }
+    		
+    	}
+    	function charts(value) {
+    		let list = new Array();
+    		let col = new Array();
+    		let pre = new Array();
+    		let color = ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"];
+			document.querySelector("#putCh").innerHTML = "";    		
+    		for(let i = 0;i< value.length;i++){
+    			list.push(value[i].coin_id);
+    			col.push(color[i])
+    			pre.push(value[i].percent)
+    			let dom = document.createElement("li");
+    			dom.innerHTML = `<div class="co" style="background-color: `+color[i]+`;"></div>`+value[i].coin_id+`<span>`+value[i].percent+`%</span>`;
+    			document.querySelector("#putCh").append(dom);
+    		}
+    		console.log(pre)
+            new Chart(document.getElementById("pie-chart"), {
+                type: 'doughnut',
+                data: {
+                    labels: list,
+                    datasets: [{
+                        label: "",
+                        backgroundColor: col,
+                        data: pre
+                    }]
+                }, options: {
+                    legend: {
+                        display: false
+                    }
+                }
+            });
+    	}
 	</script>
     <div class="con">
         <div class="assets">
@@ -38,12 +133,12 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
                 <ul>
                     <li>
                         <h4>보유KRW</h4>
-                        <span>${datas[0].price}</span> 
+                        <span id="cash">${datas[0].price}</span> 
                     </li>
                     <li class="bar"></li>
                     <li>
                         <h4>총 보유자산</h4>
-                        <span>1,622,787,086</span>
+                        <span id="totalM">1,622,787,086</span>
                     </li>
                 </ul>
             </div>
@@ -53,13 +148,13 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
                         <p>총매수</p>
                     </li>
                     <li>
-                        <p>424,710,719</p>
+                        <p id="pre_buy">424,710,719</p>
                     </li>
                     <li>
                         <p>평가순익</p>
                     </li>
                     <li>
-                        <p><span>35,029,790</span></p>
+                        <p><span id="benefit">35,029,790</span></p>
                     </li>
                 </ul>
                 <ul>
@@ -67,13 +162,13 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
                         <p>총평가</p>
                     </li>
                     <li>
-                        <p>459,740,508</p>
+                        <p id="nowP">459,740,508</p>
                     </li>
                     <li>
                         <p>수익률</p>
                     </li>
                     <li>
-                        <p><span>8.25%</span></p>
+                        <p><span id="percent">8.25%</span></p>
                     </li>
                 </ul>
             </div>
@@ -88,6 +183,7 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
                     <li>코인명</li>
                     <li>보유비중</li>
                     <li>보유수량(평가금액)</li>
+                    <li>보유수량(평가금액)</li>
                 </ul>
                 <ul class="coin">
                     <li><input type="checkbox" id="a"><label for="a"><i class="bi bi-star-fill"></i></label></li>
@@ -101,7 +197,7 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
                     <li>콩트코인</li>
                     <li>97.31%</li>
                     <li>1,890,030,344 KRW</li>
-                    <li>입출금</li>
+                    <li>1,890,030,344 KRW</li>
                 </ul>
             </div>
         </div>
@@ -110,7 +206,7 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
             <div style="position: relative; height:200px; width:320px;">
                 <canvas id="pie-chart" width="400" height="400"></canvas>
             </div>
-            <ul>
+            <ul id='putCh'>
                 <li><div class="co" style="background-color: #3e95cd;"></div>KRW<span>71.7%</span></li>
                 <li><div class="co" style="background-color: #8e5ea2;"></div>DOGE <span>20.5%</span></li>
                 <li><div class="co" style="background-color: #3cba9f;"></div>EMC2 <span>3.9%</span></li>
@@ -118,21 +214,7 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
                 <li><div class="co" style="background-color: #c45850;"></div>IOST <span>1.9%</span></li>
             </ul>
             <script>
-                new Chart(document.getElementById("pie-chart"), {
-                    type: 'doughnut',
-                    data: {
-                        labels: ["KRW", "DOGE", "EMC2", "BCH", "IOST"],
-                        datasets: [{
-                            label: "",
-                            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                            data: [71.7,20.5,3.9,2,1.9]
-                        }]
-                    }, options: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                });
+
             </script>
         </div>
     </div>
