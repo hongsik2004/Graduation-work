@@ -41,7 +41,7 @@
 .main-left{
     width: 60%;
     height: 100%;
-    background-image: url(/resoures/image/bithong.png);
+    background-image: url(../image/bithong.png);
     background-size: cover;
 }
 .main-right{
