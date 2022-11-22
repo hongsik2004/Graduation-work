@@ -99,3 +99,5 @@ create table coin_wallet (
     CONSTRAINT COIN_LIST_PK PRIMARY KEY(m_id, coin_id)
 );
 drop table coin_wallet;
+
+update coin_wallet set(price=20000000,cnt=4) where m_id = 'admin' and coin_id = 'BTC'

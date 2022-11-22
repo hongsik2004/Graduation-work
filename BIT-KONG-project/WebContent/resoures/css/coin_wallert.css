@@ -192,16 +192,16 @@
 }
 .tab .coin > li:nth-child(3) {
     margin-right: 30px;
-    width: 150px;
+    width: 100px;
 }
 
 .tab .coin > li:nth-child(4) {
     margin-right: 40px;
-    width: 250px;
+    width: 200px;
 }
 .tab .coin > li:nth-child(5) {
     margin-right: 4px;
-    width: 100px;
+    width: 200px;
 }
 
 .graph {
