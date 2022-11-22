@@ -24,13 +24,14 @@ let se;
     for (let i = 29; i >= 0; i--) {
       let dom = document.createElement("tr");
       dom.className = "down"
+      console.log(data.asks[i])
       dom.innerHTML= `<td class="bar">
 		        		<div class="ty01">${data.asks[i].quantity}</div>
 		        		</td>
 		        		<td class="downe">
 		        		<a href="#">
 		        		<div class="ty03">${data.asks[i].price}</div>
-		        		<div class="ty02">-0.43%</div>
+		        		<div class="ty02">%</div>
 		        		</a>
 		        		</td>`;
       div.append(dom);
