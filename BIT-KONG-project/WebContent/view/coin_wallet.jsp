@@ -46,14 +46,18 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
     		let totalM = totalNow; // 보유자금
     		let nowP = totalM - cash; // 총평가
     		let benefit = nowP - pre_buy; // 수익
-    		let percent = Math.round((nowP / pre_buy)*10000)/100;//수익률
+            let percent = 0;//수익률
+            if(nowP != 0){
+                percent = Math.round((nowP / pre_buy)*10000)/100;//수익률
+            }
+
     		let money = {
     				pre_buy,cash,totalM,nowP,benefit,percent
     		}
     		for(let i = 0; i < data.length; i++){
 				data[i].percent = Math.round(data[i].now / totalM * 10000)/100
     		}
-    		input(money);
+    		input(money);	
     		data.sort(function(a, b)  {
     			  return b.percent - a.percent;
     			});

@@ -61,12 +61,12 @@ location.href = "/user/login";
 			setTimeout(() => {
 			document.querySelector('.con').style.opacity = 1;
 			document.querySelector('#pop').style.display = 'none';
-			}, 1000);
+			}, 1500);
 		</script>
         <footer>
             <a href="/user/logout">로그아웃</a>
             <h4>COPYRIGHT&copy;콩콩식식 <br>ALL RIGHTS RESERVED</h4>
         </footer>
     </header>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <% } %>
