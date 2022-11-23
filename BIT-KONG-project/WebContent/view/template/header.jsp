@@ -56,10 +56,17 @@ location.href = "/user/login";
                 <li><a href="/notice">고객센터</a></li>
             </ul>
         </nav>
-
+        <div id='pop'><div class="loader">Loading...</div></div>
+		<script type="text/javascript">
+			setTimeout(() => {
+			document.querySelector('.con').style.opacity = 1;
+			document.querySelector('#pop').style.display = 'none';
+			}, 1000);
+		</script>
         <footer>
             <a href="/user/logout">로그아웃</a>
             <h4>COPYRIGHT&copy;콩콩식식 <br>ALL RIGHTS RESERVED</h4>
         </footer>
     </header>
+    
 <% } %>
