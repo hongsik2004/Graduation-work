@@ -1,8 +1,11 @@
+<%@page import="vo.NoticeVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="vo.RegisterVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/header.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/notice_write.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/openapicenter.css">
 <jsp:include page="/view/template/header.jsp"></jsp:include>
     <div class="con">
         <div class="box1">
@@ -27,39 +30,18 @@
             </nav>
         </div>
         <div class="box2">
-                <form class="table-b" action="/notice/write_rs" method="post" name="frm" onsubmit="return checks();">
-                    <table>
-            			<tbody>
-                		<tr>
-                			<td><input type="text" class="n-title" placeholder="제목을 입력해주세요." name="n_title" maxlength="16"></td>
-                		</tr>
-                		<tr>
-                   			<td class="td2"><textarea class="n-write" placeholder="내용을 입력해주세요." name="n_context" maxlength="2048"></textarea></td>
-                		</tr>
-                		</tbody>
-            		</table>
-       			<div class="input-div">
-	                <input type="submit" class="btn-write" value="글쓰기">
-       			</div>
-        	    </form>
+            <div class="info">
+            	<h3>Open API 안내</h3>
+            	<p>
+            		비트콩식 API는 눈으로만 봐주세요.
+            	</p>
+            	<div class="img">
+            		
+            	</div>
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-	function checks() {
-		if(!document.frm.n_title.value.trim()){
-			alert("제목이 입력되지 않았습니다!");
-			document.frm.n_title.focus();
-			return false;
-		}
-		if(!document.frm.n_context.value.trim()){
-			alert("내용이 입력되지 않았습니다!");
-			document.frm.n_context.focus();
-			return false;
-		}
-		return true;
-		}	
-    </script>
     <script src="<%=request.getContextPath() %>/resoures/javascript/coin_noticce.js"></script>
 </body>
 </html>
