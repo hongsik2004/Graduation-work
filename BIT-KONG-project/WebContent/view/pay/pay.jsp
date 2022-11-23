@@ -73,7 +73,6 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-    <script src="<%=request.getContextPath() %>/resoures/javascript/coin_pay.js"></script>
     <script>
     	$(".price-point").click(function(){
     		$(".price-point").removeClass("action");
@@ -127,14 +126,8 @@
     	    for (let i = 0; i < price_list.length; i++) {
     	        let div = document.createElement("li");
     	        div.innerHTML = 
-    	        `<div class="price-point">
-    	                <div class="pay-money">
-    	                    <span class="moneys">${price_list[i].price}</span><span class="name">${price_list[i].unit}</span>
-    	                </div>
-    	                <div class="price">
-    	                    <span>${price_list[i].pay}원</span>
-    	                </div>
-    	            </div>`;
+    	        '<div class="price-point"><div class="pay-money"><span class="moneys">'+price_list[i].price+'</span><span class="name">'+price_list[i].unit+'</span>'+
+							'</div><div class="price"> <span>'+price_list[i].pay+'원</span></div></div>';
     	        div.addEventListener("click",()=> change(price_list[i]));
     	        dom.appendChild(div);
     	    }
@@ -151,11 +144,10 @@
     	    let year = today.getFullYear(); // 년도
     	    let month = today.getMonth() + 1;  // 월
     	    let date = today.getDate();  // 날짜
-    	    document.querySelector(".payment").innerHTML = 
-    	    `<span>결제 금액 : ${item.pay}원</span>
-    	    <span>충전 금액 : ${item.price}${item.unit}</span>
-    	    <span>결제일 : ${year}-${month}-${date}</span>
-    	    <span>고맙습니다 사랑합니다.</span>`;
+    	    document.querySelector(".payment").innerHTML = '<span>결제 금액 : '+item.pay+'원</span>'+
+    	    '<span>충전 금액 : '+item.price+''+item.unit+'</span>'+
+    	    '<span>결제일 : '+year+'-'+month+'-'+date+'</span>'+
+    	    '<span>고맙습니다 사랑합니다.</span>';
     	}
     	document.querySelector(".dongeham").addEventListener("click",(e)=> {
     	    {
@@ -208,19 +200,18 @@
     	}
 
     	function callAPI() {
-    	    $.ajax(
-    	        {
-    	            type:"POST",
-    	            url:"/ajax/purchase",
-    	            data: ob,
-    	            dataType:"json",
-    	            success :  res => {
-    	                console.log("결제 완료.");
-    	                alert("결제가 완료되었습니다.");
-    	                location.href = "/index";
-    	            },error: log =>{console.log("실패"+log)}
-    	        }      
-    	    )
+			$.ajax(
+        {
+            type:"POST",
+            url:"http://34.64.56.248:3000/coin-wallet/<%= userVO.getM_id() %>",
+            dataType:"json",
+			data : {'coin_id':'KRW','price': ob.pay*100000,'cnt':0},
+            success :  res => {
+				alert("충전완료");
+				location.href='/index'
+            },error: log =>{console.log(log)}
+        }
+    	);
     	}
     </script>
 </body>
