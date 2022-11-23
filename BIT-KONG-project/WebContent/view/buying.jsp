@@ -384,6 +384,19 @@ function checkBuySell() {
     	);
 	}
 }
+
+// $.ajax(
+//         {
+//             type:"POST",
+//             url:"http://34.64.56.248:3000/coin-wallet/<%= userVO.getM_id() %>",
+//             dataType:"json",
+// 			data : {'coin_id':nowCoin,'price': ehs,'cnt':tnfid},
+//             success :  res => {
+// 				alert("거래 등록");
+// 				location.reload();
+//             },error: log =>{alert("DB 오류 발생")}
+//         }
+//     	);
 	</script> 
 </body>
 </html>
