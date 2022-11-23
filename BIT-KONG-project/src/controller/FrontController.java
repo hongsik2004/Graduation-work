@@ -26,6 +26,7 @@ import controller.notice.NoticeContextController;
 import controller.notice.NoticeController;
 import controller.notice.NoticeWriteController;
 import controller.notice.NoticeWriteRsController;
+import controller.notice.OpenapicenterController;
 import controller.user.UserFindLoginController;
 import controller.user.UserFindLoginRsController;
 import controller.user.UserFindPwdController;
@@ -38,7 +39,7 @@ import controller.user.UserRegisterRsController;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns={"/index","/coin/*","/user/*","/board","/board/*","/notice","/notice/*","/ajax/*"})
+@WebServlet(urlPatterns={"/index","/coin/*","/user/*","/board","/board/*","/notice","/notice/*","/openapi_guide","/ajax/*"})
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -79,6 +80,8 @@ public class FrontController extends HttpServlet {
 		controllerMap.put("/notice/write_rs", new NoticeWriteRsController());
 		controllerMap.put("/notice/context", new NoticeContextController());
 		
+		//notice-openapi
+		controllerMap.put("/openapi_guide", new OpenapicenterController());
 		//ajax
 		controllerMap.put("/ajax/checkId", new CheckIdController());
 		controllerMap.put("/ajax/sendMail",new SendMailController());

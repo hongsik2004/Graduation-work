@@ -12,7 +12,7 @@
         <div class="box1">
         	<div class="service">
         		<div class="money">
-	        		<h2 class="title">가상화폐 충전</h2>
+	        		<h2 class="title">가상화폐 충전하기</h2>
 	        		<img src="<%=request.getContextPath() %>/resoures/image/충전2.png">
         		</div>
         		<ul>
@@ -48,7 +48,7 @@
         		</dd>
         	</div>
 	        <div class="payment">
-                아직 선택 되지 않았습니다.
+               	원하시는 금액을 클릭해주세요.
         	</div>
         	<div class="donge">
         		<dl class="dls">
@@ -73,7 +73,13 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-
     <script src="<%=request.getContextPath() %>/resoures/javascript/coin_pay.js"></script>
+    <script>
+    	$(".price-point").click(function(){
+    		$(".price-point").removeClass("action");
+    		$(".payment").addClass("action");
+    		$(this).addClass("action");
+    	});
+    </script>
 </body>
 </html>

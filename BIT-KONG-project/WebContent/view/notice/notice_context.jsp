@@ -16,13 +16,13 @@
             </div>
             <nav class="service-submenu">
                 <ul>
-                    <li><a href="#" class="on">공지사항</a></li>
+                    <li><a href="/notice" class="on">공지사항</a></li>
                     <li><a href="#">업비트소식</a></li>
                     <li><a href="#">프로젝트 공시</a></li>
                     <li><a href="#">거래 이용 안내</a></li>
                     <li><a href="#">입출금 이용 안내</a></li>
                     <li><a href="#">입출금 현황</a></li>
-                    <li><a href="#">Open API 안내</a></li>
+                    <li><a href="/openapi_guide">Open API 안내</a></li>
                     <li><a href="#">정책 및 거래지원 문의</a></li>
                     <li><a href="#">1:1 문의하기</a></li>
                     <li><a href="#">문의내역</a></li>

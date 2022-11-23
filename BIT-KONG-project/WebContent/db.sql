@@ -91,11 +91,23 @@ create table charging_history (
 drop table charging_history;
 CREATE SEQUENCE idx_seq START WITH 1 INCREMENT BY 1 NOCACHE;
 select * from charging_board where m_id ='stop1231';
-
+-- 보유 코인 테이블
 create table coin_wallet (
     m_id varchar2(30),
     coin_id  varchar2(5),
     price float,
     cnt float,
     CONSTRAINT COIN_LIST_PK PRIMARY KEY(m_id, coin_id)
+);
+-- 코인 내역 테이블
+create table execution_history(
+   idx int primary key,
+   m_id varchar2(20),
+   coin_id varchar2(20),
+   price float,
+   cnt float,
+   isbuy varchar2(12),
+   isdone varchar2(12),
+   uptime DATE,
+   donetime DATE   
 );
