@@ -238,7 +238,6 @@
 			success :  res => {
 				console.log("성공"+res);
 				email_auth_cd = num;
-				console.log(email_auth_cd);
 				},
 			error: log =>{console.log("실패"+log)}
 		})

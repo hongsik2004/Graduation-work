@@ -53,7 +53,7 @@
         	<div class="donge">
         		<dl class="dls">
         			<dt>
-        				<span>가상 돈 정책 동의 및 결제 전주의 사항</span>
+        				<span>가상 돈 정책 동의 및 결제 전 주의 사항</span>
         			</dt>
         		</dl>
         		<dd class="dds">
