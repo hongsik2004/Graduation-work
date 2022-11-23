@@ -207,7 +207,7 @@
 		let content = "";
 		sendEmail(email,num,subject,content);
 		document.frm.emailconfirm.type="text";
-		document.frm.emailsok.type="button";
+		document.frm.emailok.type="button";
 	}
 	function comfirmEmail() {
 		let nums = document.frm.emailconfirm.value;
