@@ -368,22 +368,21 @@ function checkBuySell() {
 			data : {'coin_id':nowCoin,'price': ehs,'cnt':tnfid,'isbuy':1},
             success :  res => {
 				alert("거래 등록");
-				location.reload();
-            },error: log =>{alert("DB 오류 발생")}
-        }
-    	);
-$.ajax(
+				$.ajax(
         {
             type:"PUT",
             url:"http://34.64.56.248:3000/coin-wallet/<%= userVO.getM_id() %>",
             dataType:"json",
 			data : {'coin_id':"KRW",'price': ehs,'cnt':0},
             success :  res => {
-				alert("거래 등록");
 				location.reload();
             },error: log =>{alert("DB 오류 발생")}
         }
     	);
+            },error: log =>{alert("DB 오류 발생")}
+        }
+    	);
+
 	}else {
 		if(!nowCoin in d ||d[nowCoin].cnt < tnfid){
 			alert("수량 부족");
@@ -397,22 +396,21 @@ $.ajax(
 			data : {'coin_id':nowCoin,'price': ehs,'cnt':tnfid,'isbuy':0},
             success :  res => {
 				alert("거래 등록");
-				location.reload();
-            },error: log =>{console.log(log)}
-        }
-    	);
-		$.ajax(
+				$.ajax(
         {
             type:"PUT",
             url:"http://34.64.56.248:3000/coin-wallet/<%= userVO.getM_id() %>",
             dataType:"json",
 			data : {'coin_id':nowCoin,'price': ehs,'cnt':tnfid},
             success :  res => {
-				alert("거래 등록");
 				location.reload();
             },error: log =>{alert("DB 오류 발생")}
         }
     	);
+            },error: log =>{console.log(log)}
+        }
+    	);
+		
 	}
 }
 
