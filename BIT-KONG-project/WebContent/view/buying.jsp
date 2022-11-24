@@ -174,7 +174,7 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
         <div class="box4">
         <div class="title"><h2 class="buy"><a href="#">매수</a></h2><h2 class="sell"><a href="#">매도</a></h2></div>
         <div class="order">
-        	<div class="price"><strong>주문 가능</strong><strong>0</strong></div>
+        	<div class="price"><p>주문 가능</p><strong>0</strong></div>
         	<div class="pricenum">
         	<strong>매수 / 매도 가격</strong>
         	<div class="inputd">

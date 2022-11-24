@@ -1,3 +1,4 @@
+<%@page import="vo.PaginationVO"%>
 <%@page import="java.text.*"%>
 <%@page import="vo.RegisterVO"%>
 <%@page import="dao.ReceiptDAO"%>
@@ -15,6 +16,7 @@
     	RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
     	ArrayList<ReceiptVO> list = dao.getReceiptlist(userVO.getM_id());
     	DecimalFormat df = new DecimalFormat("###,###");
+    	PaginationVO pVO = (PaginationVO)session.getAttribute("pVO");
     %>
     <div class="con">
         <div class="box1">
@@ -43,10 +45,10 @@
         			String Isbuy = "";
         			switch(vo.getIsbuy()){
         				case "0":
-        					Isbuy = "매수";
+        					Isbuy = "매도";
         					break;
         				case "1":
-        					Isbuy = "매도";
+        					Isbuy = "매수";
         			}
         			String Isdone = "";
         			switch(vo.getIsdone()){
@@ -71,12 +73,15 @@
             </table>
             <div class="paglist">
                 <ul class="pagination">
-                    <li class="page-item"><a href="#">&lt;</a></li>
-                    <li class="page-item"><a href="#" class="num action">1</a></li>
-                    <li class="page-item"><a href="#" class="num">2</a></li>
-                    <li class="page-item"><a href="#" class="num">3</a></li>
-                    <li class="page-item"><a href="#" class="num">4</a></li>
-                    <li class="page-item"><a href="#">&gt;</a></li>
+                <% if(pVO.isIsPrePage()) {%>
+                    <li class="page-item"><a href="<%= request.getContextPath()%>/coin/coin_receipt?idex=<%= pVO.getStart()-1 %>">&lt;</a></li>
+                <%} %>
+                <% for(int i = pVO.getStart(); i<= pVO.getEnd();i++ ){ %>
+                    <li class="page-item"><a href="<%= request.getContextPath()%>/coin/coin_receipt?idex=<%= i %>" class="num <%= i == pVO.getCurrentPage() ? "action" : "" %>"><%=i %></a></li>
+                <%} %>
+                <% if(pVO.isIsNextPage()) {%>
+                    <li class="page-item"><a href="<%= request.getContextPath()%>/coin/coin_receipt?idex=<%= pVO.getEnd()+1 %>">&gt;</a></li>
+                <%} %>
                 </ul>
             </div>
         </div>

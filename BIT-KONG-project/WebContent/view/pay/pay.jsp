@@ -75,12 +75,7 @@
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <script src="<%=request.getContextPath()%>/resoures/javascript/coin_pay.js"></script>
     <script>
-    	$(".price-point").click(function(){
-    	$(".price-point").removeClass("action");
-    	$(this).addClass("action");
-    	$(".payment").addClass("action");
-    	});
-    	<%-- let price_list = [
+    	let price_list = [
     	    {
     	        price:5000,
     	        unit:"만",
@@ -213,7 +208,12 @@
             },error: log =>{console.log(log)}
         }
     	);
-    	} --%>
+    	}
+    	$(".price-point").click(function(){
+        	$(".price-point").removeClass("action");
+        	$(this).addClass("action");
+        	$(".payment").addClass("action");
+        	});
     </script>
 </body>
 </html>

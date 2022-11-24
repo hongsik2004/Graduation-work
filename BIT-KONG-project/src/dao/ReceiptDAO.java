@@ -13,7 +13,7 @@ public class ReceiptDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	final String SELECTRECEIPT = "select idx,m_id,coin_id,price,cnt,isbuy,isdone,uptime,TO_CHAR(donetime, 'YYYY-MM-DD') as donetime from execution_history where m_id = ? order by idx";
+	final String SELECTRECEIPT = "select idx,m_id,coin_id,price,cnt,isbuy,isdone,uptime,TO_CHAR(donetime, 'YYYY-MM-DD') as donetime from execution_history where m_id = ? order by idx desc";
 	
 	public ArrayList<ReceiptVO> getReceiptlist(String id){
 		ArrayList<ReceiptVO> list = new ArrayList<>();
