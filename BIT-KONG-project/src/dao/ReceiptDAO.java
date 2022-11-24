@@ -13,14 +13,33 @@ public class ReceiptDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	final String SELECTRECEIPT = "select idx,m_id,coin_id,price,cnt,isbuy,isdone,uptime,TO_CHAR(donetime, 'YYYY-MM-DD') as donetime from execution_history where m_id = ? order by idx desc";
+	final String SELECTCNT = "select count(*) as cnt from execution_history WHERE m_id = ?";
+	final String SELECTRECEIPT = "select * from(select ROW_NUMBER() over(ORDER BY idx desc) num,idx,m_id,coin_id,price,cnt,isbuy,isdone,uptime,TO_CHAR(donetime, 'YYYY-MM-DD') as donetime from execution_history where m_id = ?)where num between ? and ?";
 	
-	public ArrayList<ReceiptVO> getReceiptlist(String id){
+	public int getCnt(String m_id) {
+		try {
+			con = JdbcUtil.getConnection();
+			pstmt = con.prepareStatement(SELECTCNT);
+			pstmt.setString(1, m_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public ArrayList<ReceiptVO> getReceiptlist(String id,int start,int end){
 		ArrayList<ReceiptVO> list = new ArrayList<>();
 		try {
 			con = JdbcUtil.getConnection();
 			pstmt = con.prepareStatement(SELECTRECEIPT);
 			pstmt.setString(1, id);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

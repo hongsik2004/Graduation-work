@@ -46,7 +46,9 @@ desc coin_board;
 select * from member_table;
 delete from member_table where m_id = 'test2@naver.com';
 select * from coin_board
-select * from(select ROW_NUMBER() over(ORDER BY b_id desc) num,b_id ,b_title from coin_board)where num between 1 and 2;
+select * from(select ROW_NUMBER() over(ORDER BY idx desc) num,idx,m_id,coin_id,price,cnt,isbuy,isdone,uptime,TO_CHAR(donetime, 'YYYY-MM-DD') as donetime from execution_history where m_id = ?)where num between ? and ?;
+select b_id,b_title,b_name,b_context,m_id,b_view,b_date from(select ROW_NUMBER() over(ORDER BY b_id desc) num,b_id,b_title,b_name,b_context,m_id,b_view, TO_CHAR(b_date,'YYYY-MM-DD') as b_date from coin_board where c_tag = ?) where num between 1 and 5;
+select idx,m_id,coin_id,price,cnt,isbuy,isdone,uptime,donetime from(select ROW_NUMBER() over(ORDER BY idx desc) num,idx,m_id,coin_id,price,cnt,isbuy,isdone,uptime,TO_CHAR(donetime, 'YYYY-MM-DD') as donetime from execution_history where m_id = ?) where num between 1 and 2;
 select DISTINCT c_tag from coin_board order by c_tag asc;
 update coin_board set b_title = '반갑다', b_name = '갓냥이',m_id='admin',b_context='워로드다.' where b_id = '2';
 --전체 페이지 수 =(전체 게시물 수 / 한 페이지의 출력할 수 ) + 1 (나머지가 있을 경우)
@@ -111,4 +113,6 @@ create table execution_history(
    uptime DATE,
    donetime DATE   
 );
+select count(*) as cnt from execution_history WHERE m_id = ?;
 select * from execution_history;
+select idx,m_id,coin_id,price,cnt,isbuy,isdone,uptime,TO_CHAR(donetime, 'YYYY-MM-DD') as donetime from execution_history where m_id = ? order by idx;
