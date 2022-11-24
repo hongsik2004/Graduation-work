@@ -15,7 +15,6 @@
 <%
 	String m_id = request.getParameter("m_id");
 	MemberDAO dao = new MemberDAO();
-	// 위에서 작성한 java파일 객체 생성
 %>
     <div class="main">
         <div class="main-menu">
@@ -236,7 +235,7 @@
 			data : {"email":email,"subject": subject,"num": num,"content":content},
 			dataType:"json",
 			success :  res => {
-				console.log("성공"+res);
+				console.log(res);
 				email_auth_cd = num;
 				},
 			error: log =>{console.log("실패"+log)}
