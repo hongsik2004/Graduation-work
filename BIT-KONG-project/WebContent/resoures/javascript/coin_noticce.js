@@ -7,4 +7,3 @@ $('.pagination .num').click(function(){
         $('.pagination .num').removeClass("action");
         $(this).addClass("action");
     });
-    

@@ -1,9 +1,21 @@
+<%@page import="java.text.*"%>
+<%@page import="vo.RegisterVO"%>
+<%@page import="dao.ReceiptDAO"%>
+<%@page import="vo.ReceiptVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../view/template/header.jsp"></jsp:include>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/font.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/header.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resoures/css/coin_receipt.css">
+    
+    <%
+    	ReceiptDAO dao = new ReceiptDAO();
+    	RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
+    	ArrayList<ReceiptVO> list = dao.getReceiptlist(userVO.getM_id());
+    	DecimalFormat df = new DecimalFormat("###,###");
+    %>
     <div class="con">
         <div class="box1">
             <h2>거래내역</h2>
@@ -20,91 +32,42 @@
                 <tr>
                     <th>No.</th>
                     <th>날짜</th>
-                    <th>시간</th>
                     <th>코인</th>
-                    <th>타입</th>
                     <th>수량</th>
                     <th>단가</th>
-                    <th>수익금</th>
-                    <th>수익률</th>
-                </tr>
+                    <th>매도/매수</th>
+                    <th>체결/미체결</th>
+                    <th>거래완료</th>
+                </tr>    <!-- isbuy 0 매도 1 매수 isdone 0 체결 1 미체결 -->
+        		<%for(ReceiptVO vo : list){
+        			String Isbuy = "";
+        			switch(vo.getIsbuy()){
+        				case "0":
+        					Isbuy = "매수";
+        					break;
+        				case "1":
+        					Isbuy = "매도";
+        			}
+        			String Isdone = "";
+        			switch(vo.getIsdone()){
+        				case "0":
+        					Isdone = "미체결";
+        					break;
+        				case "1":
+        					Isdone = "체결";
+        			}
+        		%>
                 <tr>
-                    <th>1</th>
-                    <th>2022-05-22</th>
-                    <th>22:16:32</th>
-                    <th>콩트코인/KRW</th>
-                    <th>매도</th>
-                    <th>1KRW</th>
-                    <th>280,000원</th>
-                    <th>?원</th>
-                    <th>?%</th>
+                    <th><%=vo.getIdx() %></th>
+                    <th><%=vo.getDonetime() %></th>
+                    <th><%=vo.getCoin_id() %></th>
+                    <th><%=vo.getCnt()%></th>
+                    <th><%=df.format(vo.getPrice())%></th>
+                    <th><%=Isbuy %></th>
+                    <th><%=Isdone %></th>
+                    <th><%if(vo.getIsdone().equals("0")){%><a href="http://34.64.56.248:3000/execution-history/<%= vo.getIdx() %>">취소</a><%}else{ %>완료<%} %></th>
                 </tr>
-                <tr>
-                    <th>2</th>
-                    <th>2022-05-22</th>
-                    <th>22:16:32</th>
-                    <th>콩트코인/KRW</th>
-                    <th>매도</th>
-                    <th>1KRW</th>
-                    <th>280,000원</th>
-                    <th>?원</th>
-                    <th>?%</th>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <th>2022-05-22</th>
-                    <th>22:16:32</th>
-                    <th>콩트코인/KRW</th>
-                    <th>매도</th>
-                    <th>1KRW</th>
-                    <th>280,000원</th>
-                    <th>?원</th>
-                    <th>?%</th>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <th>2022-05-22</th>
-                    <th>22:16:32</th>
-                    <th>콩트코인/KRW</th>
-                    <th>매도</th>
-                    <th>1KRW</th>
-                    <th>280,000원</th>
-                    <th>?원</th>
-                    <th>?%</th>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <th>2022-05-22</th>
-                    <th>22:16:32</th>
-                    <th>콩트코인/KRW</th>
-                    <th>매도</th>
-                    <th>1KRW</th>
-                    <th>280,000원</th>
-                    <th>?원</th>
-                    <th>?%</th>
-                </tr>
-                <tr>
-                    <th>6</th>
-                    <th>2022-05-22</th>
-                    <th>22:16:32</th>
-                    <th>콩트코인/KRW</th>
-                    <th>매도</th>
-                    <th>1KRW</th>
-                    <th>280,000원</th>
-                    <th>?원</th>
-                    <th>?%</th>
-                </tr>
-                <tr>
-                    <th>7</th>
-                    <th>2022-05-22</th>
-                    <th>22:16:32</th>
-                    <th>콩트코인/KRW</th>
-                    <th>매도</th>
-                    <th>1KRW</th>
-                    <th>280,000원</th>
-                    <th>?원</th>
-                    <th>?%</th>
-                </tr>
+                <%} %>
             </table>
             <div class="paglist">
                 <ul class="pagination">

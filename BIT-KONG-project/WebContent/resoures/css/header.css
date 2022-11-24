@@ -7,6 +7,8 @@
 }
 body { 
     background-color: #ddd;
+    font:15px Roboto,Noto Sans KR,sans-serif,AppleSDGothicNeo-Regular,Malgun Gothic,Dotum;
+    color: #333;
 }
 header {
     width: 300px;
@@ -18,8 +20,18 @@ header {
     align-items: center;
     padding-top: 60px;
 }
-.logo > img {
-    width: 200px;
+.logo{
+	width: 200px;
+	height: 100px;
+}
+.logo a{
+	display:block;
+	width: 100%;
+	height: 100%;
+}
+.logo > a > img {
+    width: 100%;
+    height: 100%;
 }
 header > .name-tag {
     padding-top: 20px;

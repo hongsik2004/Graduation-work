@@ -111,3 +111,4 @@ create table execution_history(
    uptime DATE,
    donetime DATE   
 );
+select * from execution_history;

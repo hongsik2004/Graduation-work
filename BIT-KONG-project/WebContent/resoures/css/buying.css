@@ -187,11 +187,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 8px;
 }
 .box4 > .order > .price > strong{
+	margin-left: 7px;
+	color: #666;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Light";
+}
+.box4 > .order > .price > strong:nth-child(2){
 	font-size: 30px;
-	margin-right: 10px;
+    margin-right: 10px;
+    color: black;
+    font-family: "Bold";
 }
 
 .box4 > .order > .pricenum{
@@ -203,6 +211,10 @@
 }
 .box4 > .order > .pricenum > strong{
 	margin-left: 7px;
+	color: #666;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Light";
 }
 .box4 > .order > .pricenum > .inputd{
 	width: 60%;
@@ -212,13 +224,15 @@
 .box4 > .order > .pricenum > .inputd > input{
 	height: 100%;
 	text-align: right;
+	font-size: 16px;
+	font-family: "Bold";
+	width: 190px;
 }
 .box4 > .order > .pricenum > .inputd > a{
 	height: 50px;
-    width: 50px;
+    width: 40px;
     border: 1px solid #bebebe;
     display: inline-block;
-    line-height: 40px;
     text-align: center;
     font-size: 30px;
     background-color: #eeeeee;
@@ -232,6 +246,10 @@
 }
 .box4 > .order > .pricesize > strong{
 	margin-left: 7px;
+	color: #666;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Light";
 }
 .box4 > .order >.pricesize > .inputd{
 	display: flex;
@@ -271,6 +289,10 @@
 }
 .pricetotal > strong{
 	margin-left: 7px;
+	color: #666;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Light";
 }
 .pricetotal > .inputd{
 	width: 60%;
@@ -295,9 +317,8 @@
     height: 44px;
     line-height: 44px;
     color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    font-family: Roboto,Noto Sans KR,Dotum,\b3cb\c6c0,"sans-serif",Arial,Helvetica;
+    font-size: 17px;
+    font-family:"Bold";
     text-align: center;
 }
 
@@ -306,4 +327,7 @@
 }
 .price-down {
     color: #4386f9;
+}
+.ty01{
+	
 }
