@@ -57,6 +57,9 @@
         					break;
         				case "1":
         					Isdone = "체결";
+        					break;
+        				case "2":
+        					Isdone = "거래취소";
         			}
         		%>
                 <tr>
@@ -67,7 +70,7 @@
                     <th><%=df.format(vo.getPrice())%></th>
                     <th><%=Isbuy %></th>
                     <th><%=Isdone %></th>
-                    <th><%if(vo.getIsdone().equals("0")){%><a href="http://34.64.56.248:3000/execution-history/<%= vo.getIdx() %>">취소</a><%}else{ %>완료<%} %></th>
+                    <th><%if(vo.getIsdone().equals("0")){%><a href="#" onclick="chekk(<%= vo.getIdx() %>);">취소</a><%}else{ %>완료<%} %></th>
                 </tr>
                 <%} %>
             </table>
@@ -87,6 +90,22 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    	function chekk(idx) {
+    	$.ajax(
+        {
+            type:"PUT",
+            url:"http://34.64.56.248:3000/execution-history/"+idx,
+            dataType:"json",
+            success :  res => {
+				alert("취소되었습니다.");
+				location.reload();
+            },error: log =>{alert("DB 오류 발생")}
+        }
+    	);
+    	}
+    </script>
+    
     <script src="<%=request.getContextPath() %>/resoures/javascript/coin_receipt.js"></script>
 </body>
 </html>
