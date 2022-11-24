@@ -247,7 +247,6 @@ function list_set() {
 function draw(data) {
     let list = ["XRP","BTC","ETH","WEMIX","APM","MVC","XNO","JST","CON","SUN","SAND","SOL","ANKR","ANV","TITAN","ETC","CTC","ADA","DOGE"]
     let table = document.querySelector(".scrolld>table");
-    console.log(data["BTC"])
     table.innerHTML = "";
         let i = 0
     for (let key in list) {
@@ -264,8 +263,8 @@ function draw(data) {
         }else if(changeM == 0){
             cl = ""
         }
-        tr.innerHTML = '<td class="name">'+key+'</td><td class="price">'+data[key].closing_price+'</td><td class="cent price-'+cl+'">'+
-        Math.floor(changeM / data[key].closing_price * 100*100)/100+'%<br>'+changeM+'</td><td class="deal">'+Math.floor(data[key].acc_trade_value_24H/1000000)+'백만</td>';
+        tr.innerHTML = '<td class="name">'+key+'</td><td class="price">'+(data[key].closing_price*1).toLocaleString()+'</td><td class="cent price-'+cl+'">'+
+        Math.floor(changeM / data[key].closing_price * 100*100)/100+'%<br>'+changeM.toLocaleString()+'</td><td class="deal">'+Math.floor(data[key].acc_trade_value_24H/1000000).toLocaleString()+'백만</td>';
             table.appendChild(tr)
             if(key == nowCoin){
             	document.querySelector("#now_coin").innerHTML = nowCoin      
@@ -302,7 +301,7 @@ function getMon() {
     		for(let i = 0; i < datas.length; i++){
     			d[datas[i].coin_id] = {price:datas[i].price,cnt:datas[i].cnt}
     		}
-			document.querySelector('.price strong').innerHTML = d["KRW"].price+'KRW';
+			document.querySelector('.price strong').innerHTML = (d["KRW"].price*1).toLocaleString()+'KRW';
             },error: log =>{alert("DB 오류 발생")}
         }
     );
@@ -334,7 +333,7 @@ document.querySelector('.buysell').addEventListener('click',()=> {
 
 function chbuy() {
 	nowBuy = true;
-	document.querySelector('.price strong').innerHTML = d["KRW"].price+'KRW';
+	document.querySelector('.price strong').innerHTML = (d["KRW"].price*1).toLocaleString()+'KRW';
 	document.querySelector('.pricenum strong').innerHTML = '매수 가격 (KRW)'
 	document.querySelector('.buysell a').innerHTML = '매수'
 }
