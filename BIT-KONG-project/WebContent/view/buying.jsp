@@ -356,9 +356,9 @@ function checkBuySell() {
 		$.ajax(
         {
             type:"POST",
-            url:"http://34.64.56.248:3000/coin-wallet/<%= userVO.getM_id() %>",
+            url:"http://34.64.56.248:3000/execution-history/<%= userVO.getM_id() %>",
             dataType:"json",
-			data : {'coin_id':nowCoin,'price': ehs,'cnt':tnfid},
+			data : {'coin_id':nowCoin,'price': ehs,'cnt':tnfid,'isbuy':1},
             success :  res => {
 				alert("거래 등록");
 				location.reload();
@@ -372,10 +372,10 @@ function checkBuySell() {
 		}
 		$.ajax(
         {
-            type:"PUT",
-            url:"http://34.64.56.248:3000/coin-wallet/<%= userVO.getM_id() %>",
+            type:"POST",
+            url:"http://34.64.56.248:3000/execution-history/<%= userVO.getM_id() %>",
             dataType:"json",
-			data : {'coin_id':nowCoin,'price': ehs,'cnt':tnfid},
+			data : {'coin_id':nowCoin,'price': ehs,'cnt':tnfid,'isbuy':0},
             success :  res => {
 				alert("거래 등록");
 				location.reload();
