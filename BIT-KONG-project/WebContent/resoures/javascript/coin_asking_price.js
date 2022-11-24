@@ -25,15 +25,16 @@ let se;
       let dat = Math.floor(changeM / data.asks[i].price * 1000000)/10000
       let dom = document.createElement("tr");
       dom.className = "down"
-      dom.innerHTML= `<td class="bar">
-		        		<div class="ty01">${Math.round(data.asks[i].quantity*10000)/10000}</div>
-		        		</td>
-		        		<td class="downe">
-		        		<a href="#">
-		        		<div class="ty03">${(data.asks[i].price*1).toLocaleString()}</div>
-		        		<div class="ty02">${dat}%</div>
-		        		</a>
-		        		</td>`;
+    	  dom.innerHTML= `<td class="bar re">
+      		<div class="ty01">${Math.round(data.asks[i].quantity*10000)/10000}</div>
+      		</td>
+      		<td class="downe re">
+      		<a href="#">
+      		<div class="ty03 re" >${(data.asks[i].price*1).toLocaleString()}</div>
+      		<div class="ty02 re">${dat}%</div>
+      		</a>
+      		</td>`;
+   
       div.append(dom);
     }
     for (let i = 0; i < 30; i++) {
@@ -41,14 +42,15 @@ let se;
       let changeM = Math.round((data.bids[i].price - window.closeData)*100)/100
       let dat = Math.floor(changeM / data.bids[i].price * 1000000)/10000
       dom.className = "up"
-          dom.innerHTML= `<td class="downe">
-      		<a href="#">
-      		<div class="ty03">${(data.bids[i].price*1).toLocaleString()}</div>
-          <div class="ty02">${dat}%</div>
-      		</a>
-      		</td><td class="bar">
-      		<div class="ty01">${Math.round(data.bids[i].quantity*10000)/10000}</div>
-      		</td>`;
+              dom.innerHTML= `<td class="downe bl">
+            		<a href="#">
+            		<div class="ty03 bl">${(data.bids[i].price*1).toLocaleString()}</div>
+                <div class="ty02 bl">${dat}%</div>
+            		</a>
+            		</td><td class="bar bl">
+            		<div class="ty01">${Math.round(data.bids[i].quantity*10000)/10000}</div>
+            		</td>`;    		  
+    	  
       div.append(dom);
     }
   }

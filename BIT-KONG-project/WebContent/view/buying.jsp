@@ -270,9 +270,9 @@ function draw(data) {
             	document.querySelector("#now_coin").innerHTML = nowCoin      
 				closeData = data[key].closing_price;
 				if(changeM >= 0){
-					document.querySelector('#values').innerHTML = '<span class="plus">'+data[key].closing_price+'</span>'+'<strong class="plus2">'+Math.floor(changeM / data[key].closing_price * 100*100) / 100+'%'+changeM+'</strong>';
+					document.querySelector('#values').innerHTML = '<span class="plus">'+data[key].closing_price+' </span> '+'<strong class="plus2">'+Math.floor(changeM / data[key].closing_price * 100*100) / 100+'% '+changeM+'</strong>';
 				}else {
-					document.querySelector('#values').innerHTML = '<span class="minus">'+data[key].closing_price+'</span>'+'<strong class="minus2">'+Math.floor(changeM / data[key].closing_price * 100*100) / 100+'%'+changeM+'</strong>';
+					document.querySelector('#values').innerHTML = '<span class="minus">'+data[key].closing_price+' </span> '+'<strong class="minus2">'+Math.floor(changeM / data[key].closing_price * 100*100) / 100+'% '+changeM+'</strong>';
 				}
                 if(isC != nowCoin) {
                     isC = nowCoin;
