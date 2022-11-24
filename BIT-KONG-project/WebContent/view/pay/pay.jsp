@@ -73,7 +73,6 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-    <script src="<%=request.getContextPath()%>/resoures/javascript/coin_pay.js"></script>
     <script>
     	let price_list = [
     	    {
@@ -210,10 +209,12 @@
     	);
     	}
     	$(".price-point").click(function(){
+    	$(".price-point").click(function(){
         	$(".price-point").removeClass("action");
         	$(this).addClass("action");
         	$(".payment").addClass("action");
         	});
+		});
     </script>
 </body>
 </html>
