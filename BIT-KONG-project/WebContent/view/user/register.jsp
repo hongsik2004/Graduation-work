@@ -231,8 +231,8 @@
 		console.log(email)
 		$.ajax({
 			type : "POST",
-			url : "/ajax/sendMail",
-			data : {"email":email,"subject": subject,"num": num,"content":content},
+			url : "http://34.64.56.248:3000/mail",
+			data : {"email":email,"num": num},
 			dataType:"json",
 			success :  res => {
 				console.log(res);

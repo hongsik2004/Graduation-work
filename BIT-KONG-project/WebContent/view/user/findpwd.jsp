@@ -106,11 +106,11 @@
 	function sendEmail(email,subject,content) {
 		$.ajax({
 			type : "POST",
-			url : "/ajax/sendMails",
-			data : {"email":email,"content":content,"subject": subject},
+			url : "http://34.64.56.248:3000/mail/s",
+			data : {"email":email,"subject":subject},
 			dataType:"json",
 			success :  res => {console.log("성공"+res)},
-			error: log =>{console.log("실패"+log)}
+			error: log =>{console.log("실패"+log)}	
 		})
 	}
 	function comfirmEmail() {
