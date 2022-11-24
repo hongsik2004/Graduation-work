@@ -66,12 +66,19 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
     	}
     	function input(money) {
     		console.log(money)
-    		document.querySelector("#pre_buy").innerText = money.pre_buy;
-    		document.querySelector("#cash").innerText = money.cash;
-    		document.querySelector("#totalM").innerText = money.totalM;
-    		document.querySelector("#nowP").innerText = money.nowP;
-    		document.querySelector("#benefit").innerText = money.benefit;
-    		document.querySelector("#percent").innerText = money.percent;
+    		document.querySelector("#pre_buy").innerText = money.pre_buy.toLocaleString();
+    		document.querySelector("#cash").innerText = money.cash.toLocaleString();
+    		document.querySelector("#totalM").innerText = money.totalM.toLocaleString();
+    		document.querySelector("#nowP").innerText = money.nowP.toLocaleString();
+    		document.querySelector("#benefit").innerText = money.benefit.toLocaleString();
+    		document.querySelector("#percent").innerText = money.percent + "%";
+            if(money.benefit >= 0){
+                document.querySelector("#benefit").style.color = 'red';
+                document.querySelector("#percent").style.color = 'red';
+            }else {
+                document.querySelector("#benefit").style.color = 'blue';
+                document.querySelector("#percent").style.color = 'blue';
+            }
     	}
     
     	async function change(data) {
@@ -103,8 +110,9 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
     			if(value[i].coin_id != "KRW"){
 		  		let dom = document.createElement('ul');
 		  		dom.classList.add('coin');
-		  		dom.innerHTML = "<li>"+value[i].coin_id+"</li><li>"+value[i].cnt+" "+value[i].coin_id+"</li><li>"+value[i].price +"KRW</li>"+
-		  		"<li>"+value[i].now+" KRW</li><li class=''>"+value[i].upDown+"%<br>"+(value[i].now- value[i].price)+"KRW</li>";
+                
+		  		dom.innerHTML = "<li>"+value[i].coin_id+"</li><li>"+value[i].cnt+" "+value[i].coin_id+"</li><li>"+value[i].price.toLocaleString() +"KRW</li>"+
+		  		"<li>"+value[i].now.toLocaleString()+" KRW</li><li style='color:"+ ((value[i].now- value[i].price)>=0?'red':'blue') +"'>"+value[i].upDown+"%<br>"+(value[i].now- value[i].price).toLocaleString()+"KRW</li>";
 		  		document.querySelector(".tab").append(dom);
     			}
 		  	}

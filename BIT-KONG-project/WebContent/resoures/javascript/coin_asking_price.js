@@ -26,11 +26,11 @@ let se;
       let dom = document.createElement("tr");
       dom.className = "down"
       dom.innerHTML= `<td class="bar">
-		        		<div class="ty01">${data.asks[i].quantity}</div>
+		        		<div class="ty01">${Math.round(data.asks[i].quantity*10000)/10000}</div>
 		        		</td>
 		        		<td class="downe">
 		        		<a href="#">
-		        		<div class="ty03">${data.asks[i].price}</div>
+		        		<div class="ty03">${(data.asks[i].price*1).toLocaleString()}</div>
 		        		<div class="ty02">${dat}%</div>
 		        		</a>
 		        		</td>`;
@@ -43,11 +43,11 @@ let se;
       dom.className = "up"
           dom.innerHTML= `<td class="downe">
       		<a href="#">
-      		<div class="ty03">${data.bids[i].price}</div>
+      		<div class="ty03">${(data.bids[i].price*1).toLocaleString()}</div>
           <div class="ty02">${dat}%</div>
       		</a>
       		</td><td class="bar">
-      		<div class="ty01">${data.bids[i].quantity}</div>
+      		<div class="ty01">${Math.round(data.bids[i].quantity*10000)/10000}</div>
       		</td>`;
       div.append(dom);
     }
