@@ -47,8 +47,8 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
     		let nowP = totalM - cash; // 총평가
     		let benefit = nowP - pre_buy; // 수익
             let percent = 0;//수익률
-            if(nowP != 0){
-                percent = Math.round((nowP / pre_buy)*10000)/100;//수익률
+            if(benefit != 0){
+                percent = Math.round((benefit / pre_buy)*10000)/100;//수익률
             }
 
     		let money = {
@@ -85,7 +85,8 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
 			  	for(let i = 0; i< data.length;i++){
 			  		if(data[i].coin_id != "KRW"){			  			
 			  		data[i].now = response.data[data[i].coin_id].closing_price * data[i].cnt;
-			  		data[i].upDown = Math.round(( data[i].now / data[i].price)*10000)/100
+
+			  		data[i].upDown = Math.round(( (data[i].now - data[i].price) /data[i].price)*10000)/100
 			  		}else {
 				  		data[i].now = data[i].price;			  			
 			  		}

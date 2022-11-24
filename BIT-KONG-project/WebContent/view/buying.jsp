@@ -210,14 +210,19 @@ function but_C(div) {
 }
 let bigData = []
 let chartData
+window.closeData = 0;
 let nowCoin = "BTC";
-call("30m", nowCoin)
-coin(nowCoin)
-let isC = ''
 list_set()
+call("30m", nowCoin)
+setTimeout(() => {
+	coin(nowCoin,closeData)
+}, 500);
+let isC = ''
 document.querySelector(".scrolld>table").addEventListener("click", (e) => {
     nowCoin = e.target.parentNode.dataset.coin
-  coin(nowCoin)
+	setTimeout(() => {
+		coin(nowCoin,closeData)
+	}, 500);
   call("30m", nowCoin)
   but_C(document.querySelector(".basic"))
 })
@@ -242,7 +247,7 @@ function list_set() {
 function draw(data) {
     let list = ["XRP","BTC","ETH","WEMIX","APM","MVC","XNO","JST","CON","SUN","SAND","SOL","ANKR","ANV","TITAN","ETC","CTC","ADA","DOGE"]
     let table = document.querySelector(".scrolld>table");
-    
+    console.log(data["BTC"])
     table.innerHTML = "";
         let i = 0
     for (let key in list) {
@@ -263,11 +268,13 @@ function draw(data) {
         Math.floor(changeM / data[key].closing_price * 100*100)/100+'%<br>'+changeM+'</td><td class="deal">'+Math.floor(data[key].acc_trade_value_24H/1000000)+'백만</td>';
             table.appendChild(tr)
             if(key == nowCoin){
-            	document.querySelector("#now_coin").innerHTML = nowCoin        
-                document.querySelector('#values').innerHTML = data[key].closing_price+' / '+Math.floor(changeM / data[key].closing_price * 100*100)/100+'% '+changeM;
+            	document.querySelector("#now_coin").innerHTML = nowCoin      
+				closeData = data[key].closing_price;
+                document.querySelector('#values').innerHTML = '<span>'+data[key].closing_price+'</span>'+' / '+Math.floor(changeM / data[key].closing_price * 100*100)/100+'% '+changeM;
                 if(isC != nowCoin) {
                     isC = nowCoin;
                     document.querySelector(".txr").value = data[key].closing_price;
+					window.closeData = data[key].prev_closing_price;
 					cler()
 					if(nowBuy) {
 						chbuy()
@@ -365,6 +372,18 @@ function checkBuySell() {
             },error: log =>{alert("DB 오류 발생")}
         }
     	);
+$.ajax(
+        {
+            type:"PUT",
+            url:"http://34.64.56.248:3000/coin-wallet/<%= userVO.getM_id() %>",
+            dataType:"json",
+			data : {'coin_id':"KRW",'price': ehs,'cnt':0},
+            success :  res => {
+				alert("거래 등록");
+				location.reload();
+            },error: log =>{alert("DB 오류 발생")}
+        }
+    	);
 	}else {
 		if(!nowCoin in d ||d[nowCoin].cnt < tnfid){
 			alert("수량 부족");
@@ -380,6 +399,18 @@ function checkBuySell() {
 				alert("거래 등록");
 				location.reload();
             },error: log =>{console.log(log)}
+        }
+    	);
+		$.ajax(
+        {
+            type:"PUT",
+            url:"http://34.64.56.248:3000/coin-wallet/<%= userVO.getM_id() %>",
+            dataType:"json",
+			data : {'coin_id':nowCoin,'price': ehs,'cnt':tnfid},
+            success :  res => {
+				alert("거래 등록");
+				location.reload();
+            },error: log =>{alert("DB 오류 발생")}
         }
     	);
 	}
