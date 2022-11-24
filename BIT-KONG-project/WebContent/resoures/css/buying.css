@@ -364,5 +364,5 @@
     border: 1px solid #1e6b7b;
     border-radius: 10px;
     margin-right: 5px;
-	background-color: #f00;
+	background-color: #f00 !important;
 }

@@ -426,5 +426,11 @@ function checkBuySell() {
 //         }
 //     	);
 	</script> 
+	<script type="text/javascript">
+		setTimeout(() => {
+		document.querySelector('.con').style.opacity = 1;
+		document.querySelector('#pop').style.display = 'none';
+		}, 1700);
+	</script>
 </body>
 </html>
