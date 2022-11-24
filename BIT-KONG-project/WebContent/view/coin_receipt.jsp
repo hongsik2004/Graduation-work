@@ -13,10 +13,10 @@
     
     <%
     	ReceiptDAO dao = new ReceiptDAO();
-    	RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
-    	ArrayList<ReceiptVO> list = dao.getReceiptlist(userVO.getM_id());
-    	DecimalFormat df = new DecimalFormat("###,###");
     	PaginationVO pVO = (PaginationVO)session.getAttribute("pVO");
+    	RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
+    	ArrayList<ReceiptVO> list = dao.getReceiptlist(userVO.getM_id(),pVO.getStartBoard(),pVO.getEndBoard());
+    	DecimalFormat df = new DecimalFormat("###,###");
     %>
     <div class="con">
         <div class="box1">
