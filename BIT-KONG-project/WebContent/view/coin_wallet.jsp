@@ -237,9 +237,12 @@ RegisterVO userVO = (RegisterVO)session.getAttribute("userVO");
                 <li><div class="co" style="background-color: #e8c3b9;"></div>BCH <span>2.0%</span></li>
                 <li><div class="co" style="background-color: #c45850;"></div>IOST <span>1.9%</span></li>
             </ul>
-            <script>
-
-            </script>
+ 	<script type="text/javascript">
+			setTimeout(() => {
+			document.querySelector('.con').style.opacity = 1;
+			document.querySelector('#pop').style.display = 'none';
+			}, 700);
+		</script>
         </div>
     </div>
 </body>

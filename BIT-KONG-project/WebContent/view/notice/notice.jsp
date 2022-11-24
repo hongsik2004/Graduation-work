@@ -81,6 +81,12 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+			setTimeout(() => {
+			document.querySelector('.con').style.opacity = 1;
+			document.querySelector('#pop').style.display = 'none';
+			}, 500);
+		</script>
     <script src="<%=request.getContextPath() %>/resoures/javascript/coin_noticce.js"></script>
 </body>
 </html>

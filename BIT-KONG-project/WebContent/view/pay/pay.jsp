@@ -216,5 +216,11 @@
         	});
 		});
     </script>
+    <script type="text/javascript">
+			setTimeout(() => {
+			document.querySelector('.con').style.opacity = 1;
+			document.querySelector('#pop').style.display = 'none';
+			}, 400);
+		</script>
 </body>
 </html>
